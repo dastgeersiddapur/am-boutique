@@ -1,0 +1,71 @@
+{
+  "id": "/",
+  "name": "AM Women's Boutique",
+  "short_name": "AM Boutique",
+  "description": "Custom blouse stitching, kurtis, lehengas, gowns & alterations in K Narayanapura, Bengaluru.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait-primary",
+  "background_color": "#2c1f1f",
+  "theme_color": "#c97b84",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icon-192-any.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512-any.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Order Online",
+      "short_name": "Order",
+      "description": "Place a new stitching order",
+      "url": "/#order",
+      "icons": [
+        { "src": "/icon-192-any.png", "sizes": "192x192", "type": "image/png" }
+      ]
+    },
+    {
+      "name": "Book Appointment",
+      "short_name": "Book",
+      "description": "Book an appointment at the boutique",
+      "url": "/#booking",
+      "icons": [
+        { "src": "/icon-192-any.png", "sizes": "192x192", "type": "image/png" }
+      ]
+    },
+    {
+      "name": "WhatsApp Us",
+      "short_name": "WhatsApp",
+      "description": "Chat with us on WhatsApp",
+      "url": "https://wa.me/919740180887?text=Hi%20AM%20Women%27s%20Boutique!",
+      "icons": [
+        { "src": "/icon-192-any.png", "sizes": "192x192", "type": "image/png" }
+      ]
+    }
+  ]
+}

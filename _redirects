@@ -1,0 +1,9 @@
+# Force no-cache on HTML files
+/index.html    /index.html   200!
+/              /index.html   200!
+
+# Redirect old file
+/am-womens-boutique.html  /  301!
+
+# All other routes → index.html
+/*  /index.html  200

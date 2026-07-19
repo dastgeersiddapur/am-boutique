@@ -1,0 +1,36 @@
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Node (if ever used)
+node_modules/
+package-lock.json
+
+# Temp files
+*.tmp
+*.temp
+.cache/
+
+# Private / sensitive — never commit these
+*.env
+.env
+.env.local
+api-keys.txt
+secrets.txt

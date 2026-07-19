@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- PWA — Android 12+ / Samsung compatible -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#c97b84" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="AM Boutique" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AM Boutique" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon-180-any.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/icon-192-any.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512-any.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192-any.png" />
+  <title>AM Women's Boutique | Custom Stitching & Alterations – Bengaluru</title>
+  <meta name="description" content="AM Women's Boutique offers custom blouse stitching, kurtis, lehengas, gowns and expert alterations in K Narayanapura, Bengaluru. Book your appointment online or via WhatsApp." />
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/icon-64.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: #faf7f4; color: #2c1f1f; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+    :root {
+      --rose: #c97b84; --rose-light: #f5e8ea; --rose-dark: #8a4a52; --rose-mid: #a85f68;
+      --gold: #b5935a; --gold-light: #f7efe0; --gold-dark: #7a5e2e;
+      --cream: #faf7f4; --cream-dark: #f2ece5;
+      --dark: #2c1f1f; --mid: #6b4f4f; --muted: #a48585;
+      --white: #fff; --border: #e8ddd5;
+      --wa-green: #25d366; --wa-dark: #1da851;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    @keyframes pulse-wa { 0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)} 50%{box-shadow:0 0 0 10px rgba(37,211,102,0)} }
+    .fade-up{animation:fadeUp .7s ease both}
+    .fade-up-1{animation-delay:.1s}.fade-up-2{animation-delay:.2s}.fade-up-3{animation-delay:.3s}
+    .fade-up-4{animation-delay:.4s}.fade-up-5{animation-delay:.5s}
+
+    /* NAV */
+    nav { position:sticky;top:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:68px; }
+    .nav-logo { display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--rose-dark);letter-spacing:.02em;text-decoration:none; }
+    .nav-logo img { width:40px;height:40px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold); }
+    .nav-logo span { color:var(--gold);font-style:italic; }
+    .nav-links { display:flex;align-items:center;gap:2rem;list-style:none; }
+    .nav-links a { font-size:12px;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s; }
+    .nav-links a:hover { color:var(--rose); }
+    .nav-cta { background:var(--rose)!important;color:white!important;padding:8px 20px;border-radius:4px;transition:background .2s!important; }
+    .nav-cta:hover { background:var(--rose-dark)!important; }
+    .hamburger { display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px; }
+    .hamburger span { display:block;width:24px;height:1.5px;background:var(--dark);transition:.3s; }
+
+    /* HERO */
+    .hero { min-height:calc(100vh - 68px);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:5rem 3rem 4rem;gap:4rem;background:linear-gradient(135deg,#fdf6f0 0%,#f9eff4 60%,#f5eae8 100%);position:relative;overflow:hidden; }
+    .hero::before { content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,123,132,.08) 0%,transparent 70%);pointer-events:none; }
+    .hero::after  { content:'';position:absolute;left:-80px;bottom:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(181,147,90,.07) 0%,transparent 70%);pointer-events:none; }
+    .hero-badge { display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dark);background:var(--gold-light);border:.5px solid #d4b07a;padding:6px 16px;border-radius:30px;margin-bottom:1.5rem; }
+    .hero h1 { font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,64px);font-weight:300;line-height:1.15;color:var(--dark);margin-bottom:1.25rem; }
+    .hero h1 em { color:var(--rose);font-style:italic; }
+    .hero-desc { font-size:16px;font-weight:300;color:var(--mid);line-height:1.75;max-width:420px;margin-bottom:2rem; }
+    .btn-group { display:flex;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem; }
+    .btn-primary { display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:white;border:none;padding:13px 26px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;border-radius:4px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s; }
+    .btn-primary:hover { background:var(--rose-dark);transform:translateY(-1px); }
+    .btn-wa { display:inline-flex;align-items:center;gap:8px;background:var(--wa-green);color:white;border:none;padding:13px 26px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;border-radius:4px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;animation:pulse-wa 2.5s infinite; }
+    .btn-wa:hover { background:var(--wa-dark);transform:translateY(-1px);animation:none; }
+    .btn-order { display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:white;border:none;padding:13px 26px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;border-radius:4px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s; }
+    .btn-order:hover { background:var(--gold-dark);transform:translateY(-1px); }
+    .order-banner { background:var(--gold-light);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap; }
+    .order-banner h3 { font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--dark);margin-bottom:4px; }
+    .order-banner p { font-size:14px;color:var(--mid);font-weight:300;margin:0; }
+    .order-section { background:white;border-top:.5px solid var(--border);padding:5rem 3rem; }
+    .order-tabs { display:flex;gap:0;margin-bottom:2.5rem;border:.5px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content; }
+    .order-tab { padding:10px 24px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:var(--cream);color:var(--mid);letter-spacing:.04em;transition:all .2s;font-family:'Jost',sans-serif; }
+    .order-tab.active { background:var(--rose);color:white; }
+    .order-tab:not(:last-child) { border-right:.5px solid var(--border); }
+    .order-panel { display:none; }
+    .order-panel.show { display:block; }
+    .order-form { display:flex;flex-direction:column;gap:14px;max-width:720px; }
+    .measure-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px; }
+    .measure-item { background:var(--cream-dark);border:.5px solid var(--border);border-radius:8px;padding:10px 12px; }
+    .measure-item label { font-size:11px;font-weight:500;color:var(--mid);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px; }
+    .measure-item input { width:100%;padding:8px 10px;border:.5px solid var(--border);border-radius:5px;font-family:'Jost',sans-serif;font-size:13px;color:var(--dark);background:white;outline:none; }
+    .measure-item input:focus { border-color:var(--rose); }
+    .measure-guide { background:var(--rose-light);border:.5px solid #dcc4c7;border-radius:8px;padding:10px 14px;font-size:12px;color:var(--mid);display:flex;gap:8px;align-items:flex-start;margin-bottom:8px; }
+    .hero-stats { display:flex;gap:2rem; }
+    .hero-stat .num { font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--rose-dark);line-height:1; }
+    .hero-stat .label { font-size:12px;color:var(--muted);font-weight:300;letter-spacing:.04em; }
+    .hero-visual { display:grid;grid-template-columns:1fr 1fr;gap:12px;animation:float 5s ease-in-out infinite; }
+    .hero-img-main { grid-column:span 2;border-radius:12px;overflow:hidden;height:220px; }
+    .hero-img-main img { width:100%;height:100%;object-fit:cover; }
+    .hero-img-small { border-radius:10px;overflow:hidden;height:150px; }
+    .hero-img-small img { width:100%;height:100%;object-fit:cover; }
+
+    /* TRUST BAR */
+    .trust-bar { background:var(--dark);padding:1rem 3rem;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap; }
+    .trust-item { display:flex;align-items:center;gap:8px;color:#c4a88a;font-size:12px;font-weight:400;letter-spacing:.06em; }
+    .trust-item i { color:var(--gold);font-size:16px; }
+
+    /* SECTIONS */
+    section { padding:5rem 3rem; }
+    .section-label { display:inline-block;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-bottom:.5rem; }
+    .section-title { font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,40px);font-weight:300;color:var(--dark);margin-bottom:.5rem;line-height:1.2; }
+    .section-sub { font-size:15px;font-weight:300;color:var(--mid);margin-bottom:3rem;max-width:520px; }
+
+    /* SERVICES */
+    #services { background:white; }
+    .services-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+    .service-card { background:var(--cream);border:.5px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:all .25s;position:relative;overflow:hidden; }
+    .service-card::before { content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:var(--rose);transform:scaleX(0);transform-origin:left;transition:transform .25s; }
+    .service-card:hover { border-color:var(--rose);transform:translateY(-3px);background:white; }
+    .service-card:hover::before { transform:scaleX(1); }
+    .service-icon { width:48px;height:48px;background:var(--rose-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--rose);font-size:22px;transition:background .2s; }
+    .service-card:hover .service-icon { background:var(--rose);color:white; }
+    .service-card h4 { font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--dark);margin-bottom:6px; }
+    .service-card p { font-size:13px;color:var(--mid);font-weight:300;line-height:1.65;margin-bottom:12px; }
+    .service-price { display:inline-block;font-size:12px;color:var(--gold-dark);background:var(--gold-light);border:.5px solid #d4b07a;padding:4px 12px;border-radius:20px;font-weight:500; }
+
+    /* PROCESS */
+    #process { background:var(--cream-dark); }
+    .process-steps { display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative; }
+    .process-steps::before { content:'';position:absolute;top:28px;left:12.5%;width:75%;height:1px;background:repeating-linear-gradient(to right,var(--rose) 0,var(--rose) 8px,transparent 8px,transparent 16px); }
+    .process-step { text-align:center;padding:0 1rem;position:relative; }
+    .step-num { width:56px;height:56px;border-radius:50%;background:var(--rose);color:white;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;position:relative;z-index:1; }
+    .process-step h4 { font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--dark);margin-bottom:6px; }
+    .process-step p { font-size:13px;color:var(--mid);font-weight:300;line-height:1.6; }
+
+    /* GALLERY */
+    #gallery { background:white; }
+    .gallery-tabs { display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem; }
+    .gallery-tab { padding:8px 20px;border-radius:30px;font-size:12px;font-weight:500;letter-spacing:.06em;cursor:pointer;border:.5px solid var(--border);background:var(--cream);color:var(--mid);transition:all .2s; }
+    .gallery-tab.active,.gallery-tab:hover { background:var(--rose);color:white;border-color:var(--rose); }
+    .gallery-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:12px; }
+    .gallery-item { border-radius:12px;overflow:hidden;aspect-ratio:3/4;position:relative;cursor:pointer; }
+    .gallery-item img { width:100%;height:100%;object-fit:cover;transition:transform .4s ease; }
+    .gallery-item:hover img { transform:scale(1.06); }
+    .gallery-item .overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(44,31,31,.7) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1rem; }
+    .gallery-item:hover .overlay { opacity:1; }
+    .overlay-label { color:white;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase; }
+    .gallery-item.featured { grid-column:span 2;aspect-ratio:4/3; }
+
+    /* LIGHTBOX */
+    .lightbox { display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;padding:2rem; }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px; }
+    .lightbox-close { position:fixed;top:20px;right:24px;color:white;font-size:32px;cursor:pointer;background:none;border:none;line-height:1; }
+
+    /* BOOKING */
+    #booking { background:white;border-top:.5px solid var(--border);padding:4rem 3rem; }
+    .booking-grid { display:grid;grid-template-columns:1fr;gap:2rem;align-items:start;max-width:720px; }
+    .form-title { font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--dark);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px; }
+    .form-title i { color:var(--rose);font-size:24px; }
+    .booking-form { display:flex;flex-direction:column;gap:14px; }
+    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:14px; }
+    .form-group { display:flex;flex-direction:column;gap:6px; }
+    .form-group label { font-size:12px;font-weight:500;color:var(--mid);letter-spacing:.06em;text-transform:uppercase; }
+    .form-group input,.form-group select,.form-group textarea { padding:11px 14px;border:.5px solid var(--border);border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;color:var(--dark);background:var(--cream);outline:none;transition:border-color .2s,background .2s;width:100%; }
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--rose);background:white; }
+    .form-group textarea { resize:vertical;min-height:80px; }
+    .form-submit { display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rose);color:white;border:none;padding:14px;width:100%;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:.06em;border-radius:6px;cursor:pointer;transition:background .2s,transform .15s;margin-top:4px; }
+    .form-submit:hover { background:var(--rose-dark);transform:translateY(-1px); }
+    .booking-divider { display:flex;align-items:center;gap:1rem;margin:.75rem 0;color:var(--muted);font-size:12px; }
+    .booking-divider::before,.booking-divider::after { content:'';flex:1;height:.5px;background:var(--border); }
+    .wa-card { background:#f0faf5;border:.5px solid #a8dfc0;border-radius:12px;padding:1rem 1.25rem;text-align:center;position:sticky;top:90px; }
+    .wa-circle { width:40px;height:40px;background:var(--wa-green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .6rem;color:white;font-size:20px;animation:pulse-wa 2.5s infinite; }
+    .wa-card h3 { font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--dark);margin-bottom:.35rem; }
+    .wa-card p { font-size:12px;color:var(--mid);font-weight:300;line-height:1.5;margin-bottom:.75rem; }
+    .wa-number { font-size:14px;font-weight:500;color:var(--wa-dark);margin-bottom:.75rem;display:flex;align-items:center;justify-content:center;gap:6px; }
+    .wa-hours { font-size:11px;color:var(--muted);margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:5px; }
+
+    /* TESTIMONIALS */
+    #testimonials { background:var(--gold-light); }
+    .testimonials-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+    .testimonial-card { background:white;border:.5px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:transform .2s; }
+    .testimonial-card:hover { transform:translateY(-3px); }
+    .stars { color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:1rem; }
+    .testimonial-card blockquote { font-size:14px;color:var(--mid);line-height:1.7;font-style:italic;font-weight:300;margin-bottom:1.25rem;border-left:2px solid var(--rose-light);padding-left:14px; }
+    .reviewer-info { display:flex;align-items:center;gap:10px; }
+    .reviewer-avatar { width:36px;height:36px;background:var(--rose-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--rose-dark); }
+    .reviewer-name { font-size:13px;font-weight:500;color:var(--dark); }
+    .reviewer-loc { font-size:12px;color:var(--muted);font-weight:300; }
+
+    /* CONTACT */
+    #contact { background:var(--rose-dark);padding:4rem 3rem; }
+    .contact-inner { display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem; }
+    .contact-brand .nav-logo { color:#f5e8ea; }
+    .contact-brand .nav-logo img { border-color:rgba(181,147,90,.5); }
+    .contact-tagline { font-size:14px;font-weight:300;color:rgba(255,255,255,.6);margin-top:.75rem;line-height:1.7; }
+    .social-links { display:flex;gap:10px;margin-top:1.5rem; }
+    .social-btn { width:38px;height:38px;border:.5px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:16px;cursor:pointer;transition:all .2s;text-decoration:none;background:transparent; }
+    .social-btn:hover { background:rgba(255,255,255,.15);color:white; }
+    .contact-col h4 { font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:1.25rem; }
+    .contact-info-list { display:flex;flex-direction:column;gap:12px; }
+    .contact-info-item { display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.65);font-size:13px;font-weight:300;line-height:1.5; }
+    .contact-info-item i { color:#ffb3bb;font-size:16px;flex-shrink:0;margin-top:1px; }
+    .contact-info-item a { color:rgba(255,255,255,.65);text-decoration:none; }
+    .contact-info-item a:hover { color:white; }
+    .hours-list { display:flex;flex-direction:column;gap:8px; }
+    .hours-row { display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.65);font-weight:300;padding-bottom:8px;border-bottom:.5px solid rgba(255,255,255,.1); }
+    .hours-row:last-child { border-bottom:none; }
+    .hours-row .day { color:rgba(255,255,255,.8); }
+    .hours-row .open { color:#a8e6c0; }
+    .hours-row .closed { color:#ffb3bb; }
+
+    footer { background:#1a1010;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem; }
+    footer p { font-size:12px;color:rgba(255,255,255,.3);letter-spacing:.04em; }
+    footer a { color:rgba(255,255,255,.4);text-decoration:none; }
+    footer a:hover { color:rgba(255,255,255,.7); }
+
+    /* FLOATING WA */
+    .float-wa { position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:var(--wa-green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:998;animation:pulse-wa 2.5s infinite;transition:transform .2s; }
+    .float-wa:hover { transform:scale(1.1);animation:none; }
+    .float-wa-tooltip { position:fixed;bottom:38px;right:96px;background:var(--dark);color:white;font-size:12px;padding:6px 14px;border-radius:20px;white-space:nowrap;z-index:997;opacity:0;transition:opacity .2s;pointer-events:none; }
+    .float-wa:hover + .float-wa-tooltip { opacity:1; }
+
+    /* TOAST */
+    .toast { position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--dark);color:white;font-size:14px;padding:12px 24px;border-radius:30px;display:flex;align-items:center;gap:8px;z-index:9999;transition:transform .4s ease;box-shadow:0 4px 24px rgba(0,0,0,.2); }
+    .toast.show { transform:translateX(-50%) translateY(0); }
+    .toast i { color:#a8e6c0; }
+
+    /* MOBILE */
+    @media(max-width:900px){
+      nav{padding:0 1.5rem}
+      .nav-links{display:none;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:white;padding:1.5rem 2rem;border-bottom:.5px solid var(--border);gap:1rem;z-index:998}
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+      .hero{grid-template-columns:1fr;padding:3rem 1.5rem 2rem;min-height:auto;gap:2.5rem}
+      .hero-visual{animation:none}
+      section{padding:3rem 1.5rem}
+      .services-grid{grid-template-columns:1fr 1fr}
+      .process-steps{grid-template-columns:1fr 1fr}
+      .process-steps::before{display:none}
+      .booking-grid{grid-template-columns:1fr}
+      .wa-card{position:static}
+      #booking > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+      .order-tabs{flex-direction:column;width:100%}
+      .order-tab{text-align:left}
+      .testimonials-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:1fr 1fr}
+      .gallery-item.featured{grid-column:span 2}
+      .contact-inner{grid-template-columns:1fr;gap:2rem}
+      .trust-bar{gap:1.5rem;padding:.75rem 1.5rem}
+      footer{padding:1rem 1.5rem}
+    }
+    @media(max-width:600px){
+      .services-grid{grid-template-columns:1fr}
+      .process-steps{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:1fr 1fr}
+      .gallery-item.featured{grid-column:span 2}
+      .hero-stats{gap:1.25rem}
+      .gallery-tabs{gap:6px}
+    }
+  
+    /* Google Reviews */
+    .g-review-card { background:white;border:.5px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;transition:transform .2s; }
+    .g-review-card:hover { transform:translateY(-3px); }
+    .g-review-header { display:flex;align-items:center;gap:10px;margin-bottom:10px; }
+    .g-reviewer-pic { width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--rose-light);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--rose-dark);flex-shrink:0; }
+    .g-reviewer-name { font-size:13px;font-weight:500;color:var(--dark); }
+    .g-review-date { font-size:11px;color:var(--muted); }
+    .g-review-stars { color:#fbbc04;font-size:13px;letter-spacing:1px;margin-bottom:8px; }
+    .g-review-text { font-size:13px;color:var(--mid);line-height:1.65;font-style:italic; }
+    .g-powered { display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);margin-top:6px; }
+    /* PWA install banner */
+    .install-banner{position:fixed;bottom:0;left:0;right:0;z-index:9990;background:var(--dark);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;transform:translateY(100%);transition:transform .4s ease;border-top:2px solid var(--rose);}
+    .install-banner.show{transform:translateY(0);}
+    .install-banner-left{display:flex;align-items:center;gap:12px;}
+    .install-banner-logo{width:40px;height:40px;border-radius:10px;object-fit:cover;}
+    .install-banner-text p{margin:0;font-size:13px;font-weight:500;color:white;}
+    .install-banner-text span{font-size:11px;color:rgba(255,255,255,.55);}
+    .install-banner-btns{display:flex;gap:8px;align-items:center;}
+    .btn-install{background:var(--rose);color:white;border:none;padding:9px 18px;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;border-radius:4px;cursor:pointer;letter-spacing:.04em;}
+    .btn-install:hover{background:var(--rose-dark);}
+    .btn-install-dismiss{background:transparent;color:rgba(255,255,255,.5);border:none;font-size:20px;cursor:pointer;padding:0 4px;line-height:1;}
+    @media(max-width:600px){.install-banner{padding:10px 14px;}.install-banner-text span{display:none;}}
+  </style>
+  <!-- Google Places API — for live reviews -->
+  <!-- IMPORTANT: Replace YOUR_API_KEY below with your Google Places API key -->
+  <!-- Get free key at: console.cloud.google.com → Enable Places API -->
+  <script>
+    var GOOGLE_PLACE_ID = 'ChIJt4JmO1C3rjsRZfFTae8-LXM';
+    var GOOGLE_API_KEY  = 'YOUR_GOOGLE_PLACES_API_KEY';
+
+    function loadGoogleReviews() {
+      if (!GOOGLE_API_KEY || GOOGLE_API_KEY === 'YOUR_GOOGLE_PLACES_API_KEY') {
+        // No API key — show rating banner with manual data
+        showStaticRating();
+        return;
+      }
+      var script = document.createElement('script');
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY + '&libraries=places&callback=initPlacesReviews';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    function initPlacesReviews() {
+      var service = new google.maps.places.PlacesService(document.createElement('div'));
+      service.getDetails({
+        placeId: GOOGLE_PLACE_ID,
+        fields: ['rating', 'user_ratings_total', 'reviews']
+      }, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          showLiveReviews(place);
+        } else {
+          showStaticRating();
+        }
+      });
+    }
+
+    function showLiveReviews(place) {
+      // Show rating banner
+      var banner = document.getElementById('gRatingBanner');
+      if (banner) banner.style.display = 'flex';
+      document.getElementById('gRatingNum').textContent   = place.rating ? place.rating.toFixed(1) : '5.0';
+      document.getElementById('gReviewCount').textContent = (place.user_ratings_total || 0) + ' Google reviews';
+      var starsEl = document.getElementById('gStars');
+      if (starsEl && place.rating) {
+        var full = Math.round(place.rating);
+        starsEl.innerHTML = '&#9733;'.repeat(full) + (full < 5 ? '&#9734;'.repeat(5-full) : '');
+      }
+      // Replace review cards with live ones
+      if (place.reviews && place.reviews.length > 0) {
+        var grid = document.getElementById('reviewsGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        var reviews = place.reviews
+          .filter(function(r) { return r.rating >= 4; })
+          .slice(0, 6);
+        for (var i = 0; i < reviews.length; i++) {
+          var r = reviews[i];
+          var stars = '&#9733;'.repeat(r.rating) + (r.rating < 5 ? '&#9734;'.repeat(5-r.rating) : '');
+          var initials = r.author_name ? r.author_name.split(' ').map(function(w){return w[0];}).join('').substring(0,2).toUpperCase() : 'G';
+          var pic = r.profile_photo_url
+            ? '<img src="' + r.profile_photo_url + '" alt="' + r.author_name + '" style="width:38px;height:38px;border-radius:50%;object-fit:cover;" />'
+            : '<div class="g-reviewer-pic">' + initials + '</div>';
+          var text = r.text ? (r.text.length > 180 ? r.text.substring(0,180) + '...' : r.text) : '';
+          var date = r.relative_time_description || '';
+          var card = '<div class="g-review-card">'
+            + '<div class="g-review-header">' + pic
+            + '<div><div class="g-reviewer-name">' + r.author_name + '</div>'
+            + '<div class="g-review-date">' + date + '</div></div></div>'
+            + '<div class="g-review-stars">' + stars + '</div>'
+            + '<div class="g-review-text">"' + text + '"</div>'
+            + '<div class="g-powered"><img src="https://www.google.com/favicon.ico" style="width:12px;height:12px;" alt="Google"> Google review</div>'
+            + '</div>';
+          grid.innerHTML += card;
+        }
+      }
+    }
+
+    function showStaticRating() {
+      // Show banner with your known rating
+      var banner = document.getElementById('gRatingBanner');
+      if (banner) banner.style.display = 'flex';
+      document.getElementById('gRatingNum').textContent   = '5.0';
+      document.getElementById('gReviewCount').textContent = 'Rated on Google';
+      document.getElementById('gStars').innerHTML         = '&#9733;&#9733;&#9733;&#9733;&#9733;';
+    }
+
+    window.addEventListener('load', function() {
+      setTimeout(loadGoogleReviews, 800);
+    });
+  </script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="top">
+  <a href="#top" class="nav-logo">
+    <img src="/icon-192-any.png" alt="AM Women's Boutique Logo" />
+    AM <span>Women's</span> Boutique
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#order" class="nav-cta" style="background:var(--gold)!important;">Order Online</a></li>
+    <li><a href="#booking" style="font-size:12px;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;">Book Visit</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <div class="hero-badge fade-up fade-up-1">
+      <i class="ti ti-sparkles"></i> Crafted with love &middot; Est. 2023
+    </div>
+    <h1 class="fade-up fade-up-2">Stitched to fit<br>you, <em>perfectly.</em></h1>
+    <p class="hero-desc fade-up fade-up-3">
+      Custom blouses, kurtis, lehengas, gowns &amp; expert alterations &mdash; all tailored precisely to your measurements. Located in K Narayanapura, Bengaluru.
+    </p>
+    <div class="btn-group fade-up fade-up-4">
+      <a href="#order" class="btn-order"><i class="ti ti-shopping-bag"></i> Order Online</a>
+      <a href="#booking" class="btn-primary"><i class="ti ti-calendar"></i> Book Appointment</a>
+      <a href="https://wa.me/919740180887?text=Hi%20AM%20Women's%20Boutique!%20I'd%20like%20to%20book%20an%20appointment." class="btn-wa" target="_blank" rel="noopener"><i class="ti ti-brand-whatsapp"></i> WhatsApp Us</a>
+    </div>
+    <div class="hero-stats fade-up fade-up-5">
+      <div class="hero-stat"><div class="num">500+</div><div class="label">Happy Customers</div></div>
+      <div class="hero-stat"><div class="num">2+</div><div class="label">Years of Service</div></div>
+      <div class="hero-stat"><div class="num">5&#9733;</div><div class="label">Avg. Rating</div></div>
+    </div>
+  </div>
+  <div class="hero-visual fade-up fade-up-3">
+    <div class="hero-img-main">
+      <img src="lehenga-2.jpg" alt="Beautiful lehenga by AM Women's Boutique" />
+    </div>
+    <div class="hero-img-small">
+      <img src="blouse-1.jpg" alt="Custom blouse stitching" />
+    </div>
+    <div class="hero-img-small">
+      <img src="gown-2.jpg" alt="Elegant gown stitching" />
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><i class="ti ti-check"></i> 500+ Happy Customers</div>
+  <div class="trust-item"><i class="ti ti-check"></i> All Fabrics Welcome</div>
+  <div class="trust-item"><i class="ti ti-check"></i> Same-Week Delivery Available</div>
+  <div class="trust-item"><i class="ti ti-check"></i> Bridal Specialists</div>
+  <div class="trust-item"><i class="ti ti-check"></i> Free Measurement Consultation</div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What we offer</div>
+  <div class="section-title">Our Services</div>
+  <div class="section-sub">Each piece is stitched with care, precision, and your personal style in mind</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-shirt"></i></div>
+      <h4>Blouse Stitching</h4>
+      <p>Traditional, modern, backless, boat neck, halter, dart, princess cut, madubala cut &mdash; any style, any fabric, any design. We bring your vision to life.</p>
+      <span class="service-price">From &#8377;550</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-hanger"></i></div>
+      <h4>Chudi Set</h4>
+      <p>Anarkali, straight cut, A-line, asymmetric, high-low with straight pant, plazo or normal pant &mdash; stitched from your fabric or material we source for you.</p>
+      <span class="service-price">From &#8377;850</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-sparkles"></i></div>
+      <h4>Lehenga</h4>
+      <p>Bridal, festive and party lehengas with skirt, blouse and dupatta &mdash; crafted with perfection for your special day.</p>
+      <span class="service-price">From &#8377;1,500</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-star"></i></div>
+      <h4>Gowns</h4>
+      <p>Floor-length, maxi gowns &mdash; elegant and tailored for every occasion and every body shape.</p>
+      <span class="service-price">From &#8377;1,500</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-scissors"></i></div>
+      <h4>Alterations</h4>
+      <p>Resize, reshape, hem, repair &mdash; bring any garment and we'll make it fit you beautifully again with expert precision.</p>
+      <span class="service-price">From &#8377;50</span>
+    </div>
+    <div class="service-card" style="background:var(--rose-light);border-color:#dcc4c7;display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center;">
+      <div class="service-icon" style="background:white;margin:0 auto 1rem;"><i class="ti ti-calendar-heart"></i></div>
+      <h4>Ready to Begin?</h4>
+      <p style="text-align:center;">Book a visit and let's bring your dream outfit to life!</p>
+      <a href="#booking" class="btn-primary" style="margin-top:1rem;font-size:12px;padding:10px 20px;">Schedule Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process">
+  <div class="section-label">Simple steps</div>
+  <div class="section-title">How It Works</div>
+  <div class="section-sub">Getting your custom outfit is easy &mdash; just 4 simple steps</div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <h4>Book Appointment</h4>
+      <p>Schedule online or message us on WhatsApp at a time that suits you</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <h4>Consultation &amp; Measurement</h4>
+      <p>Visit us, share your design idea and we take your precise measurements</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <h4>We Stitch It</h4>
+      <p>Our skilled tailors craft your outfit with full care and attention to detail</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <h4>Try &amp; Collect</h4>
+      <p>Come in for a fitting &mdash; we adjust until it's absolutely perfect for you</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-label">Our Work</div>
+  <div class="section-title">Gallery</div>
+  <div class="section-sub">Real pieces crafted at AM Women's Boutique &mdash; each stitched with love and precision</div>
+  <div class="gallery-tabs">
+    <button class="gallery-tab active" onclick="filterGallery('all',this)">All Work</button>
+    <button class="gallery-tab" onclick="filterGallery('blouse',this)">Blouses</button>
+    <button class="gallery-tab" onclick="filterGallery('lehenga',this)">Lehenga</button>
+    <button class="gallery-tab" onclick="filterGallery('gown',this)">Gowns</button>
+    <button class="gallery-tab" onclick="filterGallery('suit',this)">Suits &amp; Kurtis</button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="gallery-item featured" data-cat="lehenga" onclick="openLightbox(this)">
+      <img src="lehenga-2.jpg" alt="Black sequin lehenga" />
+      <div class="overlay"><span class="overlay-label">Sequin Lehenga</span></div>
+    </div>
+    <div class="gallery-item" data-cat="blouse" onclick="openLightbox(this)">
+      <img src="blouse-1.jpg" alt="Purple blouse with Banarasi border" />
+      <div class="overlay"><span class="overlay-label">Designer Blouse</span></div>
+    </div>
+    <div class="gallery-item" data-cat="blouse" onclick="openLightbox(this)">
+      <img src="blouse-2.jpg" alt="Gold embroidered blouse back" />
+      <div class="overlay"><span class="overlay-label">Embroidered Blouse</span></div>
+    </div>
+    <div class="gallery-item" data-cat="gown" onclick="openLightbox(this)">
+      <img src="gown-1.jpg" alt="Navy blue lace gown" />
+      <div class="overlay"><span class="overlay-label">Lace Gown</span></div>
+    </div>
+    <div class="gallery-item" data-cat="blouse" onclick="openLightbox(this)">
+      <img src="blouse-3.jpg" alt="Yellow embroidered blouse back" />
+      <div class="overlay"><span class="overlay-label">Bridal Blouse</span></div>
+    </div>
+    <div class="gallery-item" data-cat="lehenga" onclick="openLightbox(this)">
+      <img src="lehenga-1.jpg" alt="Traditional lehenga" />
+      <div class="overlay"><span class="overlay-label">Traditional Lehenga</span></div>
+    </div>
+    <div class="gallery-item" data-cat="blouse" onclick="openLightbox(this)">
+      <img src="blouse-4.jpg" alt="Gold V-neck blouse" />
+      <div class="overlay"><span class="overlay-label">Gold Blouse</span></div>
+    </div>
+    <div class="gallery-item" data-cat="gown" onclick="openLightbox(this)">
+      <img src="gown-2.jpg" alt="Lavender gown" />
+      <div class="overlay"><span class="overlay-label">Lavender Gown</span></div>
+    </div>
+    <div class="gallery-item" data-cat="suit" onclick="openLightbox(this)">
+      <img src="suit-2.jpg" alt="Yellow kurti" />
+      <div class="overlay"><span class="overlay-label">Designer Kurti</span></div>
+    </div>
+    <div class="gallery-item" data-cat="suit" onclick="openLightbox(this)">
+      <img src="suit-3.jpg" alt="Green kurti with embroidery" />
+      <div class="overlay"><span class="overlay-label">Embroidered Kurti</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="Gallery preview" onclick="event.stopPropagation()" />
+</div>
+
+<!-- ORDER BANNER -->
+<div class="order-banner">
+  <div>
+    <h3><i class="ti ti-shopping-bag" style="color:var(--gold);font-size:26px;vertical-align:middle;margin-right:8px;"></i>Order Online &mdash; from the comfort of your home</h3>
+    <p>Submit your order with measurements &amp; design details. We stitch it, you collect at our boutique or we deliver.</p>
+    <div style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--gold-dark);background:white;border:.5px solid #d4b07a;padding:6px 14px;border-radius:6px;margin-top:10px;">
+      <i class="ti ti-credit-card" style="font-size:14px;"></i> We accept UPI payment (GPay / PhonePe)
+    </div>
+  </div>
+  <a href="#order" class="btn-order" style="flex-shrink:0;font-size:14px;padding:14px 30px;"><i class="ti ti-arrow-down"></i> Place Order Now</a>
+</div>
+
+<!-- ONLINE ORDER SECTION -->
+<section class="order-section" id="order">
+  <div class="section-label">Online ordering</div>
+  <div class="section-title">Place Your Order</div>
+  <div class="section-sub">Fill in your details — we will confirm your order on WhatsApp</div>
+
+  <!-- STEP INDICATORS -->
+  <div class="order-tabs">
+    <button class="order-tab active" id="tab0" onclick="otab(0,this)">1 — Your details</button>
+    <button class="order-tab" id="tab1" onclick="otab(1,this)">2 — Service</button>
+    <button class="order-tab" id="tab2" onclick="otab(2,this)">3 — Measurements</button>
+    <button class="order-tab" id="tab3" onclick="otab(3,this)">4 — Submit</button>
+  </div>
+
+  <!-- All steps inside one div — no <form> tag to avoid HTML5 validation blocking -->
+  <div class="order-form" id="orderWrap">
+
+    <!-- STEP 1 -->
+    <div class="order-panel show" id="op0">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="o_name" placeholder="Priya Sharma" />
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number *</label>
+          <input type="tel" id="o_phone" placeholder="+91 98765 43210" />
+        </div>
+        <div class="form-group">
+          <label>Email (optional)</label>
+          <input type="email" id="o_email" placeholder="priya@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Preferred Delivery Date *</label>
+          <input type="date" id="o_delivery" />
+        </div>
+      </div>
+      <div class="form-group" style="margin-top:4px;">
+        <label>Collection preference *</label>
+        <select id="o_pickup" onchange="toggleAddress()">
+          <option value="">&#8212; Select &#8212;</option>
+          <option value="pickup">Pick up from boutique (K Narayanapura)</option>
+          <option value="delivery">Home delivery (charges extra)</option>
+        </select>
+      </div>
+      <div id="o_addr_row" style="display:none;" class="form-group">
+        <label>Delivery Address</label>
+        <textarea id="o_address" placeholder="Full address with landmark, Bengaluru..."></textarea>
+      </div>
+      <div style="background:var(--gold-light);border:.5px solid #d4b07a;border-radius:8px;padding:12px 14px;font-size:13px;color:var(--gold-dark);margin-top:8px;display:flex;gap:8px;">
+        <i class="ti ti-credit-card" style="font-size:16px;flex-shrink:0;margin-top:1px;"></i>
+        <span>We accept <strong>UPI payment</strong> (GPay / PhonePe) — collected when you pick up your order.</span>
+      </div>
+      <div id="err0" style="display:none;color:#c0392b;font-size:13px;padding:8px 12px;background:#fdf0f0;border-radius:6px;margin-top:8px;"></div>
+      <button type="button" class="btn-primary" style="margin-top:16px;" onclick="goStep(1)">
+        Next &mdash; Service &amp; Design <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="order-panel" id="op1">
+      <div class="form-group">
+        <label>Service Required *</label>
+        <select id="o_service" onchange="toggleAlteration()">
+          <option value="">&#8212; Select &#8212;</option>
+          <option value="Blouse Stitching">Blouse Stitching (from &#8377;550)</option>
+          <option value="Chudi Set">Chudi Set (from &#8377;850)</option>
+          <option value="Lehenga">Lehenga &amp; Blouse (from &#8377;1,500)</option>
+          <option value="Gown">Gown (from &#8377;1,500)</option>
+          <option value="Alteration">Alteration (from &#8377;50)</option>
+          <option value="Other">Other / Custom</option>
+        </select>
+      </div>
+      <div id="design_fields">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div class="form-group">
+            <label>Neck / Neckline style</label>
+            <select id="o_neck">
+              <option value="">&#8212; Select &#8212;</option>
+              <option>Round neck</option><option>V-neck</option><option>Square neck</option>
+              <option>Boat neck</option><option>High neck</option><option>Halter neck</option>
+              <option>Backless</option><option>Sweetheart</option><option>As per photo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Sleeve style</label>
+            <select id="o_sleeve">
+              <option value="">&#8212; Select &#8212;</option>
+              <option>Short sleeve</option><option>3/4th sleeve</option><option>Full sleeve</option>
+              <option>Sleeveless</option><option>Bell sleeve</option><option>Puff sleeve</option><option>As per photo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Fabric type / colour</label>
+            <input type="text" id="o_fabric" placeholder="e.g. Silk, dark green with gold border" />
+          </div>
+          <div class="form-group">
+            <label>Embroidery / work</label>
+            <select id="o_work">
+              <option value="">&#8212; Select &#8212;</option>
+              <option>Plain / no work</option><option>Embroidery</option><option>Zari / gota</option>
+              <option>Mirror work</option><option>Sequin / stone work</option><option>As per photo</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Reference photo link (optional)</label>
+          <input type="url" id="o_photo_url" placeholder="Paste Google Drive / Instagram link" />
+          <small style="color:var(--muted);font-size:11px;margin-top:4px;display:block;">Upload to Google Drive and paste the share link here</small>
+        </div>
+      </div>
+      <div id="alteration_fields" style="display:none;">
+        <div class="form-group">
+          <label>Type of alteration</label>
+          <select id="o_alt_type">
+            <option value="">&#8212; Select &#8212;</option>
+            <option>Size reduction</option><option>Size increase</option>
+            <option>Hem / length adjustment</option><option>Sleeve alteration</option>
+            <option>Repair / mending</option><option>Blouse alteration</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Describe what needs to be altered</label>
+          <textarea id="o_alt_notes" placeholder="e.g. Reduce waist by 2 inches..."></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Special instructions</label>
+        <textarea id="o_notes" placeholder="Any special design requests, fabric notes..."></textarea>
+      </div>
+      <div id="err1" style="display:none;color:#c0392b;font-size:13px;padding:8px 12px;background:#fdf0f0;border-radius:6px;margin-top:8px;"></div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button type="button" class="btn-outline" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> Back</button>
+        <button type="button" class="btn-primary" onclick="goStep(2)">Next &mdash; Measurements <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="order-panel" id="op2">
+      <div class="measure-guide">
+        <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0;color:var(--rose);margin-top:1px;"></i>
+        <div>All measurements in <strong>inches</strong>. Use a soft tape. Stand straight. Not sure? Visit us for <strong>free measurements</strong> at our boutique!</div>
+      </div>
+      <!-- BODY MEASUREMENTS -->
+      <div style="font-size:12px;font-weight:600;color:var(--rose-dark);letter-spacing:.08em;text-transform:uppercase;margin:10px 0 8px;">Body measurements (in inches)</div>
+      <div class="measure-grid">
+        <div class="measure-item">
+          <label>Bust / Chest</label>
+          <input type="number" id="m_bust" placeholder="e.g. 36" step="0.5" min="20" max="60" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Fullest part of chest</small>
+        </div>
+        <div class="measure-item">
+          <label>Waist</label>
+          <input type="number" id="m_waist" placeholder="e.g. 30" step="0.5" min="20" max="60" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Narrowest part of waist</small>
+        </div>
+        <div class="measure-item">
+          <label>Hip</label>
+          <input type="number" id="m_hip" placeholder="e.g. 38" step="0.5" min="20" max="70" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Fullest part of hip</small>
+        </div>
+        <div class="measure-item">
+          <label>Shoulder width</label>
+          <input type="number" id="m_shoulder" placeholder="e.g. 14" step="0.5" min="8" max="30" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Across both shoulders</small>
+        </div>
+        <div class="measure-item">
+          <label>Full height</label>
+          <input type="number" id="m_height" placeholder="e.g. 62" step="0.5" min="40" max="80" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Neck to floor</small>
+        </div>
+        <div class="measure-item">
+          <label>Arm / Bicep</label>
+          <input type="number" id="m_arm" placeholder="e.g. 11" step="0.5" min="6" max="30" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Fullest part of upper arm</small>
+        </div>
+        <div class="measure-item">
+          <label>Arm hole</label>
+          <input type="number" id="m_armhole" placeholder="e.g. 16" step="0.5" min="8" max="30" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Around arm opening</small>
+        </div>
+        <div class="measure-item">
+          <label>Thigh</label>
+          <input type="number" id="m_thigh" placeholder="e.g. 22" step="0.5" min="10" max="40" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Fullest part of thigh</small>
+        </div>
+      </div>
+
+      <!-- BLOUSE / KURTI MEASUREMENTS -->
+      <div style="font-size:12px;font-weight:600;color:var(--rose-dark);letter-spacing:.08em;text-transform:uppercase;margin:16px 0 8px;">Blouse &amp; Kurti measurements (in inches)</div>
+      <div class="measure-grid">
+        <div class="measure-item">
+          <label>Blouse length</label>
+          <input type="number" id="m_blouse_len" placeholder="e.g. 15" step="0.5" min="8" max="30" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Neck to hem of blouse</small>
+        </div>
+        <div class="measure-item">
+          <label>Sleeve length</label>
+          <input type="number" id="m_sleeve_len" placeholder="e.g. 8" step="0.5" min="0" max="30" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Shoulder to wrist / end</small>
+        </div>
+        <div class="measure-item">
+          <label>Kurti length</label>
+          <input type="number" id="m_kurti_len" placeholder="e.g. 42" step="0.5" min="20" max="72" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Neck to kurti hem</small>
+        </div>
+      </div>
+
+      <!-- PANT / BOTTOM MEASUREMENTS -->
+      <div style="font-size:12px;font-weight:600;color:var(--rose-dark);letter-spacing:.08em;text-transform:uppercase;margin:16px 0 8px;">Pant / Bottom measurements (in inches)</div>
+      <div class="measure-grid">
+        <div class="measure-item">
+          <label>Pant length</label>
+          <input type="number" id="m_pant_len" placeholder="e.g. 38" step="0.5" min="20" max="60" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Waist to ankle / desired end</small>
+        </div>
+        <div class="measure-item">
+          <label>Pant waist round</label>
+          <input type="number" id="m_pant_waist" placeholder="e.g. 32" step="0.5" min="20" max="60" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Around waist for pant</small>
+        </div>
+        <div class="measure-item">
+          <label>Pant bottom round</label>
+          <input type="number" id="m_pant_bottom" placeholder="e.g. 14" step="0.5" min="8" max="40" />
+          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Width at ankle / pant end</small>
+        </div>
+      </div>
+      <div class="form-group" style="margin-top:14px;">
+        <label>Measurement notes</label>
+        <input type="text" id="m_notes" placeholder="e.g. Prefer loose at waist, petite fit..." />
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button type="button" class="btn-outline" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> Back</button>
+        <button type="button" class="btn-primary" onclick="goStep(3)">Next &mdash; Review &amp; Submit <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- STEP 4: SUCCESS / SUBMIT -->
+    <div class="order-panel" id="op3">
+      <!-- ORDER SUMMARY -->
+      <div id="reviewBox" style="background:var(--cream-dark);border:.5px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;">
+        <div style="font-size:14px;font-weight:500;color:var(--dark);margin-bottom:10px;"><i class="ti ti-clipboard-list" style="color:var(--rose);margin-right:6px;"></i>Order Summary</div>
+        <div id="summaryContent" style="font-size:13px;color:var(--mid);line-height:2;"></div>
+      </div>
+      <div style="background:var(--gold-light);border:.5px solid #d4b07a;border-radius:8px;padding:12px 14px;font-size:13px;color:var(--gold-dark);margin-bottom:1rem;display:flex;gap:8px;">
+        <i class="ti ti-credit-card" style="font-size:16px;flex-shrink:0;margin-top:1px;"></i>
+        <span>We accept <strong>UPI payment</strong> (GPay / PhonePe) — collected at boutique when you collect your order.</span>
+      </div>
+      <!-- SUBMIT BUTTON -->
+      <div id="submitArea">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button type="button" class="btn-outline" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> Back</button>
+          <button type="button" id="mainSubmitBtn" onclick="doSubmitOrder()"
+            style="flex:1;min-width:200px;display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:white;border:none;padding:14px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:.06em;border-radius:6px;cursor:pointer;">
+            <i class="ti ti-brand-whatsapp" style="font-size:18px;"></i> Send Order on WhatsApp
+          </button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Tapping this opens WhatsApp with your full order — just tap Send to notify us.</p>
+      </div>
+
+      <!-- SUCCESS STATE — shown after submit -->
+      <div id="successArea" style="display:none;text-align:center;padding:1rem 0;">
+        <div style="width:64px;height:64px;background:#e8f8ef;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:28px;color:#1da851;">
+          <i class="ti ti-circle-check"></i>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--dark);margin-bottom:6px;" id="successName">Order Submitted!</h3>
+        <p style="font-size:13px;color:var(--mid);margin-bottom:1.5rem;" id="successRef"></p>
+
+        <div style="background:var(--gold-light);border:.5px solid #d4b07a;border-radius:10px;padding:14px;margin-bottom:16px;text-align:left;font-size:13px;color:var(--gold-dark);">
+          <strong>Now complete these 2 steps to notify us:</strong>
+          <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;">
+            <span>1&#65039;&#8419; Tap <strong>Send Order to Boutique</strong> &rarr; opens WhatsApp &rarr; tap Send</span>
+            <span>2&#65039;&#8419; Tap <strong>Send My Confirmation</strong> &rarr; so we have your WhatsApp number</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto;">
+          <button type="button" id="btnStep1"
+            onclick="sendToBoutique()"
+            style="display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:white;border:none;padding:15px 20px;border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;cursor:pointer;width:100%;">
+            <i class="ti ti-brand-whatsapp" style="font-size:20px;"></i>
+            Step 1 &mdash; Send Order to Boutique
+          </button>
+          <button type="button" id="btnStep2"
+            onclick="sendCustomerConfirm()"
+            style="display:flex;align-items:center;justify-content:center;gap:10px;background:var(--rose);color:white;border:none;padding:15px 20px;border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;cursor:pointer;width:100%;">
+            <i class="ti ti-message-circle" style="font-size:18px;"></i>
+            Step 2 &mdash; Send My Confirmation
+          </button>
+          <button type="button" onclick="resetOrder()"
+            style="background:none;border:.5px solid var(--border);border-radius:4px;padding:8px 20px;font-family:'Jost',sans-serif;font-size:12px;color:var(--mid);cursor:pointer;">
+            Place another order
+          </button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:1rem;">We reply on WhatsApp within a few hours &middot; Mon&ndash;Sat 10:30 AM&ndash;7:30 PM</p>
+      </div>
+    </div>
+
+  </div><!-- end orderWrap -->
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-label">Easy scheduling</div>
+  <div class="section-title">Book with Priya — Our AI Assistant</div>
+  <div class="section-sub">Chat with Priya, our AI booking assistant — she'll find you the perfect slot in minutes</div>
+
+  <!-- Inline AI Booking Panel -->
+  <div class="booking-agent-panel" id="inlineAgentPanel">
+    <div class="bap-header">
+      <div class="bap-av">P</div>
+      <div class="bap-header-text">
+        <div class="bap-name">Priya &mdash; AI Booking Assistant</div>
+        <div class="bap-sub"><span style="color:#a8e6c0;">●</span> Online &middot; Replies instantly</div>
+      </div>
+    </div>
+    <div class="bap-msgs" id="bapMsgs"></div>
+    <div class="bap-chips" id="bapChips" style="display:none;"></div>
+    <div class="bap-input-row">
+      <input class="bap-input" id="bapInput" placeholder="Type your reply here..." onkeydown="if(event.key==='Enter') bapSend()" />
+      <button class="bap-send" id="bapSendBtn" onclick="bapSend()">&#10148;</button>
+    </div>
+  </div>
+
+  <div style="height:1.5rem;"></div>
+  <!-- Keep original form below as fallback -->
+  <div style="max-width:720px;">
+    <div class="form-title" style="margin-top:1rem;"><i class="ti ti-calendar-check"></i> Or Book Manually</div>
+  <!-- APPOINTMENT FORM — full width on top -->
+  <div style="max-width:720px;">
+    <div class="form-title"><i class="ti ti-calendar-check"></i> Appointment Request</div>
+    <form class="booking-form" id="bookingForm" onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">Full Name *</label>
+          <input type="text" id="fname" placeholder="Priya Sharma" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" placeholder="+91 97401 80887" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="service">Service Required *</label>
+        <select id="service" required>
+          <option value="">&#8212; Select a service &#8212;</option>
+          <option>Blouse Stitching</option>
+          <option>Chudi Set</option>
+          <option>Lehenga &amp; Blouse</option>
+          <option>Gown</option>
+          <option>Alteration</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="apptdate">Preferred Date *</label>
+          <input type="date" id="apptdate" required />
+        </div>
+        <div class="form-group">
+          <label for="time">Preferred Time *</label>
+          <select id="time" required>
+            <option value="">&#8212; Select slot &#8212;</option>
+            <option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
+            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option>
+            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option>
+            <option>3:30 PM</option><option>4:00 PM</option><option>4:30 PM</option>
+            <option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option>
+            <option>6:30 PM</option><option>7:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="notes">Additional Notes</label>
+        <textarea id="notes" placeholder="Describe your design idea, fabric, colour, or any special requirements..."></textarea>
+      </div>
+      <button type="submit" class="form-submit"><i class="ti ti-calendar-check"></i> Confirm My Appointment</button>
+    </form>
+  </div>
+
+  <!-- WHATSAPP + VISIT BOUTIQUE — side by side below form -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;max-width:720px;margin-top:.5rem;">
+
+    <!-- WhatsApp card -->
+    <div class="wa-card" style="position:static;">
+      <div class="wa-circle"><i class="ti ti-brand-whatsapp"></i></div>
+      <h3>Book via WhatsApp</h3>
+      <p>Send us a quick message and we'll confirm your slot within the hour.</p>
+      <div class="wa-number"><i class="ti ti-phone"></i> +91 97401 80887</div>
+      <a href="https://wa.me/919740180887?text=Hi%20AM%20Women's%20Boutique!%20I'd%20like%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20available%20slots." class="btn-wa" target="_blank" rel="noopener" style="width:100%;justify-content:center;padding:9px 13px;font-size:13px;"><i class="ti ti-brand-whatsapp"></i> Open WhatsApp</a>
+      <div class="wa-hours"><i class="ti ti-clock" style="font-size:13px;"></i>&nbsp; Mon&ndash;Sat &middot; 10:30 AM &ndash; 7:30 PM</div>
+    </div>
+
+    <!-- Visit Boutique card -->
+    <div style="background:var(--cream-dark);border-radius:12px;padding:1rem 1.25rem;border:.5px solid var(--border);">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--dark);margin-bottom:.75rem;">
+        <i class="ti ti-map-pin" style="color:var(--rose);font-size:16px;margin-right:5px;"></i>Visit Our Boutique
+      </h4>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--mid);font-weight:300;">
+          <i class="ti ti-map-pin" style="color:var(--rose);font-size:14px;flex-shrink:0;margin-top:1px;"></i>
+          <span>K Narayanapura,<br>Bengaluru &ndash; 560077</span>
+        </div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--mid);font-weight:300;">
+          <i class="ti ti-clock" style="color:var(--rose);font-size:14px;flex-shrink:0;"></i>
+          <span>Mon &ndash; Sat<br>10:30 AM &ndash; 7:30 PM</span>
+        </div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--mid);font-weight:300;">
+          <i class="ti ti-phone" style="color:var(--rose);font-size:14px;flex-shrink:0;"></i>
+          <a href="tel:+919740180887" style="color:var(--mid);">+91 97401 80887</a>
+        </div>
+      </div>
+      <div style="margin-top:.75rem;border-radius:8px;overflow:hidden;border:.5px solid var(--border);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.588622959668!2d77.63567531533202!3d13.064873990788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17003b6682b7%3A0x732d3eef6953f165!2sAM%20Women's%20Boutique!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          width="100%" height="140" style="border:0;display:block;"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="AM Women's Boutique location">
+        </iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/X8mBFEpD6outjHGHA" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:var(--rose);text-decoration:none;font-weight:500;">
+        <i class="ti ti-external-link" style="font-size:13px;"></i> Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS / GOOGLE REVIEWS -->
+<section id="testimonials">
+  <div class="section-label">Customer love</div>
+  <div class="section-title">What Our Clients Say</div>
+  <div class="section-sub">Real reviews from Google &mdash; updated live</div>
+
+  <!-- Google Rating Banner -->
+  <div id="gRatingBanner" style="display:none;background:white;border:.5px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="https://www.google.com/favicon.ico" style="width:20px;height:20px;" alt="Google" />
+      <span style="font-size:13px;font-weight:500;color:var(--dark);">Google Rating</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span id="gRatingNum" style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--dark);line-height:1;">-</span>
+      <div>
+        <div id="gStars" style="color:#fbbc04;font-size:18px;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div id="gReviewCount" style="font-size:11px;color:var(--muted);">Loading reviews...</div>
+      </div>
+    </div>
+    <a href="https://g.page/r/CWXxU2nvPi1zEBI/review" target="_blank" rel="noopener"
+       style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:var(--gold-light);border:.5px solid #d4b07a;color:var(--gold-dark);padding:9px 18px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;">
+      <i class="ti ti-star"></i> Write a Review
+    </a>
+  </div>
+
+  <!-- Reviews Grid — loads from Google Places API -->
+  <div id="reviewsGrid" class="testimonials-grid">
+    <!-- Static fallback cards shown while loading -->
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"Got my wedding blouse stitched here &mdash; the fit was absolutely perfect and it was ready on time. The finishing was impeccable. Highly recommend to all brides!"</blockquote>
+      <div class="reviewer-info"><div class="reviewer-avatar">KR</div><div><div class="reviewer-name">Kavitha R.</div><div class="reviewer-loc">Bengaluru &middot; Bridal Blouse</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"Very professional and friendly staff. My salwar alteration was done in one day. Will definitely come back for my daughter's lehenga!"</blockquote>
+      <div class="reviewer-info"><div class="reviewer-avatar">MS</div><div><div class="reviewer-name">Meena S.</div><div class="reviewer-loc">Jayanagar &middot; Alteration</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"The gown they made for my reception was stunning. Everyone kept asking where I got it stitched. Thank you AM Boutique!"</blockquote>
+      <div class="reviewer-info"><div class="reviewer-avatar">DN</div><div><div class="reviewer-name">Divya N.</div><div class="reviewer-loc">BTM Layout &middot; Reception Gown</div></div></div>
+    </div>
+  </div>
+
+  <!-- Leave review CTA below -->
+  <div style="text-align:center;margin-top:2rem;">
+    <a href="https://g.page/r/CWXxU2nvPi1zEBI/review" target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:8px;background:white;border:.5px solid #d4b07a;color:var(--gold-dark);padding:11px 24px;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;">
+      <i class="ti ti-star" style="color:var(--gold);font-size:16px;"></i>
+      Happy with our work? Leave us a Google Review &#9733;
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT / FOOTER -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-brand">
+      <a href="#top" class="nav-logo" style="color:#f5e8ea;">
+        <img src="/icon-192-any.png" alt="AM Women's Boutique Logo" style="border-color:rgba(181,147,90,0.5);" />
+        AM <span>Women's</span> Boutique
+      </a>
+      <p class="contact-tagline">Bringing your dream outfits to life &mdash; one stitch at a time. Trusted by women across Bengaluru since 2023.</p>
+      <div class="social-links">
+        <a href="#" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+        <a href="#" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+        <a href="https://wa.me/919740180887" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="contact-col">
+      <h4>Contact Us</h4>
+      <div class="contact-info-list">
+        <div class="contact-info-item"><i class="ti ti-map-pin"></i><span>K Narayanapura,<br>Bengaluru &ndash; 560077</span></div>
+        <div class="contact-info-item"><i class="ti ti-phone"></i><a href="tel:+919740180887">+91 97401 80887</a></div>
+        <div class="contact-info-item"><i class="ti ti-brand-whatsapp"></i><a href="https://wa.me/919740180887" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+        <div class="contact-info-item"><i class="ti ti-brand-instagram"></i><span>@amwomensboutique</span></div>
+        <div class="contact-info-item"><i class="ti ti-star" style="color:#ffb3bb;"></i><a href="https://g.page/r/CWXxU2nvPi1zEBI/review" target="_blank" rel="noopener" style="color:rgba(255,255,255,.65);">Leave a Google Review</a></div>
+      </div>
+    </div>
+    <div class="contact-col">
+      <h4>Opening Hours</h4>
+      <div class="hours-list">
+        <div class="hours-row"><span class="day">Monday &ndash; Saturday</span><span class="open">10:30 AM &ndash; 7:30 PM</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span class="closed">Closed</span></div>
+        <div class="hours-row"><span class="day">Public Holidays</span><span class="closed">Closed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2023 AM Women's Boutique &middot; K Narayanapura, Bengaluru &ndash; 560077 &middot; Made with &#9825; in Bengaluru</p>
+  <p><a href="#top">Back to top &uarr;</a></p>
+</footer>
+
+
+<!-- PWA INSTALL BANNER -->
+<div class="install-banner" id="installBanner">
+  <div class="install-banner-left">
+    <img src="/icon-192-any.png" alt="AM Boutique" class="install-banner-logo" />
+    <div class="install-banner-text">
+      <p>Add AM Boutique to your home screen</p>
+      <span>Install the app for quick ordering & gallery access</span>
+    </div>
+  </div>
+  <div class="install-banner-btns">
+    <button class="btn-install" id="btnInstall"><i class="ti ti-download"></i> Install App</button>
+    <button class="btn-install-dismiss" id="btnDismiss" aria-label="Dismiss">&times;</button>
+  </div>
+</div>
+
+
+<!-- AI BOOKING AGENT FLOATING BUTTON -->
+<button class="agent-fab" id="agentFab" onclick="toggleAgent()" aria-label="Book appointment with AI assistant">
+  🧵
+  <span class="agent-fab-badge">AI</span>
+</button>
+<div class="agent-fab-tooltip">Book with AI assistant</div>
+
+<!-- FLOATING AGENT WINDOW -->
+<div class="agent-window" id="agentWindow">
+  <div class="agent-header">
+    <div class="agent-avatar">P</div>
+    <div class="agent-header-info">
+      <div class="agent-header-name">Priya &mdash; Booking Assistant</div>
+      <div class="agent-header-status">
+        <span class="agent-online-dot"></span> Online &middot; AM Women&#39;s Boutique
+      </div>
+    </div>
+    <button class="agent-close" onclick="toggleAgent()" aria-label="Close">&times;</button>
+  </div>
+  <div class="agent-msgs" id="agentMsgs"></div>
+  <div class="agent-chips" id="agentChips" style="display:none;"></div>
+  <div class="agent-input-bar">
+    <input class="agent-input" id="agentInput" placeholder="Type your reply..."
+      onkeydown="if(event.key==='Enter') agentSend()" />
+    <button class="agent-send" id="agentSendBtn" onclick="agentSend()">&#10148;</button>
+  </div>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919740180887?text=Hi%20AM%20Women's%20Boutique!%20I'd%20like%20to%20book%20an%20appointment." class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="ti ti-brand-whatsapp"></i>
+</a>
+<div class="float-wa-tooltip">Chat with us on WhatsApp!</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <i class="ti ti-circle-check"></i>
+  <span id="toastMsg">Done!</span>
+</div>
+
+<script>
+  // ───────────────────────────────────────────────────────
+  // ORDER FORM — Simple, direct, no complexity
+  // ───────────────────────────────────────────────────────
+
+  // Tab switching
+  function otab(i, clickedBtn) {
+    document.querySelectorAll('.order-panel').forEach(function(p) {
+      p.classList.remove('show');
+    });
+    document.getElementById('op' + i).classList.add('show');
+    document.querySelectorAll('.order-tab').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    clickedBtn.classList.add('active');
+  }
+
+  // Go to next step with simple validation
+  function goStep(stepNum) {
+    if (stepNum === 1) {
+      var name  = document.getElementById('o_name').value.trim();
+      var phone = document.getElementById('o_phone').value.trim();
+      if (!name || !phone) {
+        document.getElementById('err0').style.display = 'block';
+        document.getElementById('err0').textContent   = 'Please enter your Name and WhatsApp number.';
+        return;
+      }
+      document.getElementById('err0').style.display = 'none';
+    }
+    if (stepNum === 2) {
+      var svc = document.getElementById('o_service').value;
+      if (!svc) {
+        document.getElementById('err1').style.display = 'block';
+        document.getElementById('err1').textContent   = 'Please select a service.';
+        return;
+      }
+      document.getElementById('err1').style.display = 'none';
+    }
+    if (stepNum === 3) {
+      buildSummary();
+    }
+    document.querySelectorAll('.order-tab')[stepNum].click();
+    window.scrollTo({ top: document.getElementById('order').offsetTop - 80, behavior: 'smooth' });
+  }
+
+  function toggleAddress() {
+    var v = document.getElementById('o_pickup').value;
+    document.getElementById('o_addr_row').style.display = (v === 'delivery') ? 'block' : 'none';
+  }
+
+  function toggleAlteration() {
+    var v = document.getElementById('o_service').value;
+    document.getElementById('alteration_fields').style.display = (v === 'Alteration') ? 'block' : 'none';
+    document.getElementById('design_fields').style.display     = (v === 'Alteration') ? 'none'  : 'block';
+  }
+
+  // Set min delivery date
+  (function() {
+    var d = new Date();
+    d.setDate(d.getDate() + 3);
+    var el = document.getElementById('o_delivery');
+    if (el) el.min = d.toISOString().split('T')[0];
+  })();
+
+  function buildSummary() {
+    function g(id) { var e = document.getElementById(id); return e ? e.value : ''; }
+    var rows = [
+      ['Name',          g('o_name')],
+      ['WhatsApp',      g('o_phone')],
+      ['Service',       g('o_service')],
+      ['Delivery date', g('o_delivery')],
+      ['Neck style',    g('o_neck')],
+      ['Sleeve',        g('o_sleeve')],
+      ['Fabric',        g('o_fabric')],
+      ['Bust',         g('m_bust')       ? g('m_bust') + '"'       : ''],
+      ['Waist',        g('m_waist')      ? g('m_waist') + '"'      : ''],
+      ['Hip',          g('m_hip')        ? g('m_hip') + '"'        : ''],
+      ['Kurti length', g('m_kurti_len')  ? g('m_kurti_len') + '"'  : ''],
+      ['Pant length',  g('m_pant_len')   ? g('m_pant_len') + '"'   : ''],
+      ['Pant waist',   g('m_pant_waist') ? g('m_pant_waist') + '"' : ''],
+      ['Notes',        g('o_notes')]
+    ];
+    var html = '';
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i][1]) {
+        html += '<span style="color:#6b4f4f">' + rows[i][0] + ':</span> <strong>' + rows[i][1] + '</strong><br>';
+      }
+    }
+    var el = document.getElementById('summaryContent');
+    if (el) el.innerHTML = html || 'Please go back and fill in your details.';
+  }
+
+  // THE MAIN SUBMIT — called by green button on Step 4
+  function doSubmitOrder() {
+    function g(id) {
+      var e = document.getElementById(id);
+      return e ? e.value.trim() : '';
+    }
+
+    var name    = g('o_name');
+    var phone   = g('o_phone');
+    var service = g('o_service');
+
+    // Safety check
+    if (!name || !phone || !service) {
+      alert('Please fill in:\n- Your Name (Step 1)\n- WhatsApp Number (Step 1)\n- Service type (Step 2)\n\nThen come back to Step 4 and try again.');
+      return;
+    }
+
+    var pickup   = g('o_pickup');
+    var delivery = g('o_delivery');
+    var address  = g('o_address');
+    var neck     = g('o_neck');
+    var sleeve   = g('o_sleeve');
+    var fabric   = g('o_fabric');
+    var work     = g('o_work');
+    var photo    = g('o_photo_url');
+    var alttype  = g('o_alt_type');
+    var altnotes = g('o_alt_notes');
+    var notes    = g('o_notes');
+    var bust       = g('m_bust');
+    var waist      = g('m_waist');
+    var hip        = g('m_hip');
+    var shoulder   = g('m_shoulder');
+    var height     = g('m_height');
+    var arm        = g('m_arm');
+    var armhole    = g('m_armhole');
+    var thigh      = g('m_thigh');
+    var blouseL    = g('m_blouse_len');
+    var sleeveL    = g('m_sleeve_len');
+    var kurtiLen   = g('m_kurti_len');
+    var pantLen    = g('m_pant_len');
+    var pantWaist  = g('m_pant_waist');
+    var pantBottom = g('m_pant_bottom');
+    var mnotes     = g('m_notes');
+    var ref      = 'ORD' + Date.now().toString().slice(-5);
+
+    // Build boutique message
+    var bMsg = '';
+    bMsg += 'NEW ORDER - AM Boutique\n';
+    bMsg += 'Ref: ' + ref + '\n\n';
+    bMsg += 'CUSTOMER\n';
+    bMsg += 'Name: ' + name + '\n';
+    bMsg += 'Phone: ' + phone + '\n';
+    if (pickup)   bMsg += 'Collection: ' + pickup + '\n';
+    if (address)  bMsg += 'Address: ' + address + '\n';
+    if (delivery) bMsg += 'Delivery by: ' + delivery + '\n';
+    bMsg += '\nORDER\n';
+    bMsg += 'Service: ' + service + '\n';
+    if (service === 'Alteration') {
+      if (alttype)  bMsg += 'Type: ' + alttype + '\n';
+      if (altnotes) bMsg += 'Details: ' + altnotes + '\n';
+    } else {
+      if (neck)   bMsg += 'Neck: ' + neck + '\n';
+      if (sleeve) bMsg += 'Sleeve: ' + sleeve + '\n';
+      if (fabric) bMsg += 'Fabric: ' + fabric + '\n';
+      if (work)   bMsg += 'Work: ' + work + '\n';
+      if (photo)  bMsg += 'Photo: ' + photo + '\n';
+    }
+    if (notes) bMsg += 'Notes: ' + notes + '\n';
+    if (bust || waist || hip || blouseL || pantLen) {
+      bMsg += '\nBODY MEASUREMENTS (inches)\n';
+      if (bust)     bMsg += 'Bust: ' + bust + '\n';
+      if (waist)    bMsg += 'Waist: ' + waist + '\n';
+      if (hip)      bMsg += 'Hip: ' + hip + '\n';
+      if (shoulder) bMsg += 'Shoulder: ' + shoulder + '\n';
+      if (height)   bMsg += 'Height: ' + height + '\n';
+      if (arm)      bMsg += 'Bicep: ' + arm + '\n';
+      if (armhole)  bMsg += 'Arm hole: ' + armhole + '\n';
+      if (thigh)    bMsg += 'Thigh: ' + thigh + '\n';
+      if (blouseL || sleeveL || kurtiLen) {
+        bMsg += 'BLOUSE & KURTI\n';
+        if (blouseL)  bMsg += 'Blouse length: ' + blouseL + '\n';
+        if (sleeveL)  bMsg += 'Sleeve length: ' + sleeveL + '\n';
+        if (kurtiLen) bMsg += 'Kurti length: ' + kurtiLen + '\n';
+      }
+      if (pantLen || pantWaist || pantBottom) {
+        bMsg += 'PANT / BOTTOM\n';
+        if (pantLen)    bMsg += 'Pant length: ' + pantLen + '\n';
+        if (pantWaist)  bMsg += 'Pant waist round: ' + pantWaist + '\n';
+        if (pantBottom) bMsg += 'Pant bottom round: ' + pantBottom + '\n';
+      }
+      if (mnotes) bMsg += 'Notes: ' + mnotes + '\n';
+    }
+    bMsg += '\nPAYMENT: UPI at boutique\n';
+    bMsg += 'Reply to customer: ' + phone;
+
+    // Build customer confirmation message
+    var cMsg = '';
+    cMsg += 'Hi AM Boutique! I placed an online order.\n';
+    cMsg += 'Ref: ' + ref + '\n';
+    cMsg += 'Name: ' + name + '\n';
+    cMsg += 'Service: ' + service + '\n';
+    if (delivery) cMsg += 'Needed by: ' + delivery + '\n';
+    cMsg += 'Please confirm. Thank you!';
+
+    // Store in simple global strings
+    window.WA_BOUTIQUE = bMsg;
+    window.WA_CUSTOMER = cMsg;
+    window.ORDER_REF   = ref;
+    window.ORDER_NAME  = name;
+    window.ORDER_SVC   = service;
+
+    // NOW show the success buttons — hide submit area, show success area
+    document.getElementById('submitArea').style.display  = 'none';
+    document.getElementById('successArea').style.display = 'block';
+
+    // Update success text
+    document.getElementById('successName').textContent = 'Done ' + name + '! Notify us below';
+    document.getElementById('successRef').textContent  = ref + ' — ' + service;
+
+    // Reset button states
+    var b1 = document.getElementById('btnStep1');
+    var b2 = document.getElementById('btnStep2');
+    b1.disabled         = false;
+    b1.style.background = '#25d366';
+    b1.innerHTML        = '<i class="ti ti-brand-whatsapp"></i> Step 1 — Send Order to Boutique';
+    b2.disabled         = false;
+    b2.style.background = '#c97b84';
+    b2.innerHTML        = '<i class="ti ti-message-circle"></i> Step 2 — Send My Confirmation';
+
+    // Scroll to success buttons
+    window.scrollTo({ top: document.getElementById('successArea').offsetTop - 100, behavior: 'smooth' });
+  }
+
+  function sendToBoutique() {
+    if (!window.WA_BOUTIQUE) { alert('Please click Send Order on WhatsApp first.'); return; }
+    var url = 'https://wa.me/919740180887?text=' + encodeURIComponent(window.WA_BOUTIQUE);
+    window.open(url, '_blank');
+    var b = document.getElementById('btnStep1');
+    b.style.background = '#1da851';
+    b.innerHTML        = '<i class="ti ti-check"></i> Step 1 Sent to Boutique ✓';
+    b.disabled         = true;
+  }
+
+  function sendCustomerConfirm() {
+    if (!window.WA_CUSTOMER) { alert('Please complete Step 1 first.'); return; }
+    var url = 'https://wa.me/919740180887?text=' + encodeURIComponent(window.WA_CUSTOMER);
+    window.open(url, '_blank');
+    var b = document.getElementById('btnStep2');
+    b.style.background = '#8a4a52';
+    b.innerHTML        = '<i class="ti ti-check"></i> Step 2 Confirmation Sent ✓';
+    b.disabled         = true;
+  }
+
+  function resetOrder() {
+    window.WA_BOUTIQUE = '';
+    window.WA_CUSTOMER = '';
+    document.getElementById('submitArea').style.display  = 'block';
+    document.getElementById('successArea').style.display = 'none';
+    var ids = ['o_name','o_phone','o_email','o_delivery','o_address','o_fabric',
+               'o_photo_url','o_notes','o_alt_notes','m_notes',
+               'm_bust','m_waist','m_hip','m_shoulder','m_height',
+               'm_arm','m_armhole','m_thigh','m_blouse_len','m_sleeve_len',
+               'm_kurti_len','m_pant_len','m_pant_waist','m_pant_bottom'];
+    ids.forEach(function(id) {
+      var e = document.getElementById(id);
+      if (e) e.value = '';
+    });
+    ['o_pickup','o_service','o_neck','o_sleeve','o_work','o_alt_type'].forEach(function(id) {
+      var e = document.getElementById(id);
+      if (e) e.selectedIndex = 0;
+    });
+    document.querySelectorAll('.order-tab')[0].click();
+    window.scrollTo({ top: document.getElementById('order').offsetTop - 80, behavior: 'smooth' });
+  }
+
+    // ── Hamburger menu ──────────────────────────────────
+  var hamburger = document.getElementById('hamburger');
+  var navLinks  = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', function() {
+    navLinks.classList.toggle('open');
+  });
+
+  var navAnchors = navLinks.querySelectorAll('a');
+  for (var ni = 0; ni < navAnchors.length; ni++) {
+    navAnchors[ni].addEventListener('click', function() {
+      navLinks.classList.remove('open');
+    });
+  }
+
+  // ── Toast notification ───────────────────────────────
+  function showToast(msg, duration) {
+    if (!duration) duration = 4000;
+    var t   = document.getElementById('toast');
+    var tm  = document.getElementById('toastMsg');
+    if (!t || !tm) return;
+    tm.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, duration);
+  }
+
+  // ── Gallery filter ───────────────────────────────────
+  function filterGallery(cat, btn) {
+    // Update active tab
+    var tabs = document.querySelectorAll('.gallery-tab');
+    for (var ti = 0; ti < tabs.length; ti++) {
+      tabs[ti].classList.remove('active');
+    }
+    btn.classList.add('active');
+
+    // Show/hide items
+    var items = document.querySelectorAll('.gallery-item');
+    for (var gi = 0; gi < items.length; gi++) {
+      var item = items[gi];
+      if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    }
+  }
+
+  // ── Lightbox ─────────────────────────────────────────
+  function openLightbox(el) {
+    var img = el.querySelector('img');
+    if (!img) return;
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // ── Scroll reveal ─────────────────────────────────────
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      for (var ri = 0; ri < entries.length; ri++) {
+        if (entries[ri].isIntersecting) {
+          entries[ri].target.style.opacity  = '1';
+          entries[ri].target.style.transform = 'translateY(0)';
+        }
+      }
+    }, { threshold: 0.1 });
+
+    var revealEls = document.querySelectorAll('.service-card, .testimonial-card, .process-step, .gallery-item');
+    for (var si = 0; si < revealEls.length; si++) {
+      revealEls[si].style.opacity   = '0';
+      revealEls[si].style.transform = 'translateY(20px)';
+      revealEls[si].style.transition = 'opacity .5s ease, transform .5s ease';
+      revealObserver.observe(revealEls[si]);
+    }
+  }
+
+  // ── Appointment booking form submit ──────────────────
+  function submitForm(e) {
+    e.preventDefault();
+    var name    = document.getElementById('fname').value.trim();
+    var phone   = document.getElementById('phone').value.trim();
+    var service = document.getElementById('service').value;
+    var date    = document.getElementById('apptdate').value;
+    var time    = document.getElementById('time').value;
+    var notes   = document.getElementById('notes').value.trim();
+    if (!name || !phone || !service || !date || !time) {
+      showToast('Please fill in all required fields.');
+      return;
+    }
+    var msg = "Hi AM Women's Boutique! I'd like to book an appointment.\n\n" +
+      "Name: " + name + "\nPhone: " + phone + "\nService: " + service +
+      "\nDate: " + date + "\nTime: " + time +
+      (notes ? "\nNotes: " + notes : "");
+    window.open("https://wa.me/919740180887?text=" + encodeURIComponent(msg), "_blank");
+    showToast("Appointment request sent! We'll confirm on WhatsApp shortly.");
+    document.getElementById('bookingForm').reset();
+  }
+
+  // Set min date on appointment form
+  (function() {
+    var di = document.getElementById('apptdate');
+    if (di) di.setAttribute('min', new Date().toISOString().split('T')[0]);
+  })();
+
+  // ── PWA: Register service worker ──────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+        .then(function(reg) { reg.update(); })
+        .catch(function(err) { console.log('SW error:', err); });
+    });
+  }
+
+  // ── PWA: Install prompt banner ──────────────────
+  var deferredPrompt  = null;
+  var installBanner   = document.getElementById('installBanner');
+  var btnInstall      = document.getElementById('btnInstall');
+  var btnDismissBnr   = document.getElementById('btnDismiss');
+
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    setTimeout(function() {
+      if (installBanner) installBanner.classList.add('show');
+    }, 3000);
+  });
+
+  if (btnInstall) {
+    btnInstall.addEventListener('click', function() {
+      if (installBanner) installBanner.classList.remove('show');
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(result) {
+          if (result.outcome === 'accepted') showToast('App installed! Find AM Boutique on your home screen.');
+          deferredPrompt = null;
+        });
+      }
+    });
+  }
+
+  if (btnDismissBnr) {
+    btnDismissBnr.addEventListener('click', function() {
+      if (installBanner) installBanner.classList.remove('show');
+    });
+  }
+
+  window.addEventListener('appinstalled', function() {
+    if (installBanner) installBanner.classList.remove('show');
+    showToast('AM Boutique app installed!');
+  });
+
+
+  // ════════════════════════════════════════════════════════
+  //  AI BOOKING AGENT — Priya
+  //  Handles both floating bubble + inline panel
+  // ════════════════════════════════════════════════════════
+
+  var AGENT_PHONE   = '919740180887';
+  var agentOpen     = false;
+  var agentHistory  = [];   // floating window history
+  var bapHistory    = [];   // inline panel history
+  var agentBooked   = {};   // { "date_time": bookingObj }
+  var agentLoading  = false;
+  var bapLoading    = false;
+  var bapStarted    = false;
+
+  // ── Time slots & services ─────────────────────────────
+  var SLOTS = [
+    '10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM',
+    '1:00 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM',
+    '4:00 PM','4:30 PM','5:00 PM','5:30 PM','6:00 PM',
+    '6:30 PM','7:00 PM'
+  ];
+  var SERVICES = [
+    'Blouse Stitching (₹550+)',
+    'Chudi Set (₹850+)',
+    'Lehenga & Blouse (₹1500+)',
+    'Gown (₹1500+)',
+    'Alteration (₹50+)'
+  ];
+
+  // ── System prompt ──────────────────────────────────────
+  function agentPrompt() {
+    var booked = '';
+    for (var k in agentBooked) {
+      var b = agentBooked[k];
+      booked += k + ': ' + b.name + ' (' + b.phone + ') for ' + b.service + '\n';
+    }
+    return 'You are Priya, a warm appointment assistant for AM Women's Boutique in K Narayanapura, Bengaluru.\n\n' +
+      'BOUTIQUE INFO:\n' +
+      '- Hours: Monday-Saturday, 10:30 AM to 7:30 PM. Closed Sundays.\n' +
+      '- Services: Blouse Stitching from ₹550, Chudi Set from ₹850, Lehenga & Blouse from ₹1500, Gown from ₹1500, Alteration from ₹50\n' +
+      '- Phone: +91 97401 80887\n' +
+      '- Payment: Cash or UPI at boutique\n\n' +
+      'AVAILABLE SLOTS: ' + SLOTS.join(', ') + '\n\n' +
+      'ALREADY BOOKED SLOTS:\n' + (booked || 'None') + '\n\n' +
+      'YOUR TASK:\n' +
+      '1. Greet warmly\n' +
+      '2. Collect: name, WhatsApp number, service, preferred date, preferred time\n' +
+      '3. Check if slot is free — if taken suggest next available slot\n' +
+      '4. Confirm all details and finalise booking\n\n' +
+      'RULES:\n' +
+      '- Be warm and friendly like a real receptionist\n' +
+      '- Only Mon-Sat bookings (no Sundays)\n' +
+      '- Keep replies SHORT — 2-3 sentences\n' +
+      '- When booking is confirmed, end your message with exactly this on a new line:\n' +
+      '  BOOKING_JSON:{"name":"X","phone":"X","service":"X","date":"YYYY-MM-DD","time":"X","ref":"APT-XXXXX"}\n' +
+      '- Generate ref as APT- + 5 random digits\n' +
+      '- Never repeat the JSON more than once\n' +
+      '- Do not add any text after the JSON line';
+  }
+
+  // ── Call Claude API ────────────────────────────────────
+  function callClaude(history, userMsg, callback) {
+    var msgs = history.concat([{ role: 'user', content: userMsg }]);
+    fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 400,
+        system: agentPrompt(),
+        messages: msgs
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var text = (d.content && d.content[0] && d.content[0].text) ? d.content[0].text : 'Sorry, please try again.';
+      callback(null, text);
+    })
+    .catch(function(){ callback('error', null); });
+  }
+
+  // ── Parse booking JSON from response ──────────────────
+  function parseBookingJSON(text) {
+    var match = text.match(/BOOKING_JSON:\{([^}]+)\}/);
+    if (!match) return null;
+    try { return JSON.parse('{' + match[1] + '}'); } catch(e) { return null; }
+  }
+
+  function cleanReply(text) {
+    return text.replace(/BOOKING_JSON:\{[^}]+\}/g, '').trim();
+  }
+
+  // ── Format date nicely ─────────────────────────────────
+  function fmtD(d) {
+    if (!d) return d;
+    var parts = d.split('-');
+    if (parts.length < 3) return d;
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return parts[2] + ' ' + months[parseInt(parts[1])-1] + ' ' + parts[0];
+  }
+
+  // ── Build booking card HTML ────────────────────────────
+  function bookingCardHTML(b) {
+    var waMsg = encodeURIComponent(
+      'Hi AM Boutique! My appointment is confirmed.\n' +
+      'Ref: ' + b.ref + '\n' +
+      'Name: ' + b.name + '\n' +
+      'Service: ' + b.service + '\n' +
+      'Date: ' + fmtD(b.date) + '\n' +
+      'Time: ' + b.time + '\nThank you!'
+    );
+    return '<div style="background:linear-gradient(135deg,#f5e8ea,#f7efe0);border:1px solid #d4b07a;border-radius:10px;padding:12px 14px;margin-top:6px;font-family:Jost,sans-serif;">' +
+      '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">' +
+        '<span style="font-size:16px;">🧵</span>' +
+        '<span style="font-size:13px;font-weight:600;color:#2c1f1f;">Appointment Confirmed!</span>' +
+        '<span style="margin-left:auto;background:#e8f8ef;color:#1da851;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;">CONFIRMED</span>' +
+      '</div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:10px;">' +
+        '<div><div style="font-size:10px;color:#a48585;text-transform:uppercase;letter-spacing:.05em;">Ref</div><div style="font-size:12px;font-weight:600;color:#2c1f1f;">' + b.ref + '</div></div>' +
+        '<div><div style="font-size:10px;color:#a48585;text-transform:uppercase;letter-spacing:.05em;">Name</div><div style="font-size:12px;font-weight:600;color:#2c1f1f;">' + b.name + '</div></div>' +
+        '<div><div style="font-size:10px;color:#a48585;text-transform:uppercase;letter-spacing:.05em;">Phone</div><div style="font-size:12px;font-weight:600;color:#2c1f1f;">' + b.phone + '</div></div>' +
+        '<div><div style="font-size:10px;color:#a48585;text-transform:uppercase;letter-spacing:.05em;">Service</div><div style="font-size:12px;font-weight:600;color:#2c1f1f;">' + b.service + '</div></div>' +
+        '<div><div style="font-size:10px;color:#a48585;text-transform:uppercase;letter-spacing:.05em;">Date</div><div style="font-size:12px;font-weight:600;color:#2c1f1f;">' + fmtD(b.date) + '</div></div>' +
+        '<div><div style="font-size:10px;color:#a48585;text-transform:uppercase;letter-spacing:.05em;">Time</div><div style="font-size:12px;font-weight:600;color:#2c1f1f;">' + b.time + '</div></div>' +
+      '</div>' +
+      '<a href="https://wa.me/' + AGENT_PHONE + '?text=' + waMsg + '" target="_blank" rel="noopener" ' +
+        'style="display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:#25d366;color:white;border:none;border-radius:6px;padding:8px;font-size:12px;font-weight:500;text-decoration:none;">' +
+        '📱 Send Confirmation on WhatsApp' +
+      '</a>' +
+    '</div>';
+  }
+
+  // ════════════════════════════════════════════════════
+  //  FLOATING WINDOW FUNCTIONS
+  // ════════════════════════════════════════════════════
+
+  function toggleAgent() {
+    agentOpen = !agentOpen;
+    var win = document.getElementById('agentWindow');
+    if (!win) return;
+    if (agentOpen) {
+      win.classList.add('open');
+      if (agentHistory.length === 0) agentAutoStart();
+      setTimeout(function(){ document.getElementById('agentInput').focus(); }, 200);
+    } else {
+      win.classList.remove('open');
+    }
+  }
+
+  function agentAutoStart() {
+    agentLoading = true;
+    agentSetTyping('agentMsgs', true);
+    callClaude([], 'Hello I would like to book an appointment', function(err, reply) {
+      agentSetTyping('agentMsgs', false);
+      agentLoading = false;
+      if (err) { agentAddMsg('agentMsgs', 'bot', 'Hi! Welcome to AM Boutique. I am Priya and I will help you book your appointment. May I have your name please?'); return; }
+      var clean = cleanReply(reply);
+      agentAddMsg('agentMsgs', 'bot', clean || 'Hi! I am Priya. What is your name?');
+      agentHistory.push({ role: 'user', content: 'Hello I would like to book an appointment' });
+      agentHistory.push({ role: 'assistant', content: reply });
+      agentShowChips('agentChips', []);
+    });
+  }
+
+  function agentSend() {
+    var inp = document.getElementById('agentInput');
+    if (!inp) return;
+    var text = inp.value.trim();
+    if (!text || agentLoading) return;
+    inp.value = '';
+    agentAddMsg('agentMsgs', 'user', text);
+    agentHideChips('agentChips');
+    agentLoading = true;
+    document.getElementById('agentSendBtn').disabled = true;
+    agentSetTyping('agentMsgs', true);
+    callClaude(agentHistory, text, function(err, reply) {
+      agentSetTyping('agentMsgs', false);
+      agentLoading = false;
+      document.getElementById('agentSendBtn').disabled = false;
+      if (err) { agentAddMsg('agentMsgs', 'bot', 'Sorry, connection issue. Please try again.'); return; }
+      var booking = parseBookingJSON(reply);
+      var clean   = cleanReply(reply);
+      agentAddMsg('agentMsgs', 'bot', clean || 'Your appointment is confirmed!');
+      agentHistory.push({ role: 'user', content: text });
+      agentHistory.push({ role: 'assistant', content: reply });
+      if (booking) {
+        var key = booking.date + '_' + booking.time;
+        agentBooked[key] = booking;
+        agentAddCard('agentMsgs', booking);
+      }
+      document.getElementById('agentInput').focus();
+    });
+  }
+
+  // ════════════════════════════════════════════════════
+  //  INLINE PANEL FUNCTIONS (booking section)
+  // ════════════════════════════════════════════════════
+
+  function bapAutoStart() {
+    if (bapStarted) return;
+    bapStarted = true;
+    bapLoading = true;
+    bapSetTyping(true);
+    callClaude([], 'Hello I would like to book an appointment', function(err, reply) {
+      bapSetTyping(false);
+      bapLoading = false;
+      var clean = err ? 'Hi! I am Priya, your booking assistant. May I have your name please?' : cleanReply(reply);
+      bapAddMsg('bot', clean || 'Hi! I am Priya. What is your name?');
+      bapHistory.push({ role: 'user', content: 'Hello I would like to book an appointment' });
+      if (!err) bapHistory.push({ role: 'assistant', content: reply });
+    });
+  }
+
+  function bapSend() {
+    var inp = document.getElementById('bapInput');
+    if (!inp) return;
+    var text = inp.value.trim();
+    if (!text || bapLoading) return;
+    inp.value = '';
+    bapAddMsg('user', text);
+    bapHideChips();
+    bapLoading = true;
+    document.getElementById('bapSendBtn').disabled = true;
+    bapSetTyping(true);
+    callClaude(bapHistory, text, function(err, reply) {
+      bapSetTyping(false);
+      bapLoading = false;
+      document.getElementById('bapSendBtn').disabled = false;
+      if (err) { bapAddMsg('bot', 'Sorry, connection issue. Please try again.'); return; }
+      var booking = parseBookingJSON(reply);
+      var clean   = cleanReply(reply);
+      bapAddMsg('bot', clean || 'Your appointment is confirmed!');
+      bapHistory.push({ role: 'user', content: text });
+      bapHistory.push({ role: 'assistant', content: reply });
+      if (booking) {
+        var key = booking.date + '_' + booking.time;
+        agentBooked[key] = booking;
+        bapAddCard(booking);
+      }
+      document.getElementById('bapInput').focus();
+    });
+  }
+
+  // ════════════════════════════════════════════════════
+  //  SHARED UI HELPERS
+  // ════════════════════════════════════════════════════
+
+  function agentAddMsg(containerId, role, text) {
+    var c = document.getElementById(containerId);
+    if (!c) return;
+    var isBot = role === 'bot';
+    var div = document.createElement('div');
+    div.style.cssText = 'display:flex;gap:8px;align-items:flex-end;animation:agentFadeUp .25s ease;' + (isBot ? '' : 'flex-direction:row-reverse;');
+    var av = document.createElement('div');
+    av.style.cssText = 'width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;' + (isBot ? 'background:#c97b84;color:white;font-family:Cormorant Garamond,serif;' : 'background:#f2ece5;color:#6b4f4f;');
+    av.textContent = isBot ? 'P' : '👤';
+    var bub = document.createElement('div');
+    bub.style.cssText = 'max-width:78%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.6;font-family:Jost,sans-serif;font-weight:300;' + (isBot ? 'background:white;border:0.5px solid #e8ddd5;border-bottom-left-radius:4px;color:#2c1f1f;' : 'background:#c97b84;color:white;border-bottom-right-radius:4px;');
+    bub.textContent = text;
+    div.appendChild(av);
+    div.appendChild(bub);
+    c.appendChild(div);
+    c.scrollTop = c.scrollHeight;
+  }
+
+  function agentAddCard(containerId, booking) {
+    var c = document.getElementById(containerId);
+    if (!c) return;
+    var div = document.createElement('div');
+    div.innerHTML = bookingCardHTML(booking);
+    c.appendChild(div);
+    c.scrollTop = c.scrollHeight;
+  }
+
+  function agentSetTyping(containerId, show) {
+    var c = document.getElementById(containerId);
+    if (!c) return;
+    var existing = c.querySelector('.agent-typing-row');
+    if (show && !existing) {
+      var row = document.createElement('div');
+      row.className = 'agent-typing-row';
+      row.style.cssText = 'display:flex;gap:8px;align-items:flex-end;';
+      row.innerHTML = '<div style="width:26px;height:26px;border-radius:50%;background:#c97b84;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;font-family:Cormorant Garamond,serif;flex-shrink:0;">P</div>' +
+        '<div style="background:white;border:0.5px solid #e8ddd5;border-radius:14px;border-bottom-left-radius:4px;padding:10px 14px;display:flex;gap:4px;align-items:center;">' +
+          '<span style="width:6px;height:6px;border-radius:50%;background:#c97b84;animation:agentBounce 1.2s ease-in-out 0s infinite;display:block;"></span>' +
+          '<span style="width:6px;height:6px;border-radius:50%;background:#c97b84;animation:agentBounce 1.2s ease-in-out .2s infinite;display:block;"></span>' +
+          '<span style="width:6px;height:6px;border-radius:50%;background:#c97b84;animation:agentBounce 1.2s ease-in-out .4s infinite;display:block;"></span>' +
+        '</div>';
+      c.appendChild(row);
+      c.scrollTop = c.scrollHeight;
+    } else if (!show && existing) {
+      existing.remove();
+    }
+  }
+
+  function agentShowChips(chipId, chips) {
+    var c = document.getElementById(chipId);
+    if (!c || !chips.length) return;
+    c.style.display = 'flex';
+    c.innerHTML = '';
+    chips.forEach(function(chip) {
+      var btn = document.createElement('button');
+      btn.className = 'agent-chip';
+      btn.textContent = chip;
+      btn.onclick = function() {
+        document.getElementById('agentInput').value = chip;
+        agentSend();
+      };
+      c.appendChild(btn);
+    });
+  }
+  function agentHideChips(chipId) {
+    var c = document.getElementById(chipId);
+    if (c) { c.style.display = 'none'; c.innerHTML = ''; }
+  }
+
+  // BAP (inline panel) helpers
+  function bapAddMsg(role, text) {
+    var c = document.getElementById('bapMsgs');
+    if (!c) return;
+    var isBot = role === 'bot';
+    var div = document.createElement('div');
+    div.style.cssText = 'display:flex;gap:8px;align-items:flex-end;animation:agentFadeUp .25s ease;' + (isBot ? '' : 'flex-direction:row-reverse;');
+    var av = document.createElement('div');
+    av.style.cssText = 'width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;' + (isBot ? 'background:#c97b84;color:white;font-family:Cormorant Garamond,serif;' : 'background:#f2ece5;color:#6b4f4f;');
+    av.textContent = isBot ? 'P' : '👤';
+    var bub = document.createElement('div');
+    bub.style.cssText = 'max-width:78%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.6;font-family:Jost,sans-serif;font-weight:300;' + (isBot ? 'background:white;border:0.5px solid #e8ddd5;border-bottom-left-radius:4px;color:#2c1f1f;' : 'background:#c97b84;color:white;border-bottom-right-radius:4px;');
+    bub.textContent = text;
+    div.appendChild(av);
+    div.appendChild(bub);
+    c.appendChild(div);
+    c.scrollTop = c.scrollHeight;
+  }
+
+  function bapAddCard(booking) {
+    var c = document.getElementById('bapMsgs');
+    if (!c) return;
+    var div = document.createElement('div');
+    div.innerHTML = bookingCardHTML(booking);
+    c.appendChild(div);
+    c.scrollTop = c.scrollHeight;
+  }
+
+  function bapSetTyping(show) {
+    var c = document.getElementById('bapMsgs');
+    if (!c) return;
+    var existing = c.querySelector('.bap-typing-row');
+    if (show && !existing) {
+      var row = document.createElement('div');
+      row.className = 'bap-typing-row';
+      row.style.cssText = 'display:flex;gap:8px;align-items:flex-end;';
+      row.innerHTML = '<div style="width:26px;height:26px;border-radius:50%;background:#c97b84;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;font-family:Cormorant Garamond,serif;flex-shrink:0;">P</div>' +
+        '<div style="background:white;border:0.5px solid #e8ddd5;border-radius:14px;border-bottom-left-radius:4px;padding:10px 14px;display:flex;gap:4px;align-items:center;">' +
+          '<span style="width:6px;height:6px;border-radius:50%;background:#c97b84;animation:agentBounce 1.2s 0s infinite;display:block;"></span>' +
+          '<span style="width:6px;height:6px;border-radius:50%;background:#c97b84;animation:agentBounce 1.2s .2s infinite;display:block;"></span>' +
+          '<span style="width:6px;height:6px;border-radius:50%;background:#c97b84;animation:agentBounce 1.2s .4s infinite;display:block;"></span>' +
+        '</div>';
+      c.appendChild(row);
+      c.scrollTop = c.scrollHeight;
+    } else if (!show && existing) {
+      existing.remove();
+    }
+  }
+
+  function bapHideChips() {
+    var c = document.getElementById('bapChips');
+    if (c) { c.style.display = 'none'; c.innerHTML = ''; }
+  }
+
+  // ── Auto-start inline panel when it scrolls into view ──
+  (function() {
+    var panel = document.getElementById('bapMsgs');
+    if (!panel) return;
+    if ('IntersectionObserver' in window) {
+      var bapObs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting && !bapStarted) {
+          bapAutoStart();
+          bapObs.disconnect();
+        }
+      }, { threshold: 0.3 });
+      bapObs.observe(panel);
+    } else {
+      // fallback — start after 2 seconds
+      setTimeout(bapAutoStart, 2000);
+    }
+  })();
+
+
+</script>
+</body>
+</html>

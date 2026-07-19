@@ -1,0 +1,55 @@
+# AM Women's Boutique — Hostinger .htaccess
+
+Options -Indexes
+
+# ── Force HTTPS ──────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ── Correct MIME types ───────────────────────────────────
+AddType application/manifest+json .json
+AddType application/javascript .js
+AddType text/css .css
+AddType image/png .png
+AddType image/jpeg .jpg .jpeg
+AddType image/webp .webp
+
+# ── Service Worker headers ───────────────────────────────
+<Files "service-worker.js">
+  Header set Service-Worker-Allowed "/"
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+</Files>
+
+# ── Manifest — no cache ──────────────────────────────────
+<Files "manifest.json">
+  Header set Cache-Control "no-cache"
+</Files>
+
+# ── Cache images for performance ─────────────────────────
+<FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|ico)$">
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+# ── Redirect old filename to index ───────────────────────
+Redirect 301 /am-womens-boutique.html /
+
+# ── Route all requests to index.html (PWA support) ───────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# ── GZIP compression ─────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
+
+# ── Security headers ─────────────────────────────────────
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
