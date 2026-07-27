@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- PWA — Android 12+ / Samsung compatible -->
-  <link rel="manifest" href="/manifest.json" />
+  <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#c97b84" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
@@ -14,15 +14,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="AM Boutique" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/icon-180-any.png" />
-  <link rel="apple-touch-icon" sizes="192x192" href="/icon-192-any.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512-any.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192-any.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-180-any.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="icon-192-any.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512-any.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192-any.png" />
   <title>AM Women's Boutique | Custom Stitching & Alterations – Bengaluru</title>
   <meta name="description" content="AM Women's Boutique offers custom blouse stitching, kurtis, lehengas, gowns and expert alterations in K Narayanapura, Bengaluru. Book your appointment online or via WhatsApp." />
   <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
-  <link rel="icon" type="image/png" sizes="64x64" href="/icon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="icon-64.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -284,9 +284,10 @@
     @media(max-width:600px){.install-banner{padding:10px 14px;}.install-banner-text span{display:none;}}
 
     /* ── NILU — AI BOOKING ASSISTANT ───────────────────── */
-    .nilu-launcher{position:fixed;bottom:98px;right:28px;z-index:998;display:flex;align-items:center;gap:9px;background:var(--rose-dark);color:#fff;border:none;padding:13px 18px 13px 14px;border-radius:40px;cursor:pointer;box-shadow:0 6px 22px rgba(138,74,82,.35);font-family:'Jost',sans-serif;transition:transform .2s,box-shadow .2s;}
+    .nilu-launcher{position:fixed;bottom:98px;right:28px;z-index:998;display:flex;align-items:center;gap:9px;background:var(--rose-dark);color:#fff;border:none;padding:8px 18px 8px 8px;border-radius:40px;cursor:pointer;box-shadow:0 6px 22px rgba(138,74,82,.35);font-family:'Jost',sans-serif;transition:transform .2s,box-shadow .2s;}
     .nilu-launcher:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(138,74,82,.42);}
     .nilu-launcher i{font-size:22px;}
+    .nilu-launcher-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid rgba(255,255,255,.6);}
     .nilu-launcher-text{font-size:13px;font-weight:500;letter-spacing:.02em;white-space:nowrap;}
     .nilu-launcher.hide{display:none;}
     .nilu-badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:#fff;font-size:9px;font-weight:600;letter-spacing:.04em;padding:2px 6px;border-radius:10px;border:2px solid var(--cream);}
@@ -295,7 +296,8 @@
     .nilu-chat.open{display:flex;}
     .nilu-header{background:linear-gradient(120deg,var(--rose-dark),var(--rose));padding:14px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
     .nilu-header-info{display:flex;align-items:center;gap:10px;}
-    .nilu-avatar{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;flex-shrink:0;}
+    .nilu-avatar{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;flex-shrink:0;overflow:hidden;}
+    .nilu-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
     .nilu-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#fff;line-height:1.2;}
     .nilu-online{font-family:'Jost',sans-serif;font-size:10px;font-weight:400;color:#c9f5da;margin-left:4px;}
     .nilu-role{font-size:11px;color:rgba(255,255,255,.8);font-weight:300;margin-top:1px;}
@@ -307,6 +309,15 @@
     .nilu-msg.user{align-self:flex-end;background:var(--rose);color:#fff;border-bottom-right-radius:4px;}
     .nilu-msg strong{font-weight:600;}
     .nilu-msg .nilu-ref{display:inline-block;margin-top:6px;background:var(--gold-light);color:var(--gold-dark);border:.5px solid #d4b07a;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.03em;}
+    .nilu-msg.nilu-form-msg{max-width:96%;width:96%;}
+    .nilu-mform-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;}
+    .nilu-mform-grid label{font-size:10.5px;font-weight:500;color:var(--mid);letter-spacing:.03em;text-transform:uppercase;display:flex;flex-direction:column;gap:4px;}
+    .nilu-mform-grid input,.nilu-form-msg input[type="date"]{padding:8px 10px;border:.5px solid var(--border);border-radius:6px;font-family:'Jost',sans-serif;font-size:13px;color:var(--dark);background:var(--cream);outline:none;width:100%;}
+    .nilu-mform-grid input:focus,.nilu-form-msg input[type="date"]:focus{border-color:var(--rose);background:#fff;}
+    .nilu-form-msg input[type="date"]{margin-bottom:10px;}
+    .nilu-form-btn{width:100%;background:var(--rose);color:#fff;border:none;padding:10px;border-radius:8px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.02em;cursor:pointer;transition:background .15s;}
+    .nilu-form-btn:hover{background:var(--rose-dark);}
+    .nilu-form-btn:disabled{opacity:.6;cursor:default;}
     .nilu-typing{align-self:flex-start;display:flex;gap:4px;padding:10px 13px;background:#fff;border:.5px solid var(--border);border-radius:14px;border-bottom-left-radius:4px;}
     .nilu-typing span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:niluBlink 1.2s infinite ease-in-out;}
     .nilu-typing span:nth-child(2){animation-delay:.2s;}
@@ -430,7 +441,7 @@
 <!-- NAVIGATION -->
 <nav id="top">
   <a href="#top" class="nav-logo">
-    <img src="/icon-192-any.png" alt="AM Women's Boutique Logo" />
+    <img src="icon-192-any.png" alt="AM Women's Boutique Logo" />
     AM <span>Women's</span> Boutique
   </a>
   <ul class="nav-links" id="navLinks">
@@ -1106,7 +1117,7 @@
   <div class="contact-inner">
     <div class="contact-brand">
       <a href="#top" class="nav-logo" style="color:#f5e8ea;">
-        <img src="/icon-192-any.png" alt="AM Women's Boutique Logo" style="border-color:rgba(181,147,90,0.5);" />
+        <img src="icon-192-any.png" alt="AM Women's Boutique Logo" style="border-color:rgba(181,147,90,0.5);" />
         AM <span>Women's</span> Boutique
       </a>
       <p class="contact-tagline">Bringing your dream outfits to life &mdash; one stitch at a time. Trusted by women across Bengaluru since 2023.</p>
@@ -1146,7 +1157,7 @@
 <!-- PWA INSTALL BANNER -->
 <div class="install-banner" id="installBanner">
   <div class="install-banner-left">
-    <img src="/icon-192-any.png" alt="AM Boutique" class="install-banner-logo" />
+    <img src="icon-192-any.png" alt="AM Boutique" class="install-banner-logo" />
     <div class="install-banner-text">
       <p>Add AM Boutique to your home screen</p>
       <span>Install the app for quick ordering & gallery access</span>
@@ -1172,7 +1183,7 @@
 
 <!-- NILU — AI BOOKING ASSISTANT -->
 <button class="nilu-launcher" id="niluLauncher" aria-label="Chat with Nilu, our AI assistant" type="button">
-  <i class="ti ti-robot"></i>
+  <img src="nilu-avatar.jpg" alt="Nilu" class="nilu-launcher-avatar" />
   <span class="nilu-launcher-text">Chat with Nilu</span>
   <span class="nilu-badge">AI</span>
 </button>
@@ -1180,7 +1191,7 @@
 <div class="nilu-chat" id="niluChat" role="dialog" aria-label="Nilu AI Assistant chat">
   <div class="nilu-header">
     <div class="nilu-header-info">
-      <div class="nilu-avatar"><i class="ti ti-robot"></i></div>
+      <div class="nilu-avatar"><img src="nilu-avatar.jpg" alt="Nilu" /></div>
       <div>
         <div class="nilu-name">Nilu <span class="nilu-online">&#9679; online</span></div>
         <div class="nilu-role">AI Assistant &middot; AM Women's Boutique</div>
@@ -1804,6 +1815,85 @@
       nilu.step = 'ord_collection';
     }
 
+    function niluAskMeasurementsForm() {
+      niluSetInputEnabled(false);
+      niluClearQuick();
+      niluTyping(function () {
+        var div = document.createElement('div');
+        div.className = 'nilu-msg bot nilu-form-msg';
+        div.innerHTML =
+          '<div>Great! Enter your measurements below (in inches) \u2014 just like our Order Online form \u2014 or tap the skip option if you\'d rather get measured at the boutique.</div>' +
+          '<div class="nilu-mform-grid">' +
+            '<label>Bust<input type="number" step="0.5" min="20" max="60" class="nf-bust" placeholder="e.g. 36"></label>' +
+            '<label>Waist<input type="number" step="0.5" min="20" max="60" class="nf-waist" placeholder="e.g. 30"></label>' +
+            '<label>Hip<input type="number" step="0.5" min="20" max="70" class="nf-hip" placeholder="e.g. 38"></label>' +
+            '<label>Shoulder<input type="number" step="0.5" min="8" max="30" class="nf-shoulder" placeholder="e.g. 14"></label>' +
+            '<label>Blouse length<input type="number" step="0.5" min="8" max="30" class="nf-blouse" placeholder="e.g. 15"></label>' +
+            '<label>Sleeve length<input type="number" step="0.5" min="0" max="30" class="nf-sleeve" placeholder="e.g. 8"></label>' +
+          '</div>' +
+          '<button type="button" class="nilu-form-btn nf-save">Save Measurements</button>';
+        niluEl.body.appendChild(div);
+        niluScrollDown();
+
+        var saveBtn = div.querySelector('.nf-save');
+        saveBtn.addEventListener('click', function () {
+          function gv(sel) { var e = div.querySelector(sel); return (e && e.value) ? e.value.trim() : ''; }
+          var parts = [];
+          var bust = gv('.nf-bust'), waist = gv('.nf-waist'), hip = gv('.nf-hip'),
+            shoulder = gv('.nf-shoulder'), blouse = gv('.nf-blouse'), sleeve = gv('.nf-sleeve');
+          if (bust) parts.push('Bust ' + bust + '"');
+          if (waist) parts.push('Waist ' + waist + '"');
+          if (hip) parts.push('Hip ' + hip + '"');
+          if (shoulder) parts.push('Shoulder ' + shoulder + '"');
+          if (blouse) parts.push('Blouse length ' + blouse + '"');
+          if (sleeve) parts.push('Sleeve length ' + sleeve + '"');
+          div.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
+          saveBtn.disabled = true;
+          saveBtn.textContent = 'Saved \u2713';
+          nilu.ordMeasurements = parts.length ? parts.join(', ') : '';
+          niluUserSay(parts.length ? parts.join(', ') : "I'll get measured at the boutique");
+          niluAskCollection();
+        });
+
+        niluSetQuick([{ label: "I'll get measured at the boutique", value: 'skip_measure', cls: 'alt' }]);
+      });
+      nilu.step = 'ord_measurements';
+    }
+
+    function niluAskDeliveryDateForm() {
+      niluSetInputEnabled(false);
+      niluClearQuick();
+      niluTyping(function () {
+        var div = document.createElement('div');
+        div.className = 'nilu-msg bot nilu-form-msg';
+        var minDate = new Date();
+        minDate.setDate(minDate.getDate() + 3);
+        var minStr = minDate.toISOString().split('T')[0];
+        div.innerHTML =
+          '<div style="margin-bottom:10px;">When would you like it ready by? Pick a date below, just like our Order Online form.</div>' +
+          '<input type="date" class="nf-date" min="' + minStr + '">' +
+          '<button type="button" class="nilu-form-btn nf-date-save">Confirm Date</button>';
+        niluEl.body.appendChild(div);
+        niluScrollDown();
+
+        var saveBtn = div.querySelector('.nf-date-save');
+        saveBtn.addEventListener('click', function () {
+          var dateInput = div.querySelector('.nf-date');
+          var val = dateInput.value;
+          if (!val) { dateInput.style.borderColor = '#c0392b'; return; }
+          div.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
+          saveBtn.disabled = true;
+          saveBtn.textContent = 'Confirmed \u2713';
+          nilu.ordDeliveryDate = val;
+          niluUserSay(val);
+          niluFinishOrder();
+        });
+
+        niluSetQuick([{ label: 'No preference', value: 'skip_date', cls: 'alt' }]);
+      });
+      nilu.step = 'ord_delivery_date';
+    }
+
     function niluFinishAppointment() {
       nilu.apptRef = 'APT' + Date.now().toString().slice(-5);
       var summary = 'Day: <strong>' + escapeHtml(nilu.apptDay) + '</strong><br>' +
@@ -1920,18 +2010,7 @@
 
         case 'ord_fabric':
           nilu.ordFabric = val;
-          niluSetInputEnabled(false);
-          niluTyping(function () {
-            niluBotSay('Do you have your measurements handy? Share <strong>Bust, Waist, Hip</strong> in inches (e.g. "36, 30, 38"), or tap below.');
-            niluSetInputEnabled(true, '36, 30, 38');
-            niluSetQuick([{ label: "I'll get measured at the boutique", value: 'skip_measure', cls: 'alt' }]);
-          });
-          nilu.step = 'ord_measurements';
-          break;
-
-        case 'ord_measurements':
-          nilu.ordMeasurements = val;
-          niluAskCollection();
+          niluAskMeasurementsForm();
           break;
 
         case 'ord_alt_notes':
@@ -1941,18 +2020,7 @@
 
         case 'ord_address':
           nilu.ordAddress = val;
-          niluSetInputEnabled(false);
-          niluTyping(function () {
-            niluBotSay('And when would you like it delivered by? You can type a date, or tap "No preference".');
-            niluSetInputEnabled(true, 'e.g. 15 August');
-            niluSetQuick([{ label: 'No preference', value: 'skip_date', cls: 'alt' }]);
-          });
-          nilu.step = 'ord_delivery_date';
-          break;
-
-        case 'ord_delivery_date':
-          nilu.ordDeliveryDate = val;
-          niluFinishOrder();
+          niluAskDeliveryDateForm();
           break;
 
         default:
@@ -2117,12 +2185,7 @@
             });
             nilu.step = 'ord_address';
           } else {
-            niluSetInputEnabled(true, 'e.g. 15 August');
-            niluTyping(function () {
-              niluBotSay('When would you like it ready by? Type a date, or tap "No preference".');
-              niluSetQuick([{ label: 'No preference', value: 'skip_date', cls: 'alt' }]);
-            });
-            nilu.step = 'ord_delivery_date';
+            niluAskDeliveryDateForm();
           }
           break;
 
@@ -2192,6 +2255,19 @@
       if (e.key === 'Enter') { e.preventDefault(); niluSubmitText(); }
     });
     niluSetInputEnabled(false);
+
+    // ── Auto-open on page load ───────────────────────────
+    // Greets the visitor and asks for name & mobile number automatically.
+    // Only once per browser tab session, so it doesn't reopen on every
+    // internal link click or page refresh during the same visit.
+    var niluAlreadyAutoOpened = false;
+    try { niluAlreadyAutoOpened = sessionStorage.getItem('niluAutoOpened') === '1'; } catch (e) { /* privacy mode etc. */ }
+    if (!niluAlreadyAutoOpened) {
+      setTimeout(function () {
+        if (!niluEl.chat.classList.contains('open')) niluOpen();
+        try { sessionStorage.setItem('niluAutoOpened', '1'); } catch (e) { /* ignore */ }
+      }, 2500);
+    }
   })();
 
 </script>
