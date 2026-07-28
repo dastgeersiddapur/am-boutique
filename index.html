@@ -55,8 +55,6 @@
     .nav-links a { font-size:12px;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s; }
     .nav-links a:hover { color:var(--rose); }
     .nav-cta { background:var(--rose)!important;color:white!important;padding:8px 20px;border-radius:4px;transition:background .2s!important; }
-    .nav-install-link { display:none; }
-    .nav-install-link.show { display:flex; }
     .nav-cta:hover { background:var(--rose-dark)!important; }
     .hamburger { display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px; }
     .hamburger span { display:block;width:24px;height:1.5px;background:var(--dark);transition:.3s; }
@@ -454,7 +452,6 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#order" class="nav-cta" style="background:var(--gold)!important;">Order Online</a></li>
     <li><a href="#booking" style="font-size:12px;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;">Book Visit</a></li>
-    <li><a href="#" id="navInstallBtn" class="nav-install-link" style="font-size:12px;font-weight:500;color:var(--rose-dark);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;align-items:center;gap:5px;"><i class="ti ti-download" style="font-size:15px;"></i> Install App</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -1186,7 +1183,7 @@
 
 <!-- NILU — AI BOOKING ASSISTANT -->
 <button class="nilu-launcher" id="niluLauncher" aria-label="Chat with Nilu, our AI assistant" type="button">
-  <img src="nilu-avatar.jpg" alt="Nilu" class="nilu-launcher-avatar" />
+  <img src="nilu-avatar.jpg?v=2" alt="Nilu" class="nilu-launcher-avatar" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2750%27 fill=%27%23c97b84%27/%3E%3Ctext x=%2750%27 y=%2764%27 font-size=%2744%27 font-family=%27Georgia,serif%27 fill=%27white%27 text-anchor=%27middle%27%3EN%3C/text%3E%3C/svg%3E';" />
   <span class="nilu-launcher-text">Chat with Nilu</span>
   <span class="nilu-badge">AI</span>
 </button>
@@ -1194,7 +1191,7 @@
 <div class="nilu-chat" id="niluChat" role="dialog" aria-label="Nilu AI Assistant chat">
   <div class="nilu-header">
     <div class="nilu-header-info">
-      <div class="nilu-avatar"><img src="nilu-avatar.jpg" alt="Nilu" /></div>
+      <div class="nilu-avatar"><img src="nilu-avatar.jpg?v=2" alt="Nilu" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2750%27 fill=%27%23c97b84%27/%3E%3Ctext x=%2750%27 y=%2764%27 font-size=%2744%27 font-family=%27Georgia,serif%27 fill=%27white%27 text-anchor=%27middle%27%3EN%3C/text%3E%3C/svg%3E';" /></div>
       <div>
         <div class="nilu-name">Nilu <span class="nilu-online">&#9679; online</span></div>
         <div class="nilu-role">AI Assistant &middot; AM Women's Boutique</div>
@@ -1756,6 +1753,31 @@
       { label: 'Something else', value: 'Other' }
     ];
 
+    // Master measurement field definitions (mirrors the Order Online form's fields).
+    var MEASURE_FIELDS = {
+      bust:       { label: 'Bust',          cls: 'nf-bust',       min: 20, max: 60, step: 0.5, ph: 'e.g. 36' },
+      waist:      { label: 'Waist',         cls: 'nf-waist',      min: 20, max: 60, step: 0.5, ph: 'e.g. 30' },
+      hip:        { label: 'Hip',           cls: 'nf-hip',        min: 20, max: 70, step: 0.5, ph: 'e.g. 38' },
+      shoulder:   { label: 'Shoulder',      cls: 'nf-shoulder',   min: 8,  max: 30, step: 0.5, ph: 'e.g. 14' },
+      height:     { label: 'Full height',   cls: 'nf-height',     min: 40, max: 80, step: 0.5, ph: 'e.g. 62' },
+      armhole:    { label: 'Arm hole',      cls: 'nf-armhole',    min: 8,  max: 30, step: 0.5, ph: 'e.g. 16' },
+      blouse_len: { label: 'Blouse length', cls: 'nf-blouse',     min: 8,  max: 30, step: 0.5, ph: 'e.g. 15' },
+      sleeve_len: { label: 'Sleeve length', cls: 'nf-sleeve',     min: 0,  max: 30, step: 0.5, ph: 'e.g. 8'  },
+      kurti_len:  { label: 'Kurti length',  cls: 'nf-kurti',      min: 20, max: 72, step: 0.5, ph: 'e.g. 42' },
+      pant_len:   { label: 'Pant length',   cls: 'nf-pantlen',    min: 20, max: 60, step: 0.5, ph: 'e.g. 38' },
+      pant_waist: { label: 'Pant waist',    cls: 'nf-pantwaist',  min: 20, max: 60, step: 0.5, ph: 'e.g. 32' }
+    };
+
+    // Which fields to show per service — e.g. Chudi Set asks for Kurti/Pant
+    // measurements instead of Blouse length, since a chudi set has no blouse.
+    var SERVICE_MEASURE_FIELDS = {
+      'Blouse Stitching': ['bust', 'waist', 'shoulder', 'armhole', 'blouse_len', 'sleeve_len'],
+      'Chudi Set':         ['bust', 'waist', 'hip', 'shoulder', 'kurti_len', 'sleeve_len', 'pant_len', 'pant_waist'],
+      'Lehenga':           ['bust', 'waist', 'hip', 'blouse_len', 'sleeve_len'],
+      'Gown':              ['bust', 'waist', 'hip', 'height', 'sleeve_len'],
+      'Other':             ['bust', 'waist', 'hip', 'shoulder', 'blouse_len', 'sleeve_len']
+    };
+
     var niluEl = {
       launcher: document.getElementById('niluLauncher'),
       chat:     document.getElementById('niluChat'),
@@ -1919,34 +1941,30 @@
       niluSetInputEnabled(false);
       niluClearQuick();
       niluTyping(function () {
+        var fieldKeys = SERVICE_MEASURE_FIELDS[nilu.ordService] || SERVICE_MEASURE_FIELDS['Other'];
+        var gridHtml = fieldKeys.map(function (key) {
+          var f = MEASURE_FIELDS[key];
+          return '<label>' + f.label + '<input type="number" step="' + f.step + '" min="' + f.min + '" max="' + f.max + '" class="' + f.cls + '" placeholder="' + f.ph + '"></label>';
+        }).join('');
+
         var div = document.createElement('div');
         div.className = 'nilu-msg bot nilu-form-msg';
         div.innerHTML =
           '<div>Great! Enter your measurements below (in inches) \u2014 just like our Order Online form \u2014 or tap the skip option if you\'d rather get measured at the boutique.</div>' +
-          '<div class="nilu-mform-grid">' +
-            '<label>Bust<input type="number" step="0.5" min="20" max="60" class="nf-bust" placeholder="e.g. 36"></label>' +
-            '<label>Waist<input type="number" step="0.5" min="20" max="60" class="nf-waist" placeholder="e.g. 30"></label>' +
-            '<label>Hip<input type="number" step="0.5" min="20" max="70" class="nf-hip" placeholder="e.g. 38"></label>' +
-            '<label>Shoulder<input type="number" step="0.5" min="8" max="30" class="nf-shoulder" placeholder="e.g. 14"></label>' +
-            '<label>Blouse length<input type="number" step="0.5" min="8" max="30" class="nf-blouse" placeholder="e.g. 15"></label>' +
-            '<label>Sleeve length<input type="number" step="0.5" min="0" max="30" class="nf-sleeve" placeholder="e.g. 8"></label>' +
-          '</div>' +
+          '<div class="nilu-mform-grid">' + gridHtml + '</div>' +
           '<button type="button" class="nilu-form-btn nf-save">Save Measurements</button>';
         niluEl.body.appendChild(div);
         niluScrollDown();
 
         var saveBtn = div.querySelector('.nf-save');
         saveBtn.addEventListener('click', function () {
-          function gv(sel) { var e = div.querySelector(sel); return (e && e.value) ? e.value.trim() : ''; }
           var parts = [];
-          var bust = gv('.nf-bust'), waist = gv('.nf-waist'), hip = gv('.nf-hip'),
-            shoulder = gv('.nf-shoulder'), blouse = gv('.nf-blouse'), sleeve = gv('.nf-sleeve');
-          if (bust) parts.push('Bust ' + bust + '"');
-          if (waist) parts.push('Waist ' + waist + '"');
-          if (hip) parts.push('Hip ' + hip + '"');
-          if (shoulder) parts.push('Shoulder ' + shoulder + '"');
-          if (blouse) parts.push('Blouse length ' + blouse + '"');
-          if (sleeve) parts.push('Sleeve length ' + sleeve + '"');
+          fieldKeys.forEach(function (key) {
+            var f = MEASURE_FIELDS[key];
+            var el = div.querySelector('.' + f.cls);
+            var val = (el && el.value) ? el.value.trim() : '';
+            if (val) parts.push(f.label + ' ' + val + '"');
+          });
           div.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
           saveBtn.disabled = true;
           saveBtn.textContent = 'Saved \u2713';
