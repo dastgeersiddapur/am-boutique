@@ -1,2393 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- PWA — Android 12+ / Samsung compatible -->
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#c97b84" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="application-name" content="AM Boutique" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="AM Boutique" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icon-180-any.png" />
-  <link rel="apple-touch-icon" sizes="192x192" href="icon-192-any.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="icon-512-any.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="icon-192-any.png" />
-  <title>AM Women's Boutique | Custom Stitching & Alterations – Bengaluru</title>
-  <meta name="description" content="AM Women's Boutique offers custom blouse stitching, kurtis, lehengas, gowns and expert alterations in K Narayanapura, Bengaluru. Book your appointment online or via WhatsApp." />
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png" />
-  <link rel="icon" type="image/png" sizes="64x64" href="icon-64.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Jost', sans-serif; background: #faf7f4; color: #2c1f1f; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
-    :root {
-      --rose: #c97b84; --rose-light: #f5e8ea; --rose-dark: #8a4a52; --rose-mid: #a85f68;
-      --gold: #b5935a; --gold-light: #f7efe0; --gold-dark: #7a5e2e;
-      --cream: #faf7f4; --cream-dark: #f2ece5;
-      --dark: #2c1f1f; --mid: #6b4f4f; --muted: #a48585;
-      --white: #fff; --border: #e8ddd5;
-      --wa-green: #25d366; --wa-dark: #1da851;
-    }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-    @keyframes pulse-wa { 0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)} 50%{box-shadow:0 0 0 10px rgba(37,211,102,0)} }
-    .fade-up{animation:fadeUp .7s ease both}
-    .fade-up-1{animation-delay:.1s}.fade-up-2{animation-delay:.2s}.fade-up-3{animation-delay:.3s}
-    .fade-up-4{animation-delay:.4s}.fade-up-5{animation-delay:.5s}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AM Women's Boutique | Supabase App Fixed</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--pink:#e91e63;--pink-dark:#b9154b;--pink-soft:#fff0f6;--gold:#d4af37;--gold-soft:#fff8df;--cream:#fffaf5;--ink:#4a2f35;--muted:#77616a;--line:#f2d7df;--green:#138a52;--orange:#d97706;--purple:#7c3aed;--blue:#2563eb;--red:#dc2626;--shadow:0 16px 42px rgba(233,30,99,.12);--radius:24px}
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at top left,#fff0f6 0,#fffaf5 34%,#fff 100%);color:var(--ink)}button,input,select,textarea{font-family:"Segoe UI",Arial,sans-serif}.hidden{display:none!important}.app{max-width:1200px;margin:auto;padding:16px 14px 94px}.login-screen{min-height:100vh;display:grid;place-items:center;padding:22px}.login-card{width:min(430px,100%);background:#fff;border:1px solid var(--line);border-radius:34px;box-shadow:var(--shadow);padding:26px;text-align:center}.logo{width:58px;height:58px;border-radius:20px;background:#151515;display:grid;place-items:center;color:#fff;font-size:30px;margin:0 auto 12px;overflow:hidden;flex-shrink:0}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}.topbar{position:sticky;top:0;z-index:20;padding:10px 0;background:rgba(255,250,245,.9);backdrop-filter:blur(16px)}.hero{display:flex;justify-content:space-between;align-items:center;gap:14px;background:linear-gradient(135deg,#fff,#fff0f6);border:1px solid var(--line);border-radius:30px;padding:18px;box-shadow:var(--shadow)}.brand{display:flex;gap:14px;align-items:center}.brand .logo{margin:0}.kicker{margin:0;color:var(--gold);font-size:11px;letter-spacing:.25em;text-transform:uppercase;font-weight:800}.hero h1{margin:1px 0 4px;font-size:26px;color:var(--pink-dark)}.hero p,.muted{margin:0;color:var(--muted);font-size:12px;font-family:"Segoe UI",Arial,sans-serif}.hero-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pill{border:1px solid var(--line);background:#fff;color:var(--pink-dark);border-radius:999px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer}.pill.gold{background:var(--gold);border-color:var(--gold);color:#fff}.pill.green{background:var(--green);border-color:var(--green);color:#fff}.sync-badge{font-family:"Segoe UI",Arial,sans-serif;font-size:11px;border-radius:999px;padding:7px 10px;background:#fff8df;color:#98740c;font-weight:900}.grid{display:grid;gap:14px}.stats{grid-template-columns:repeat(6,1fr);margin:16px 0}.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 26px rgba(74,47,53,.06);padding:16px}.stat .icon{font-size:21px}.stat .n{font-size:24px;font-weight:900;margin:8px 0;color:var(--pink-dark);font-family:"Segoe UI",Arial,sans-serif}.layout{grid-template-columns:370px 1fr;align-items:start}.section-title{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}.section-title h2{margin:0;font-size:20px;color:var(--pink-dark)}.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:30}.tabwrap{max-width:820px;width:100%;display:grid;grid-template-columns:repeat(6,1fr)}.tab{border:0;background:transparent;padding:10px 4px;color:#8a6f78;font-size:10px;font-weight:800;cursor:pointer}.tab b{display:block;font-size:19px}.tab.active{color:var(--pink)}.search{display:flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:10px 12px;margin-bottom:12px}.search input{border:0;background:transparent;outline:none;width:100%;font-size:14px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-family:"Segoe UI",Arial,sans-serif;font-size:12px;color:#6e4f59;font-weight:800}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fffafc;border-radius:16px;padding:12px 13px;font-size:14px;outline:none;color:var(--ink)}.field textarea{min-height:82px;resize:vertical}.customer-list{display:flex;flex-direction:column;gap:9px;max-height:570px;overflow:auto;padding-right:3px}.cust{border:1px solid var(--line);background:#fff;border-radius:20px;padding:12px;cursor:pointer;text-align:left}.cust:hover,.cust.selected{border-color:#f8bbd0;background:var(--pink-soft)}.cust .name{font-weight:900;color:var(--pink-dark);font-size:15px}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.tag{font-family:"Segoe UI",Arial,sans-serif;font-size:11px;border-radius:999px;background:#f7edf1;color:#7b5160;padding:5px 8px;font-weight:800}.tag.green{background:#e9fbf2;color:#087546}.tag.orange{background:#fff4df;color:#a75a06}.tag.purple{background:#f2ecff;color:#6d28d9}.tag.blue{background:#eaf2ff;color:#1d4ed8}.tag.red{background:#fff0f0;color:#b91c1c}.tag.gold{background:var(--gold-soft);color:#98740c}.tag.pink{background:var(--pink-soft);color:var(--pink-dark)}.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:16px;padding:12px 14px;font-weight:900;cursor:pointer;background:var(--ink);color:#fff}.btn.primary{background:var(--pink)}.btn.gold{background:var(--gold)}.btn.green{background:var(--green)}.btn.orange{background:var(--orange)}.btn.blue{background:var(--blue)}.btn.red{background:var(--red)}.btn.light{background:#fff4f7;color:var(--pink-dark);border:1px solid var(--line)}.btn:disabled{opacity:.45;cursor:not-allowed}.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.subtab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-size:13px;font-weight:900;color:#7b5160;cursor:pointer}.subtab.active{background:var(--pink);border-color:var(--pink);color:#fff}.measurement-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.statusbar{font-family:"Segoe UI",Arial,sans-serif;background:#e9fbf2;color:#087546;border:1px solid #bff3d6;padding:12px;border-radius:16px;margin:12px 0;font-size:13px;font-weight:800}.dangerbar{background:#fff0f0;color:#b91c1c;border-color:#fecaca}.table-wrap{overflow:auto;border-radius:18px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:#fff;font-family:"Segoe UI",Arial,sans-serif}th,td{padding:11px;border-bottom:1px solid var(--line);font-size:13px;text-align:left;white-space:nowrap}th{background:#fff4f7;color:#7b5160;font-size:12px}.summary-card{background:linear-gradient(135deg,#fff0f6,#fff8df);border:1px solid var(--line);border-radius:24px;padding:15px;margin-bottom:14px}.summary-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}.summary-mini{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}.summary-mini b{font-family:"Segoe UI",Arial,sans-serif;color:var(--pink-dark);font-size:15px}.summary-mini span{display:block;font-family:"Segoe UI",Arial,sans-serif;color:var(--muted);font-size:11px}.modal{position:fixed;inset:0;background:rgba(74,47,53,.55);z-index:60;display:grid;place-items:center;padding:14px}.modal-card{width:min(720px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:26px;padding:18px}.receipt{border:1px solid var(--line);border-radius:22px;padding:22px;background:#fff}.receipt-head{text-align:center;border-bottom:2px solid var(--gold);padding-bottom:12px;margin-bottom:14px}.receipt-row{display:flex;justify-content:space-between;gap:20px;padding:8px 0;border-bottom:1px dashed #eed2dc;font-family:"Segoe UI",Arial,sans-serif}.receipt-total{background:var(--gold-soft);border-radius:16px;padding:12px;margin-top:12px}.appointment-card{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:8px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:10px;background:#fff;margin-bottom:8px;font-family:"Segoe UI",Arial,sans-serif}.appt-name{font-weight:900;color:var(--pink-dark)}
+@media(max-width:980px){.stats{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr}.measurement-grid{grid-template-columns:repeat(2,1fr)}.summary-grid{grid-template-columns:repeat(2,1fr)}.hero-actions{display:none}}
+@media(max-width:560px){.app{padding:12px 10px 92px}.stats{grid-template-columns:repeat(2,1fr);gap:10px}.hero{border-radius:24px;padding:14px}.hero h1{font-size:20px}.row,.three{grid-template-columns:1fr}.appointment-card{grid-template-columns:1fr}.summary-grid{grid-template-columns:1fr 1fr}.tab{font-size:9px}}
+@media print{.topbar,.tabs,.no-print,.modal .btns,.customer-panel{display:none!important}.modal{position:static;background:#fff;padding:0}.modal-card{box-shadow:none;border-radius:0;max-height:none;width:100%;padding:0}.receipt{border:0}.app{padding:0}}
+.install-btn{display:inline-flex;align-items:center;gap:6px}
+.install-banner{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--pink-soft);border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin-top:14px;text-align:left;font-family:"Segoe UI",Arial,sans-serif}
+.install-banner span{font-size:12px;color:var(--pink-dark);font-weight:800}
+</style>
 
-    /* NAV */
-    nav { position:sticky;top:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:68px; }
-    .nav-logo { display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--rose-dark);letter-spacing:.02em;text-decoration:none; }
-    .nav-logo img { width:40px;height:40px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold); }
-    .nav-logo span { color:var(--gold);font-style:italic; }
-    .nav-links { display:flex;align-items:center;gap:2rem;list-style:none; }
-    .nav-links a { font-size:12px;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s; }
-    .nav-links a:hover { color:var(--rose); }
-    .nav-cta { background:var(--rose)!important;color:white!important;padding:8px 20px;border-radius:4px;transition:background .2s!important; }
-    .nav-cta:hover { background:var(--rose-dark)!important; }
-    .hamburger { display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px; }
-    .hamburger span { display:block;width:24px;height:1.5px;background:var(--dark);transition:.3s; }
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#e91e63">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AM Boutique">
+<link rel="apple-touch-icon" href="/icon-192-any.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192-any.png">
 
-    /* HERO */
-    .hero { min-height:calc(100vh - 68px);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:5rem 3rem 4rem;gap:4rem;background:linear-gradient(135deg,#fdf6f0 0%,#f9eff4 60%,#f5eae8 100%);position:relative;overflow:hidden; }
-    .hero::before { content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,123,132,.08) 0%,transparent 70%);pointer-events:none; }
-    .hero::after  { content:'';position:absolute;left:-80px;bottom:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(181,147,90,.07) 0%,transparent 70%);pointer-events:none; }
-    .hero-badge { display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dark);background:var(--gold-light);border:.5px solid #d4b07a;padding:6px 16px;border-radius:30px;margin-bottom:1.5rem; }
-    .hero h1 { font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,64px);font-weight:300;line-height:1.15;color:var(--dark);margin-bottom:1.25rem; }
-    .hero h1 em { color:var(--rose);font-style:italic; }
-    .hero-desc { font-size:16px;font-weight:300;color:var(--mid);line-height:1.75;max-width:420px;margin-bottom:2rem; }
-    .btn-group { display:flex;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem; }
-    .btn-primary { display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:white;border:none;padding:13px 26px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;border-radius:4px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s; }
-    .btn-primary:hover { background:var(--rose-dark);transform:translateY(-1px); }
-    .btn-wa { display:inline-flex;align-items:center;gap:8px;background:var(--wa-green);color:white;border:none;padding:13px 26px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;border-radius:4px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;animation:pulse-wa 2.5s infinite; }
-    .btn-wa:hover { background:var(--wa-dark);transform:translateY(-1px);animation:none; }
-    .btn-order { display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:white;border:none;padding:13px 26px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;border-radius:4px;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s; }
-    .btn-order:hover { background:var(--gold-dark);transform:translateY(-1px); }
-    .order-banner { background:var(--gold-light);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap; }
-    .order-banner h3 { font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--dark);margin-bottom:4px; }
-    .order-banner p { font-size:14px;color:var(--mid);font-weight:300;margin:0; }
-    .order-section { background:white;border-top:.5px solid var(--border);padding:5rem 3rem; }
-    .order-tabs { display:flex;gap:0;margin-bottom:2.5rem;border:.5px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content; }
-    .order-tab { padding:10px 24px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:var(--cream);color:var(--mid);letter-spacing:.04em;transition:all .2s;font-family:'Jost',sans-serif; }
-    .order-tab.active { background:var(--rose);color:white; }
-    .order-tab:not(:last-child) { border-right:.5px solid var(--border); }
-    .order-panel { display:none; }
-    .order-panel.show { display:block; }
-    .order-form { display:flex;flex-direction:column;gap:14px;max-width:720px; }
-    .measure-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px; }
-    .measure-item { background:var(--cream-dark);border:.5px solid var(--border);border-radius:8px;padding:10px 12px; }
-    .measure-item label { font-size:11px;font-weight:500;color:var(--mid);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px; }
-    .measure-item input { width:100%;padding:8px 10px;border:.5px solid var(--border);border-radius:5px;font-family:'Jost',sans-serif;font-size:13px;color:var(--dark);background:white;outline:none; }
-    .measure-item input:focus { border-color:var(--rose); }
-    .measure-guide { background:var(--rose-light);border:.5px solid #dcc4c7;border-radius:8px;padding:10px 14px;font-size:12px;color:var(--mid);display:flex;gap:8px;align-items:flex-start;margin-bottom:8px; }
-    .hero-stats { display:flex;gap:2rem; }
-    .hero-stat .num { font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--rose-dark);line-height:1; }
-    .hero-stat .label { font-size:12px;color:var(--muted);font-weight:300;letter-spacing:.04em; }
-    .hero-visual { display:grid;grid-template-columns:1fr 1fr;gap:12px;animation:float 5s ease-in-out infinite; }
-    .hero-img-main { grid-column:span 2;border-radius:12px;overflow:hidden;height:220px; }
-    .hero-img-main img { width:100%;height:100%;object-fit:cover; }
-    .hero-img-small { border-radius:10px;overflow:hidden;height:150px; }
-    .hero-img-small img { width:100%;height:100%;object-fit:cover; }
-
-    /* TRUST BAR */
-    .trust-bar { background:var(--dark);padding:1rem 3rem;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap; }
-    .trust-item { display:flex;align-items:center;gap:8px;color:#c4a88a;font-size:12px;font-weight:400;letter-spacing:.06em; }
-    .trust-item i { color:var(--gold);font-size:16px; }
-
-    /* SECTIONS */
-    section { padding:5rem 3rem; }
-    .section-label { display:inline-block;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-bottom:.5rem; }
-    .section-title { font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,40px);font-weight:300;color:var(--dark);margin-bottom:.5rem;line-height:1.2; }
-    .section-sub { font-size:15px;font-weight:300;color:var(--mid);margin-bottom:3rem;max-width:520px; }
-
-    /* SERVICES */
-    #services { background:white; }
-    .services-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
-    .service-card { background:var(--cream);border:.5px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:all .25s;position:relative;overflow:hidden; }
-    .service-card::before { content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:var(--rose);transform:scaleX(0);transform-origin:left;transition:transform .25s; }
-    .service-card:hover { border-color:var(--rose);transform:translateY(-3px);background:white; }
-    .service-card:hover::before { transform:scaleX(1); }
-    .service-icon { width:48px;height:48px;background:var(--rose-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--rose);font-size:22px;transition:background .2s; }
-    .service-card:hover .service-icon { background:var(--rose);color:white; }
-    .service-card h4 { font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--dark);margin-bottom:6px; }
-    .service-card p { font-size:13px;color:var(--mid);font-weight:300;line-height:1.65;margin-bottom:12px; }
-    .service-price { display:inline-block;font-size:12px;color:var(--gold-dark);background:var(--gold-light);border:.5px solid #d4b07a;padding:4px 12px;border-radius:20px;font-weight:500; }
-
-    /* PROCESS */
-    #process { background:var(--cream-dark); }
-    .process-steps { display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative; }
-    .process-steps::before { content:'';position:absolute;top:28px;left:12.5%;width:75%;height:1px;background:repeating-linear-gradient(to right,var(--rose) 0,var(--rose) 8px,transparent 8px,transparent 16px); }
-    .process-step { text-align:center;padding:0 1rem;position:relative; }
-    .step-num { width:56px;height:56px;border-radius:50%;background:var(--rose);color:white;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;position:relative;z-index:1; }
-    .process-step h4 { font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--dark);margin-bottom:6px; }
-    .process-step p { font-size:13px;color:var(--mid);font-weight:300;line-height:1.6; }
-
-    /* GALLERY */
-    #gallery { background:white; }
-    .gallery-tabs { display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem; }
-    .gallery-tab { padding:8px 20px;border-radius:30px;font-size:12px;font-weight:500;letter-spacing:.06em;cursor:pointer;border:.5px solid var(--border);background:var(--cream);color:var(--mid);transition:all .2s; }
-    .gallery-tab.active,.gallery-tab:hover { background:var(--rose);color:white;border-color:var(--rose); }
-    .gallery-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:12px; }
-    .gallery-item { border-radius:12px;overflow:hidden;aspect-ratio:3/4;position:relative;cursor:pointer; }
-    .gallery-item img { width:100%;height:100%;object-fit:cover;transition:transform .4s ease; }
-    .gallery-item:hover img { transform:scale(1.06); }
-    .gallery-item .overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(44,31,31,.7) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1rem; }
-    .gallery-item:hover .overlay { opacity:1; }
-    .overlay-label { color:white;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase; }
-    .gallery-item.featured { grid-column:span 2;aspect-ratio:4/3; }
-
-    /* LIGHTBOX */
-    .lightbox { display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;padding:2rem; }
-    .lightbox.open { display:flex; }
-    .lightbox img { max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px; }
-    .lightbox-close { position:fixed;top:20px;right:24px;color:white;font-size:32px;cursor:pointer;background:none;border:none;line-height:1; }
-
-    /* BOOKING */
-    #booking { background:white;border-top:.5px solid var(--border);padding:4rem 3rem; }
-    .booking-grid { display:grid;grid-template-columns:1fr;gap:2rem;align-items:start;max-width:720px; }
-    .form-title { font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--dark);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px; }
-    .form-title i { color:var(--rose);font-size:24px; }
-    .booking-form { display:flex;flex-direction:column;gap:14px; }
-    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:14px; }
-    .form-group { display:flex;flex-direction:column;gap:6px; }
-    .form-group label { font-size:12px;font-weight:500;color:var(--mid);letter-spacing:.06em;text-transform:uppercase; }
-    .form-group input,.form-group select,.form-group textarea { padding:11px 14px;border:.5px solid var(--border);border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;color:var(--dark);background:var(--cream);outline:none;transition:border-color .2s,background .2s;width:100%; }
-    .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--rose);background:white; }
-    .form-group textarea { resize:vertical;min-height:80px; }
-    .form-submit { display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rose);color:white;border:none;padding:14px;width:100%;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:.06em;border-radius:6px;cursor:pointer;transition:background .2s,transform .15s;margin-top:4px; }
-    .form-submit:hover { background:var(--rose-dark);transform:translateY(-1px); }
-    .booking-divider { display:flex;align-items:center;gap:1rem;margin:.75rem 0;color:var(--muted);font-size:12px; }
-    .booking-divider::before,.booking-divider::after { content:'';flex:1;height:.5px;background:var(--border); }
-    .wa-card { background:#f0faf5;border:.5px solid #a8dfc0;border-radius:12px;padding:1rem 1.25rem;text-align:center;position:sticky;top:90px; }
-    .wa-circle { width:40px;height:40px;background:var(--wa-green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .6rem;color:white;font-size:20px;animation:pulse-wa 2.5s infinite; }
-    .wa-card h3 { font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--dark);margin-bottom:.35rem; }
-    .wa-card p { font-size:12px;color:var(--mid);font-weight:300;line-height:1.5;margin-bottom:.75rem; }
-    .wa-number { font-size:14px;font-weight:500;color:var(--wa-dark);margin-bottom:.75rem;display:flex;align-items:center;justify-content:center;gap:6px; }
-    .wa-hours { font-size:11px;color:var(--muted);margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:5px; }
-
-    /* TESTIMONIALS */
-    #testimonials { background:var(--gold-light); }
-    .testimonials-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
-    .testimonial-card { background:white;border:.5px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;transition:transform .2s; }
-    .testimonial-card:hover { transform:translateY(-3px); }
-    .stars { color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:1rem; }
-    .testimonial-card blockquote { font-size:14px;color:var(--mid);line-height:1.7;font-style:italic;font-weight:300;margin-bottom:1.25rem;border-left:2px solid var(--rose-light);padding-left:14px; }
-    .reviewer-info { display:flex;align-items:center;gap:10px; }
-    .reviewer-avatar { width:36px;height:36px;background:var(--rose-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--rose-dark); }
-    .reviewer-name { font-size:13px;font-weight:500;color:var(--dark); }
-    .reviewer-loc { font-size:12px;color:var(--muted);font-weight:300; }
-
-    /* CONTACT */
-    #contact { background:var(--rose-dark);padding:4rem 3rem; }
-    .contact-inner { display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem; }
-    .contact-brand .nav-logo { color:#f5e8ea; }
-    .contact-brand .nav-logo img { border-color:rgba(181,147,90,.5); }
-    .contact-tagline { font-size:14px;font-weight:300;color:rgba(255,255,255,.6);margin-top:.75rem;line-height:1.7; }
-    .social-links { display:flex;gap:10px;margin-top:1.5rem; }
-    .social-btn { width:38px;height:38px;border:.5px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:16px;cursor:pointer;transition:all .2s;text-decoration:none;background:transparent; }
-    .social-btn:hover { background:rgba(255,255,255,.15);color:white; }
-    .contact-col h4 { font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:1.25rem; }
-    .contact-info-list { display:flex;flex-direction:column;gap:12px; }
-    .contact-info-item { display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.65);font-size:13px;font-weight:300;line-height:1.5; }
-    .contact-info-item i { color:#ffb3bb;font-size:16px;flex-shrink:0;margin-top:1px; }
-    .contact-info-item a { color:rgba(255,255,255,.65);text-decoration:none; }
-    .contact-info-item a:hover { color:white; }
-    .hours-list { display:flex;flex-direction:column;gap:8px; }
-    .hours-row { display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.65);font-weight:300;padding-bottom:8px;border-bottom:.5px solid rgba(255,255,255,.1); }
-    .hours-row:last-child { border-bottom:none; }
-    .hours-row .day { color:rgba(255,255,255,.8); }
-    .hours-row .open { color:#a8e6c0; }
-    .hours-row .closed { color:#ffb3bb; }
-
-    footer { background:#1a1010;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem; }
-    footer p { font-size:12px;color:rgba(255,255,255,.3);letter-spacing:.04em; }
-    footer a { color:rgba(255,255,255,.4);text-decoration:none; }
-    footer a:hover { color:rgba(255,255,255,.7); }
-
-    /* FLOATING WA */
-    .float-wa { position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:var(--wa-green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:28px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:998;animation:pulse-wa 2.5s infinite;transition:transform .2s; }
-    .float-wa:hover { transform:scale(1.1);animation:none; }
-    .float-wa-tooltip { position:fixed;bottom:38px;right:96px;background:var(--dark);color:white;font-size:12px;padding:6px 14px;border-radius:20px;white-space:nowrap;z-index:997;opacity:0;transition:opacity .2s;pointer-events:none; }
-    .float-wa:hover + .float-wa-tooltip { opacity:1; }
-
-    /* TOAST */
-    .toast { position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--dark);color:white;font-size:14px;padding:12px 24px;border-radius:30px;display:flex;align-items:center;gap:8px;z-index:9999;transition:transform .4s ease;box-shadow:0 4px 24px rgba(0,0,0,.2); }
-    .toast.show { transform:translateX(-50%) translateY(0); }
-    .toast i { color:#a8e6c0; }
-
-    /* MOBILE */
-    @media(max-width:900px){
-      nav{padding:0 1.5rem}
-      .nav-links{display:none;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:white;padding:1.5rem 2rem;border-bottom:.5px solid var(--border);gap:1rem;z-index:998}
-      .nav-links.open{display:flex}
-      .hamburger{display:flex}
-      .hero{grid-template-columns:1fr;padding:3rem 1.5rem 2rem;min-height:auto;gap:2.5rem}
-      .hero-visual{animation:none}
-      section{padding:3rem 1.5rem}
-      .services-grid{grid-template-columns:1fr 1fr}
-      .process-steps{grid-template-columns:1fr 1fr}
-      .process-steps::before{display:none}
-      .booking-grid{grid-template-columns:1fr}
-      .wa-card{position:static}
-      #booking > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
-      .order-tabs{flex-direction:column;width:100%}
-      .order-tab{text-align:left}
-      .testimonials-grid{grid-template-columns:1fr}
-      .gallery-grid{grid-template-columns:1fr 1fr}
-      .gallery-item.featured{grid-column:span 2}
-      .contact-inner{grid-template-columns:1fr;gap:2rem}
-      .trust-bar{gap:1.5rem;padding:.75rem 1.5rem}
-      footer{padding:1rem 1.5rem}
-    }
-    @media(max-width:600px){
-      .services-grid{grid-template-columns:1fr}
-      .process-steps{grid-template-columns:1fr}
-      .form-row{grid-template-columns:1fr}
-      .gallery-grid{grid-template-columns:1fr 1fr}
-      .gallery-item.featured{grid-column:span 2}
-      .hero-stats{gap:1.25rem}
-      .gallery-tabs{gap:6px}
-    }
-  
-    /* Google Reviews */
-    .g-review-card { background:white;border:.5px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;transition:transform .2s; }
-    .g-review-card:hover { transform:translateY(-3px); }
-    .g-review-header { display:flex;align-items:center;gap:10px;margin-bottom:10px; }
-    .g-reviewer-pic { width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--rose-light);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--rose-dark);flex-shrink:0; }
-    .g-reviewer-name { font-size:13px;font-weight:500;color:var(--dark); }
-    .g-review-date { font-size:11px;color:var(--muted); }
-    .g-review-stars { color:#fbbc04;font-size:13px;letter-spacing:1px;margin-bottom:8px; }
-    .g-review-text { font-size:13px;color:var(--mid);line-height:1.65;font-style:italic; }
-    .g-powered { display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);margin-top:6px; }
-    /* PWA install banner */
-    .install-banner{position:fixed;bottom:0;left:0;right:0;z-index:9990;background:var(--dark);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;transform:translateY(100%);transition:transform .4s ease;border-top:2px solid var(--rose);}
-    .install-banner.show{transform:translateY(0);}
-    .install-banner-left{display:flex;align-items:center;gap:12px;}
-    .install-banner-logo{width:40px;height:40px;border-radius:10px;object-fit:cover;}
-    .install-banner-text p{margin:0;font-size:13px;font-weight:500;color:white;}
-    .install-banner-text span{font-size:11px;color:rgba(255,255,255,.55);}
-    .install-banner-btns{display:flex;gap:8px;align-items:center;}
-    .btn-install{background:var(--rose);color:white;border:none;padding:9px 18px;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;border-radius:4px;cursor:pointer;letter-spacing:.04em;}
-    .btn-install:hover{background:var(--rose-dark);}
-    .btn-install-dismiss{background:transparent;color:rgba(255,255,255,.5);border:none;font-size:20px;cursor:pointer;padding:0 4px;line-height:1;}
-    @media(max-width:600px){.install-banner{padding:10px 14px;}.install-banner-text span{display:none;}}
-
-    /* ── NILU — AI BOOKING ASSISTANT ───────────────────── */
-    .nilu-launcher{position:fixed;bottom:98px;right:28px;z-index:998;display:flex;align-items:center;gap:9px;background:var(--rose-dark);color:#fff;border:none;padding:8px 18px 8px 8px;border-radius:40px;cursor:pointer;box-shadow:0 6px 22px rgba(138,74,82,.35);font-family:'Jost',sans-serif;transition:transform .2s,box-shadow .2s;}
-    .nilu-launcher:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(138,74,82,.42);}
-    .nilu-launcher i{font-size:22px;}
-    .nilu-launcher-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid rgba(255,255,255,.6);}
-    .nilu-launcher-text{font-size:13px;font-weight:500;letter-spacing:.02em;white-space:nowrap;}
-    .nilu-launcher.hide{display:none;}
-    .nilu-badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:#fff;font-size:9px;font-weight:600;letter-spacing:.04em;padding:2px 6px;border-radius:10px;border:2px solid var(--cream);}
-
-    .nilu-chat{position:fixed;bottom:98px;right:28px;z-index:9995;width:368px;max-width:92vw;height:min(600px,78vh);background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(44,31,31,.28);display:none;flex-direction:column;overflow:hidden;border:.5px solid var(--border);}
-    .nilu-chat.open{display:flex;}
-    .nilu-header{background:linear-gradient(120deg,var(--rose-dark),var(--rose));padding:14px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-    .nilu-header-info{display:flex;align-items:center;gap:10px;}
-    .nilu-avatar{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;flex-shrink:0;overflow:hidden;}
-    .nilu-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
-    .nilu-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#fff;line-height:1.2;}
-    .nilu-online{font-family:'Jost',sans-serif;font-size:10px;font-weight:400;color:#c9f5da;margin-left:4px;}
-    .nilu-role{font-size:11px;color:rgba(255,255,255,.8);font-weight:300;margin-top:1px;}
-    .nilu-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:28px;height:28px;border-radius:50%;font-size:19px;cursor:pointer;line-height:1;flex-shrink:0;}
-    .nilu-close:hover{background:rgba(255,255,255,.28);}
-    .nilu-body{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px;background:var(--cream);}
-    .nilu-msg{max-width:82%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.55;animation:fadeUp .3s ease both;}
-    .nilu-msg.bot{align-self:flex-start;background:#fff;border:.5px solid var(--border);color:var(--dark);border-bottom-left-radius:4px;}
-    .nilu-msg.user{align-self:flex-end;background:var(--rose);color:#fff;border-bottom-right-radius:4px;}
-    .nilu-msg strong{font-weight:600;}
-    .nilu-msg .nilu-ref{display:inline-block;margin-top:6px;background:var(--gold-light);color:var(--gold-dark);border:.5px solid #d4b07a;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.03em;}
-    .nilu-msg.nilu-form-msg{max-width:96%;width:96%;}
-    .nilu-mform-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;}
-    .nilu-mform-grid label{font-size:10.5px;font-weight:500;color:var(--mid);letter-spacing:.03em;text-transform:uppercase;display:flex;flex-direction:column;gap:4px;}
-    .nilu-mform-grid input,.nilu-form-msg input[type="date"]{padding:8px 10px;border:.5px solid var(--border);border-radius:6px;font-family:'Jost',sans-serif;font-size:13px;color:var(--dark);background:var(--cream);outline:none;width:100%;}
-    .nilu-mform-grid input:focus,.nilu-form-msg input[type="date"]:focus{border-color:var(--rose);background:#fff;}
-    .nilu-form-msg input[type="date"]{margin-bottom:10px;}
-    .nilu-form-btn{width:100%;background:var(--rose);color:#fff;border:none;padding:10px;border-radius:8px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.02em;cursor:pointer;transition:background .15s;}
-    .nilu-form-btn:hover{background:var(--rose-dark);}
-    .nilu-form-btn:disabled{opacity:.6;cursor:default;}
-    .nilu-typing{align-self:flex-start;display:flex;gap:4px;padding:10px 13px;background:#fff;border:.5px solid var(--border);border-radius:14px;border-bottom-left-radius:4px;}
-    .nilu-typing span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:niluBlink 1.2s infinite ease-in-out;}
-    .nilu-typing span:nth-child(2){animation-delay:.2s;}
-    .nilu-typing span:nth-child(3){animation-delay:.4s;}
-    @keyframes niluBlink{0%,80%,100%{opacity:.25;}40%{opacity:1;}}
-    .nilu-quick{display:flex;flex-wrap:wrap;gap:8px;padding:0 14px 10px;flex-shrink:0;background:var(--cream);}
-    .nilu-chip{background:#fff;border:1px solid var(--rose);color:var(--rose-dark);font-family:'Jost',sans-serif;font-size:12.5px;font-weight:500;padding:8px 14px;border-radius:20px;cursor:pointer;transition:all .15s;}
-    .nilu-chip:hover{background:var(--rose);color:#fff;}
-    .nilu-chip.alt{border-color:var(--gold);color:var(--gold-dark);}
-    .nilu-chip.alt:hover{background:var(--gold);color:#fff;}
-    .nilu-chip.human{border-color:var(--muted);color:var(--mid);}
-    .nilu-chip.human:hover{background:var(--mid);color:#fff;}
-    .nilu-input-row{display:flex;gap:8px;padding:10px 12px;border-top:.5px solid var(--border);background:#fff;flex-shrink:0;}
-    .nilu-input-row input{flex:1;padding:10px 13px;border:.5px solid var(--border);border-radius:20px;font-family:'Jost',sans-serif;font-size:13px;outline:none;background:var(--cream);}
-    .nilu-input-row input:focus{border-color:var(--rose);background:#fff;}
-    .nilu-input-row input:disabled{opacity:.55;}
-    .nilu-input-row button{width:38px;height:38px;border-radius:50%;background:var(--rose);color:#fff;border:none;cursor:pointer;font-size:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
-    .nilu-input-row button:hover{background:var(--rose-dark);}
-    .nilu-input-row button:disabled{opacity:.5;cursor:not-allowed;}
-    .nilu-footer-link{padding:8px 14px 12px;text-align:center;background:#fff;flex-shrink:0;}
-    .nilu-footer-link a{font-size:11.5px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
-    .nilu-footer-link a:hover{color:var(--rose);}
-    .nilu-err{color:#c0392b;font-size:12px;}
-    @media(max-width:600px){
-      .nilu-launcher-text{display:none;}
-      .nilu-launcher{padding:14px;bottom:92px;right:16px;}
-      .nilu-chat{bottom:0;right:0;left:0;width:100%;max-width:100%;height:88vh;border-radius:16px 16px 0 0;}
-    }
-  </style>
-  <!-- Google Places API — for live reviews -->
-  <!-- IMPORTANT: Replace YOUR_API_KEY below with your Google Places API key -->
-  <!-- Get free key at: console.cloud.google.com → Enable Places API -->
-  <script>
-    var GOOGLE_PLACE_ID = 'ChIJt4JmO1C3rjsRZfFTae8-LXM';
-    var GOOGLE_API_KEY  = 'YOUR_GOOGLE_PLACES_API_KEY';
-
-    function loadGoogleReviews() {
-      if (!GOOGLE_API_KEY || GOOGLE_API_KEY === 'YOUR_GOOGLE_PLACES_API_KEY') {
-        // No API key — show rating banner with manual data
-        showStaticRating();
-        return;
-      }
-      var script = document.createElement('script');
-      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY + '&libraries=places&callback=initPlacesReviews';
-      script.async = true;
-      script.defer = true;
-      document.head.appendChild(script);
-    }
-
-    function initPlacesReviews() {
-      var service = new google.maps.places.PlacesService(document.createElement('div'));
-      service.getDetails({
-        placeId: GOOGLE_PLACE_ID,
-        fields: ['rating', 'user_ratings_total', 'reviews']
-      }, function(place, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          showLiveReviews(place);
-        } else {
-          showStaticRating();
-        }
-      });
-    }
-
-    function showLiveReviews(place) {
-      // Show rating banner
-      var banner = document.getElementById('gRatingBanner');
-      if (banner) banner.style.display = 'flex';
-      document.getElementById('gRatingNum').textContent   = place.rating ? place.rating.toFixed(1) : '5.0';
-      document.getElementById('gReviewCount').textContent = (place.user_ratings_total || 0) + ' Google reviews';
-      var starsEl = document.getElementById('gStars');
-      if (starsEl && place.rating) {
-        var full = Math.round(place.rating);
-        starsEl.innerHTML = '&#9733;'.repeat(full) + (full < 5 ? '&#9734;'.repeat(5-full) : '');
-      }
-      // Replace review cards with live ones
-      if (place.reviews && place.reviews.length > 0) {
-        var grid = document.getElementById('reviewsGrid');
-        if (!grid) return;
-        grid.innerHTML = '';
-        var reviews = place.reviews
-          .filter(function(r) { return r.rating >= 4; })
-          .slice(0, 6);
-        for (var i = 0; i < reviews.length; i++) {
-          var r = reviews[i];
-          var stars = '&#9733;'.repeat(r.rating) + (r.rating < 5 ? '&#9734;'.repeat(5-r.rating) : '');
-          var initials = r.author_name ? r.author_name.split(' ').map(function(w){return w[0];}).join('').substring(0,2).toUpperCase() : 'G';
-          var pic = r.profile_photo_url
-            ? '<img src="' + r.profile_photo_url + '" alt="' + r.author_name + '" style="width:38px;height:38px;border-radius:50%;object-fit:cover;" />'
-            : '<div class="g-reviewer-pic">' + initials + '</div>';
-          var text = r.text ? (r.text.length > 180 ? r.text.substring(0,180) + '...' : r.text) : '';
-          var date = r.relative_time_description || '';
-          var card = '<div class="g-review-card">'
-            + '<div class="g-review-header">' + pic
-            + '<div><div class="g-reviewer-name">' + r.author_name + '</div>'
-            + '<div class="g-review-date">' + date + '</div></div></div>'
-            + '<div class="g-review-stars">' + stars + '</div>'
-            + '<div class="g-review-text">"' + text + '"</div>'
-            + '<div class="g-powered"><img src="https://www.google.com/favicon.ico" style="width:12px;height:12px;" alt="Google"> Google review</div>'
-            + '</div>';
-          grid.innerHTML += card;
-        }
-      }
-    }
-
-    function showStaticRating() {
-      // Show banner with your known rating
-      var banner = document.getElementById('gRatingBanner');
-      if (banner) banner.style.display = 'flex';
-      document.getElementById('gRatingNum').textContent   = '5.0';
-      document.getElementById('gReviewCount').textContent = 'Rated on Google';
-      document.getElementById('gStars').innerHTML         = '&#9733;&#9733;&#9733;&#9733;&#9733;';
-    }
-
-    window.addEventListener('load', function() {
-      setTimeout(loadGoogleReviews, 800);
-    });
-  </script>
 </head>
 <body>
-
-<!-- NAVIGATION -->
-<nav id="top">
-  <a href="#top" class="nav-logo">
-    <img src="icon-192-any.png" alt="AM Women's Boutique Logo" />
-    AM <span>Women's</span> Boutique
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#process">How It Works</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#order" class="nav-cta" style="background:var(--gold)!important;">Order Online</a></li>
-    <li><a href="#booking" style="font-size:12px;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;">Book Visit</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div>
-    <div class="hero-badge fade-up fade-up-1">
-      <i class="ti ti-sparkles"></i> Crafted with love &middot; Est. 2023
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="logo"><img src="/icon-192-any.png" alt="AM Women's Boutique logo"></div>
+    <h1>AM Women's Boutique</h1>
+    <p class="muted">Secure staff login powered by Supabase</p>
+    <div class="field" style="text-align:left;margin-top:14px">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="staff@amboutique.online" autocomplete="email" />
     </div>
-    <h1 class="fade-up fade-up-2">Stitched to fit<br>you, <em>perfectly.</em></h1>
-    <p class="hero-desc fade-up fade-up-3">
-      Custom blouses, kurtis, lehengas, gowns &amp; expert alterations &mdash; all tailored precisely to your measurements. Located in K Narayanapura, Bengaluru.
-    </p>
-    <div class="btn-group fade-up fade-up-4">
-      <a href="#order" class="btn-order"><i class="ti ti-shopping-bag"></i> Order Online</a>
-      <a href="#booking" class="btn-primary"><i class="ti ti-calendar"></i> Book Appointment</a>
-      <a href="https://wa.me/919740180887?text=Hi%20AM%20Women's%20Boutique!%20I'd%20like%20to%20book%20an%20appointment." class="btn-wa" target="_blank" rel="noopener"><i class="ti ti-brand-whatsapp"></i> WhatsApp Us</a>
+    <div class="field" style="text-align:left;margin-top:10px">
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="Enter password" autocomplete="current-password" />
     </div>
-    <div class="hero-stats fade-up fade-up-5">
-      <div class="hero-stat"><div class="num">500+</div><div class="label">Happy Customers</div></div>
-      <div class="hero-stat"><div class="num">2+</div><div class="label">Years of Service</div></div>
-      <div class="hero-stat"><div class="num">5&#9733;</div><div class="label">Avg. Rating</div></div>
+    <button class="btn primary" style="width:100%;margin-top:14px" onclick="login()">Login</button>
+    <button class="btn light" style="width:100%;margin-top:10px" onclick="resetPassword()">Forgot / Reset Password</button>
+    <div id="loginMsg" class="statusbar hidden" style="text-align:left"></div>
+    <div class="muted" style="margin-top:12px;text-align:left">Use the staff email and password created in Supabase Authentication → Users.</div>
+    <div id="installBannerLogin" class="install-banner no-print">
+      <span>📲 Install this app on your phone for quick access</span>
+      <button class="pill gold install-btn" onclick="installApp()">Install</button>
     </div>
-  </div>
-  <div class="hero-visual fade-up fade-up-3">
-    <div class="hero-img-main">
-      <img src="lehenga-2.jpg" alt="Beautiful lehenga by AM Women's Boutique" />
-    </div>
-    <div class="hero-img-small">
-      <img src="blouse-1.jpg" alt="Custom blouse stitching" />
-    </div>
-    <div class="hero-img-small">
-      <img src="gown-2.jpg" alt="Elegant gown stitching" />
-    </div>
-  </div>
-</section>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item"><i class="ti ti-check"></i> 500+ Happy Customers</div>
-  <div class="trust-item"><i class="ti ti-check"></i> All Fabrics Welcome</div>
-  <div class="trust-item"><i class="ti ti-check"></i> Same-Week Delivery Available</div>
-  <div class="trust-item"><i class="ti ti-check"></i> Bridal Specialists</div>
-  <div class="trust-item"><i class="ti ti-check"></i> Free Measurement Consultation</div>
-</div>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-label">What we offer</div>
-  <div class="section-title">Our Services</div>
-  <div class="section-sub">Each piece is stitched with care, precision, and your personal style in mind</div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon"><i class="ti ti-shirt"></i></div>
-      <h4>Blouse Stitching</h4>
-      <p>Traditional, modern, backless, boat neck, halter, dart, princess cut, madubala cut &mdash; any style, any fabric, any design. We bring your vision to life.</p>
-      <span class="service-price">From &#8377;550</span>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><i class="ti ti-hanger"></i></div>
-      <h4>Chudi Set</h4>
-      <p>Anarkali, straight cut, A-line, asymmetric, high-low with straight pant, plazo or normal pant &mdash; stitched from your fabric or material we source for you.</p>
-      <span class="service-price">From &#8377;850</span>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><i class="ti ti-sparkles"></i></div>
-      <h4>Lehenga</h4>
-      <p>Bridal, festive and party lehengas with skirt, blouse and dupatta &mdash; crafted with perfection for your special day.</p>
-      <span class="service-price">From &#8377;1,500</span>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><i class="ti ti-star"></i></div>
-      <h4>Gowns</h4>
-      <p>Floor-length, maxi gowns &mdash; elegant and tailored for every occasion and every body shape.</p>
-      <span class="service-price">From &#8377;1,500</span>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><i class="ti ti-scissors"></i></div>
-      <h4>Alterations</h4>
-      <p>Resize, reshape, hem, repair &mdash; bring any garment and we'll make it fit you beautifully again with expert precision.</p>
-      <span class="service-price">From &#8377;50</span>
-    </div>
-    <div class="service-card" style="background:var(--rose-light);border-color:#dcc4c7;display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center;">
-      <div class="service-icon" style="background:white;margin:0 auto 1rem;"><i class="ti ti-calendar-heart"></i></div>
-      <h4>Ready to Begin?</h4>
-      <p style="text-align:center;">Book a visit and let's bring your dream outfit to life!</p>
-      <a href="#booking" class="btn-primary" style="margin-top:1rem;font-size:12px;padding:10px 20px;">Schedule Now</a>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="process">
-  <div class="section-label">Simple steps</div>
-  <div class="section-title">How It Works</div>
-  <div class="section-sub">Getting your custom outfit is easy &mdash; just 4 simple steps</div>
-  <div class="process-steps">
-    <div class="process-step">
-      <div class="step-num">1</div>
-      <h4>Book Appointment</h4>
-      <p>Schedule online or message us on WhatsApp at a time that suits you</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">2</div>
-      <h4>Consultation &amp; Measurement</h4>
-      <p>Visit us, share your design idea and we take your precise measurements</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">3</div>
-      <h4>We Stitch It</h4>
-      <p>Our skilled tailors craft your outfit with full care and attention to detail</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">4</div>
-      <h4>Try &amp; Collect</h4>
-      <p>Come in for a fitting &mdash; we adjust until it's absolutely perfect for you</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="section-label">Our Work</div>
-  <div class="section-title">Gallery</div>
-  <div class="section-sub">Real pieces crafted at AM Women's Boutique &mdash; each stitched with love and precision</div>
-  <div class="gallery-tabs">
-    <button class="gallery-tab active" onclick="filterGallery('all',this)">All Work</button>
-    <button class="gallery-tab" onclick="filterGallery('blouse',this)">Blouses</button>
-    <button class="gallery-tab" onclick="filterGallery('lehenga',this)">Lehenga</button>
-    <button class="gallery-tab" onclick="filterGallery('gown',this)">Gowns</button>
-    <button class="gallery-tab" onclick="filterGallery('suit',this)">Suits &amp; Kurtis</button>
-  </div>
-  <div class="gallery-grid" id="galleryGrid">
-    <div class="gallery-item featured" data-cat="lehenga" onclick="openLightbox(this)">
-      <img src="lehenga-2.jpg" alt="Black sequin lehenga" />
-      <div class="overlay"><span class="overlay-label">Sequin Lehenga</span></div>
-    </div>
-    <div class="gallery-item" data-cat="blouse" onclick="openLightbox(this)">
-      <img src="blouse-1.jpg" alt="Purple blouse with Banarasi border" />
-      <div class="overlay"><span class="overlay-label">Designer Blouse</span></div>
-    </div>
-    <div class="gallery-item" data-cat="blouse" onclick="openLightbox(this)">
-      <img src="blouse-2.jpg" alt="Gold embroidered blouse back" />
-      <div class="overlay"><span class="overlay-label">Embroidered Blouse</span></div>
-    </div>
-    <div class="gallery-item" data-cat="gown" onclick="openLightbox(this)">
-      <img src="gown-1.jpg" alt="Navy blue lace gown" />
-      <div class="overlay"><span class="overlay-label">Lace Gown</span></div>
-    </div>
-    <div class="gallery-item" data-cat="blouse" onclick="openLightbox(this)">
-      <img src="blouse-3.jpg" alt="Yellow embroidered blouse back" />
-      <div class="overlay"><span class="overlay-label">Bridal Blouse</span></div>
-    </div>
-    <div class="gallery-item" data-cat="lehenga" onclick="openLightbox(this)">
-      <img src="lehenga-1.jpg" alt="Traditional lehenga" />
-      <div class="overlay"><span class="overlay-label">Traditional Lehenga</span></div>
-    </div>
-    <div class="gallery-item" data-cat="blouse" onclick="openLightbox(this)">
-      <img src="blouse-4.jpg" alt="Gold V-neck blouse" />
-      <div class="overlay"><span class="overlay-label">Gold Blouse</span></div>
-    </div>
-    <div class="gallery-item" data-cat="gown" onclick="openLightbox(this)">
-      <img src="gown-2.jpg" alt="Lavender gown" />
-      <div class="overlay"><span class="overlay-label">Lavender Gown</span></div>
-    </div>
-    <div class="gallery-item" data-cat="suit" onclick="openLightbox(this)">
-      <img src="suit-2.jpg" alt="Yellow kurti" />
-      <div class="overlay"><span class="overlay-label">Designer Kurti</span></div>
-    </div>
-    <div class="gallery-item" data-cat="suit" onclick="openLightbox(this)">
-      <img src="suit-3.jpg" alt="Green kurti with embroidery" />
-      <div class="overlay"><span class="overlay-label">Embroidered Kurti</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-  <img id="lightboxImg" src="" alt="Gallery preview" onclick="event.stopPropagation()" />
-</div>
-
-<!-- ORDER BANNER -->
-<div class="order-banner">
-  <div>
-    <h3><i class="ti ti-shopping-bag" style="color:var(--gold);font-size:26px;vertical-align:middle;margin-right:8px;"></i>Order Online &mdash; from the comfort of your home</h3>
-    <p>Submit your order with measurements &amp; design details. We stitch it, you collect at our boutique or we deliver.</p>
-    <div style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--gold-dark);background:white;border:.5px solid #d4b07a;padding:6px 14px;border-radius:6px;margin-top:10px;">
-      <i class="ti ti-credit-card" style="font-size:14px;"></i> We accept UPI payment (GPay / PhonePe)
-    </div>
-  </div>
-  <a href="#order" class="btn-order" style="flex-shrink:0;font-size:14px;padding:14px 30px;"><i class="ti ti-arrow-down"></i> Place Order Now</a>
-</div>
-
-<!-- ONLINE ORDER SECTION -->
-<section class="order-section" id="order">
-  <div class="section-label">Online ordering</div>
-  <div class="section-title">Place Your Order</div>
-  <div class="section-sub">Fill in your details — we will confirm your order on WhatsApp</div>
-
-  <!-- STEP INDICATORS -->
-  <div class="order-tabs">
-    <button class="order-tab active" id="tab0" onclick="otab(0,this)">1 — Your details</button>
-    <button class="order-tab" id="tab1" onclick="otab(1,this)">2 — Service</button>
-    <button class="order-tab" id="tab2" onclick="otab(2,this)">3 — Measurements</button>
-    <button class="order-tab" id="tab3" onclick="otab(3,this)">4 — Submit</button>
-  </div>
-
-  <!-- All steps inside one div — no <form> tag to avoid HTML5 validation blocking -->
-  <div class="order-form" id="orderWrap">
-
-    <!-- STEP 1 -->
-    <div class="order-panel show" id="op0">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-        <div class="form-group">
-          <label>Full Name *</label>
-          <input type="text" id="o_name" placeholder="Priya Sharma" />
-        </div>
-        <div class="form-group">
-          <label>WhatsApp Number *</label>
-          <input type="tel" id="o_phone" placeholder="+91 98765 43210" />
-        </div>
-        <div class="form-group">
-          <label>Email (optional)</label>
-          <input type="email" id="o_email" placeholder="priya@email.com" />
-        </div>
-        <div class="form-group">
-          <label>Preferred Delivery Date *</label>
-          <input type="date" id="o_delivery" />
-        </div>
-      </div>
-      <div class="form-group" style="margin-top:4px;">
-        <label>Collection preference *</label>
-        <select id="o_pickup" onchange="toggleAddress()">
-          <option value="">&#8212; Select &#8212;</option>
-          <option value="pickup">Pick up from boutique (K Narayanapura)</option>
-          <option value="delivery">Home delivery (charges extra)</option>
-        </select>
-      </div>
-      <div id="o_addr_row" style="display:none;" class="form-group">
-        <label>Delivery Address</label>
-        <textarea id="o_address" placeholder="Full address with landmark, Bengaluru..."></textarea>
-      </div>
-      <div style="background:var(--gold-light);border:.5px solid #d4b07a;border-radius:8px;padding:12px 14px;font-size:13px;color:var(--gold-dark);margin-top:8px;display:flex;gap:8px;">
-        <i class="ti ti-credit-card" style="font-size:16px;flex-shrink:0;margin-top:1px;"></i>
-        <span>We accept <strong>UPI payment</strong> (GPay / PhonePe) — collected when you pick up your order.</span>
-      </div>
-      <div id="err0" style="display:none;color:#c0392b;font-size:13px;padding:8px 12px;background:#fdf0f0;border-radius:6px;margin-top:8px;"></div>
-      <button type="button" class="btn-primary" style="margin-top:16px;" onclick="goStep(1)">
-        Next &mdash; Service &amp; Design <i class="ti ti-arrow-right"></i>
-      </button>
-    </div>
-
-    <!-- STEP 2 -->
-    <div class="order-panel" id="op1">
-      <div class="form-group">
-        <label>Service Required *</label>
-        <select id="o_service" onchange="toggleAlteration()">
-          <option value="">&#8212; Select &#8212;</option>
-          <option value="Blouse Stitching">Blouse Stitching (from &#8377;550)</option>
-          <option value="Chudi Set">Chudi Set (from &#8377;850)</option>
-          <option value="Lehenga">Lehenga &amp; Blouse (from &#8377;1,500)</option>
-          <option value="Gown">Gown (from &#8377;1,500)</option>
-          <option value="Alteration">Alteration (from &#8377;50)</option>
-          <option value="Other">Other / Custom</option>
-        </select>
-      </div>
-      <div id="design_fields">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-          <div class="form-group">
-            <label>Neck / Neckline style</label>
-            <select id="o_neck">
-              <option value="">&#8212; Select &#8212;</option>
-              <option>Round neck</option><option>V-neck</option><option>Square neck</option>
-              <option>Boat neck</option><option>High neck</option><option>Halter neck</option>
-              <option>Backless</option><option>Sweetheart</option><option>As per photo</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Sleeve style</label>
-            <select id="o_sleeve">
-              <option value="">&#8212; Select &#8212;</option>
-              <option>Short sleeve</option><option>3/4th sleeve</option><option>Full sleeve</option>
-              <option>Sleeveless</option><option>Bell sleeve</option><option>Puff sleeve</option><option>As per photo</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Fabric type / colour</label>
-            <input type="text" id="o_fabric" placeholder="e.g. Silk, dark green with gold border" />
-          </div>
-          <div class="form-group">
-            <label>Embroidery / work</label>
-            <select id="o_work">
-              <option value="">&#8212; Select &#8212;</option>
-              <option>Plain / no work</option><option>Embroidery</option><option>Zari / gota</option>
-              <option>Mirror work</option><option>Sequin / stone work</option><option>As per photo</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Reference photo link (optional)</label>
-          <input type="url" id="o_photo_url" placeholder="Paste Google Drive / Instagram link" />
-          <small style="color:var(--muted);font-size:11px;margin-top:4px;display:block;">Upload to Google Drive and paste the share link here</small>
-        </div>
-      </div>
-      <div id="alteration_fields" style="display:none;">
-        <div class="form-group">
-          <label>Type of alteration</label>
-          <select id="o_alt_type">
-            <option value="">&#8212; Select &#8212;</option>
-            <option>Size reduction</option><option>Size increase</option>
-            <option>Hem / length adjustment</option><option>Sleeve alteration</option>
-            <option>Repair / mending</option><option>Blouse alteration</option><option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Describe what needs to be altered</label>
-          <textarea id="o_alt_notes" placeholder="e.g. Reduce waist by 2 inches..."></textarea>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Special instructions</label>
-        <textarea id="o_notes" placeholder="Any special design requests, fabric notes..."></textarea>
-      </div>
-      <div id="err1" style="display:none;color:#c0392b;font-size:13px;padding:8px 12px;background:#fdf0f0;border-radius:6px;margin-top:8px;"></div>
-      <div style="display:flex;gap:10px;margin-top:16px;">
-        <button type="button" class="btn-outline" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> Back</button>
-        <button type="button" class="btn-primary" onclick="goStep(2)">Next &mdash; Measurements <i class="ti ti-arrow-right"></i></button>
-      </div>
-    </div>
-
-    <!-- STEP 3 -->
-    <div class="order-panel" id="op2">
-      <div class="measure-guide">
-        <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0;color:var(--rose);margin-top:1px;"></i>
-        <div>All measurements in <strong>inches</strong>. Use a soft tape. Stand straight. Not sure? Visit us for <strong>free measurements</strong> at our boutique!</div>
-      </div>
-      <!-- BODY MEASUREMENTS -->
-      <div style="font-size:12px;font-weight:600;color:var(--rose-dark);letter-spacing:.08em;text-transform:uppercase;margin:10px 0 8px;">Body measurements (in inches)</div>
-      <div class="measure-grid">
-        <div class="measure-item">
-          <label>Bust / Chest</label>
-          <input type="number" id="m_bust" placeholder="e.g. 36" step="0.5" min="20" max="60" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Fullest part of chest</small>
-        </div>
-        <div class="measure-item">
-          <label>Waist</label>
-          <input type="number" id="m_waist" placeholder="e.g. 30" step="0.5" min="20" max="60" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Narrowest part of waist</small>
-        </div>
-        <div class="measure-item">
-          <label>Hip</label>
-          <input type="number" id="m_hip" placeholder="e.g. 38" step="0.5" min="20" max="70" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Fullest part of hip</small>
-        </div>
-        <div class="measure-item">
-          <label>Shoulder width</label>
-          <input type="number" id="m_shoulder" placeholder="e.g. 14" step="0.5" min="8" max="30" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Across both shoulders</small>
-        </div>
-        <div class="measure-item">
-          <label>Full height</label>
-          <input type="number" id="m_height" placeholder="e.g. 62" step="0.5" min="40" max="80" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Neck to floor</small>
-        </div>
-        <div class="measure-item">
-          <label>Arm / Bicep</label>
-          <input type="number" id="m_arm" placeholder="e.g. 11" step="0.5" min="6" max="30" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Fullest part of upper arm</small>
-        </div>
-        <div class="measure-item">
-          <label>Arm hole</label>
-          <input type="number" id="m_armhole" placeholder="e.g. 16" step="0.5" min="8" max="30" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Around arm opening</small>
-        </div>
-        <div class="measure-item">
-          <label>Thigh</label>
-          <input type="number" id="m_thigh" placeholder="e.g. 22" step="0.5" min="10" max="40" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Fullest part of thigh</small>
-        </div>
-      </div>
-
-      <!-- BLOUSE / KURTI MEASUREMENTS -->
-      <div style="font-size:12px;font-weight:600;color:var(--rose-dark);letter-spacing:.08em;text-transform:uppercase;margin:16px 0 8px;">Blouse &amp; Kurti measurements (in inches)</div>
-      <div class="measure-grid">
-        <div class="measure-item">
-          <label>Blouse length</label>
-          <input type="number" id="m_blouse_len" placeholder="e.g. 15" step="0.5" min="8" max="30" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Neck to hem of blouse</small>
-        </div>
-        <div class="measure-item">
-          <label>Sleeve length</label>
-          <input type="number" id="m_sleeve_len" placeholder="e.g. 8" step="0.5" min="0" max="30" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Shoulder to wrist / end</small>
-        </div>
-        <div class="measure-item">
-          <label>Kurti length</label>
-          <input type="number" id="m_kurti_len" placeholder="e.g. 42" step="0.5" min="20" max="72" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Neck to kurti hem</small>
-        </div>
-      </div>
-
-      <!-- PANT / BOTTOM MEASUREMENTS -->
-      <div style="font-size:12px;font-weight:600;color:var(--rose-dark);letter-spacing:.08em;text-transform:uppercase;margin:16px 0 8px;">Pant / Bottom measurements (in inches)</div>
-      <div class="measure-grid">
-        <div class="measure-item">
-          <label>Pant length</label>
-          <input type="number" id="m_pant_len" placeholder="e.g. 38" step="0.5" min="20" max="60" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Waist to ankle / desired end</small>
-        </div>
-        <div class="measure-item">
-          <label>Pant waist round</label>
-          <input type="number" id="m_pant_waist" placeholder="e.g. 32" step="0.5" min="20" max="60" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Around waist for pant</small>
-        </div>
-        <div class="measure-item">
-          <label>Pant bottom round</label>
-          <input type="number" id="m_pant_bottom" placeholder="e.g. 14" step="0.5" min="8" max="40" />
-          <small style="font-size:10px;color:var(--muted);margin-top:3px;display:block;">Width at ankle / pant end</small>
-        </div>
-      </div>
-      <div class="form-group" style="margin-top:14px;">
-        <label>Measurement notes</label>
-        <input type="text" id="m_notes" placeholder="e.g. Prefer loose at waist, petite fit..." />
-      </div>
-      <div style="display:flex;gap:10px;margin-top:16px;">
-        <button type="button" class="btn-outline" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> Back</button>
-        <button type="button" class="btn-primary" onclick="goStep(3)">Next &mdash; Review &amp; Submit <i class="ti ti-arrow-right"></i></button>
-      </div>
-    </div>
-
-    <!-- STEP 4: SUCCESS / SUBMIT -->
-    <div class="order-panel" id="op3">
-      <!-- ORDER SUMMARY -->
-      <div id="reviewBox" style="background:var(--cream-dark);border:.5px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem;">
-        <div style="font-size:14px;font-weight:500;color:var(--dark);margin-bottom:10px;"><i class="ti ti-clipboard-list" style="color:var(--rose);margin-right:6px;"></i>Order Summary</div>
-        <div id="summaryContent" style="font-size:13px;color:var(--mid);line-height:2;"></div>
-      </div>
-      <div style="background:var(--gold-light);border:.5px solid #d4b07a;border-radius:8px;padding:12px 14px;font-size:13px;color:var(--gold-dark);margin-bottom:1rem;display:flex;gap:8px;">
-        <i class="ti ti-credit-card" style="font-size:16px;flex-shrink:0;margin-top:1px;"></i>
-        <span>We accept <strong>UPI payment</strong> (GPay / PhonePe) — collected at boutique when you collect your order.</span>
-      </div>
-      <!-- SUBMIT BUTTON -->
-      <div id="submitArea">
-        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <button type="button" class="btn-outline" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> Back</button>
-          <button type="button" id="mainSubmitBtn" onclick="doSubmitOrder()"
-            style="flex:1;min-width:200px;display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:white;border:none;padding:14px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:.06em;border-radius:6px;cursor:pointer;">
-            <i class="ti ti-brand-whatsapp" style="font-size:18px;"></i> Send Order on WhatsApp
-          </button>
-        </div>
-        <p style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Tapping this opens WhatsApp with your full order — just tap Send to notify us.</p>
-      </div>
-
-      <!-- SUCCESS STATE — shown after submit -->
-      <div id="successArea" style="display:none;text-align:center;padding:1rem 0;">
-        <div style="width:64px;height:64px;background:#e8f8ef;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:28px;color:#1da851;">
-          <i class="ti ti-circle-check"></i>
-        </div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--dark);margin-bottom:6px;" id="successName">Order Submitted!</h3>
-        <p style="font-size:13px;color:var(--mid);margin-bottom:1.5rem;" id="successRef"></p>
-
-        <div style="background:var(--gold-light);border:.5px solid #d4b07a;border-radius:10px;padding:14px;margin-bottom:16px;text-align:left;font-size:13px;color:var(--gold-dark);">
-          <strong>Now complete these 2 steps to notify us:</strong>
-          <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;">
-            <span>1&#65039;&#8419; Tap <strong>Send Order to Boutique</strong> &rarr; opens WhatsApp &rarr; tap Send</span>
-            <span>2&#65039;&#8419; Tap <strong>Send My Confirmation</strong> &rarr; so we have your WhatsApp number</span>
-          </div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto;">
-          <button type="button" id="btnStep1"
-            onclick="sendToBoutique()"
-            style="display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:white;border:none;padding:15px 20px;border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;cursor:pointer;width:100%;">
-            <i class="ti ti-brand-whatsapp" style="font-size:20px;"></i>
-            Step 1 &mdash; Send Order to Boutique
-          </button>
-          <button type="button" id="btnStep2"
-            onclick="sendCustomerConfirm()"
-            style="display:flex;align-items:center;justify-content:center;gap:10px;background:var(--rose);color:white;border:none;padding:15px 20px;border-radius:6px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;cursor:pointer;width:100%;">
-            <i class="ti ti-message-circle" style="font-size:18px;"></i>
-            Step 2 &mdash; Send My Confirmation
-          </button>
-          <button type="button" onclick="resetOrder()"
-            style="background:none;border:.5px solid var(--border);border-radius:4px;padding:8px 20px;font-family:'Jost',sans-serif;font-size:12px;color:var(--mid);cursor:pointer;">
-            Place another order
-          </button>
-        </div>
-        <p style="font-size:12px;color:var(--muted);margin-top:1rem;">We reply on WhatsApp within a few hours &middot; Mon&ndash;Sat 10:30 AM&ndash;7:30 PM</p>
-      </div>
-    </div>
-
-  </div><!-- end orderWrap -->
-</section>
-
-<!-- BOOKING -->
-<section id="booking">
-  <div class="section-label">Easy scheduling</div>
-  <div class="section-title">Book an Appointment</div>
-  <div class="section-sub">Fill in the form below or chat with us directly on WhatsApp</div>
-  <!-- APPOINTMENT FORM — full width on top -->
-  <div style="max-width:720px;">
-    <div class="form-title"><i class="ti ti-calendar-check"></i> Appointment Request</div>
-    <form class="booking-form" id="bookingForm" onsubmit="submitForm(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="fname">Full Name *</label>
-          <input type="text" id="fname" placeholder="Priya Sharma" required />
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number *</label>
-          <input type="tel" id="phone" placeholder="+91 97401 80887" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="service">Service Required *</label>
-        <select id="service" required>
-          <option value="">&#8212; Select a service &#8212;</option>
-          <option>Blouse Stitching</option>
-          <option>Chudi Set</option>
-          <option>Lehenga &amp; Blouse</option>
-          <option>Gown</option>
-          <option>Alteration</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="apptdate">Preferred Date *</label>
-          <input type="date" id="apptdate" required />
-        </div>
-        <div class="form-group">
-          <label for="time">Preferred Time *</label>
-          <select id="time" required>
-            <option value="">&#8212; Select slot &#8212;</option>
-            <option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
-            <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option>
-            <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option>
-            <option>3:30 PM</option><option>4:00 PM</option><option>4:30 PM</option>
-            <option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option>
-            <option>6:30 PM</option><option>7:00 PM</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="notes">Additional Notes</label>
-        <textarea id="notes" placeholder="Describe your design idea, fabric, colour, or any special requirements..."></textarea>
-      </div>
-      <button type="submit" class="form-submit"><i class="ti ti-calendar-check"></i> Confirm My Appointment</button>
-    </form>
-  </div>
-
-  <!-- WHATSAPP + VISIT BOUTIQUE — side by side below form -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;max-width:720px;margin-top:.5rem;">
-
-    <!-- WhatsApp card -->
-    <div class="wa-card" style="position:static;">
-      <div class="wa-circle"><i class="ti ti-brand-whatsapp"></i></div>
-      <h3>Book via WhatsApp</h3>
-      <p>Send us a quick message and we'll confirm your slot within the hour.</p>
-      <div class="wa-number"><i class="ti ti-phone"></i> +91 97401 80887</div>
-      <a href="https://wa.me/919740180887?text=Hi%20AM%20Women's%20Boutique!%20I'd%20like%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20available%20slots." class="btn-wa" target="_blank" rel="noopener" style="width:100%;justify-content:center;padding:9px 13px;font-size:13px;"><i class="ti ti-brand-whatsapp"></i> Open WhatsApp</a>
-      <div class="wa-hours"><i class="ti ti-clock" style="font-size:13px;"></i>&nbsp; Mon&ndash;Sat &middot; 10:30 AM &ndash; 7:30 PM</div>
-    </div>
-
-    <!-- Visit Boutique card -->
-    <div style="background:var(--cream-dark);border-radius:12px;padding:1rem 1.25rem;border:.5px solid var(--border);">
-      <h4 style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--dark);margin-bottom:.75rem;">
-        <i class="ti ti-map-pin" style="color:var(--rose);font-size:16px;margin-right:5px;"></i>Visit Our Boutique
-      </h4>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;gap:8px;font-size:12px;color:var(--mid);font-weight:300;">
-          <i class="ti ti-map-pin" style="color:var(--rose);font-size:14px;flex-shrink:0;margin-top:1px;"></i>
-          <span>K Narayanapura,<br>Bengaluru &ndash; 560077</span>
-        </div>
-        <div style="display:flex;gap:8px;font-size:12px;color:var(--mid);font-weight:300;">
-          <i class="ti ti-clock" style="color:var(--rose);font-size:14px;flex-shrink:0;"></i>
-          <span>Mon &ndash; Sat<br>10:30 AM &ndash; 7:30 PM</span>
-        </div>
-        <div style="display:flex;gap:8px;font-size:12px;color:var(--mid);font-weight:300;">
-          <i class="ti ti-phone" style="color:var(--rose);font-size:14px;flex-shrink:0;"></i>
-          <a href="tel:+919740180887" style="color:var(--mid);">+91 97401 80887</a>
-        </div>
-      </div>
-      <div style="margin-top:.75rem;border-radius:8px;overflow:hidden;border:.5px solid var(--border);">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.588622959668!2d77.63567531533202!3d13.064873990788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17003b6682b7%3A0x732d3eef6953f165!2sAM%20Women's%20Boutique!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-          width="100%" height="140" style="border:0;display:block;"
-          allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="AM Women's Boutique location">
-        </iframe>
-      </div>
-      <a href="https://maps.app.goo.gl/X8mBFEpD6outjHGHA" target="_blank" rel="noopener"
-         style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:var(--rose);text-decoration:none;font-weight:500;">
-        <i class="ti ti-external-link" style="font-size:13px;"></i> Open in Google Maps
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- TESTIMONIALS / GOOGLE REVIEWS -->
-<section id="testimonials">
-  <div class="section-label">Customer love</div>
-  <div class="section-title">What Our Clients Say</div>
-  <div class="section-sub">Real reviews from Google &mdash; updated live</div>
-
-  <!-- Google Rating Banner -->
-  <div id="gRatingBanner" style="display:none;background:white;border:.5px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:10px;">
-      <img src="https://www.google.com/favicon.ico" style="width:20px;height:20px;" alt="Google" />
-      <span style="font-size:13px;font-weight:500;color:var(--dark);">Google Rating</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <span id="gRatingNum" style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--dark);line-height:1;">-</span>
-      <div>
-        <div id="gStars" style="color:#fbbc04;font-size:18px;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div id="gReviewCount" style="font-size:11px;color:var(--muted);">Loading reviews...</div>
-      </div>
-    </div>
-    <a href="https://g.page/r/CWXxU2nvPi1zEBI/review" target="_blank" rel="noopener"
-       style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:var(--gold-light);border:.5px solid #d4b07a;color:var(--gold-dark);padding:9px 18px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;">
-      <i class="ti ti-star"></i> Write a Review
-    </a>
-  </div>
-
-  <!-- Reviews Grid — loads from Google Places API -->
-  <div id="reviewsGrid" class="testimonials-grid">
-    <!-- Static fallback cards shown while loading -->
-    <div class="testimonial-card">
-      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <blockquote>"Got my wedding blouse stitched here &mdash; the fit was absolutely perfect and it was ready on time. The finishing was impeccable. Highly recommend to all brides!"</blockquote>
-      <div class="reviewer-info"><div class="reviewer-avatar">KR</div><div><div class="reviewer-name">Kavitha R.</div><div class="reviewer-loc">Bengaluru &middot; Bridal Blouse</div></div></div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <blockquote>"Very professional and friendly staff. My salwar alteration was done in one day. Will definitely come back for my daughter's lehenga!"</blockquote>
-      <div class="reviewer-info"><div class="reviewer-avatar">MS</div><div><div class="reviewer-name">Meena S.</div><div class="reviewer-loc">Jayanagar &middot; Alteration</div></div></div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <blockquote>"The gown they made for my reception was stunning. Everyone kept asking where I got it stitched. Thank you AM Boutique!"</blockquote>
-      <div class="reviewer-info"><div class="reviewer-avatar">DN</div><div><div class="reviewer-name">Divya N.</div><div class="reviewer-loc">BTM Layout &middot; Reception Gown</div></div></div>
-    </div>
-  </div>
-
-  <!-- Leave review CTA below -->
-  <div style="text-align:center;margin-top:2rem;">
-    <a href="https://g.page/r/CWXxU2nvPi1zEBI/review" target="_blank" rel="noopener"
-       style="display:inline-flex;align-items:center;gap:8px;background:white;border:.5px solid #d4b07a;color:var(--gold-dark);padding:11px 24px;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;">
-      <i class="ti ti-star" style="color:var(--gold);font-size:16px;"></i>
-      Happy with our work? Leave us a Google Review &#9733;
-    </a>
-  </div>
-</section>
-
-<!-- CONTACT / FOOTER -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="contact-brand">
-      <a href="#top" class="nav-logo" style="color:#f5e8ea;">
-        <img src="icon-192-any.png" alt="AM Women's Boutique Logo" style="border-color:rgba(181,147,90,0.5);" />
-        AM <span>Women's</span> Boutique
-      </a>
-      <p class="contact-tagline">Bringing your dream outfits to life &mdash; one stitch at a time. Trusted by women across Bengaluru since 2023.</p>
-      <div class="social-links">
-        <a href="#" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-        <a href="#" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
-        <a href="https://wa.me/919740180887" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
-      </div>
-    </div>
-    <div class="contact-col">
-      <h4>Contact Us</h4>
-      <div class="contact-info-list">
-        <div class="contact-info-item"><i class="ti ti-map-pin"></i><span>K Narayanapura,<br>Bengaluru &ndash; 560077</span></div>
-        <div class="contact-info-item"><i class="ti ti-phone"></i><a href="tel:+919740180887">+91 97401 80887</a></div>
-        <div class="contact-info-item"><i class="ti ti-brand-whatsapp"></i><a href="https://wa.me/919740180887" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
-        <div class="contact-info-item"><i class="ti ti-brand-instagram"></i><span>@amwomensboutique</span></div>
-        <div class="contact-info-item"><i class="ti ti-star" style="color:#ffb3bb;"></i><a href="https://g.page/r/CWXxU2nvPi1zEBI/review" target="_blank" rel="noopener" style="color:rgba(255,255,255,.65);">Leave a Google Review</a></div>
-      </div>
-    </div>
-    <div class="contact-col">
-      <h4>Opening Hours</h4>
-      <div class="hours-list">
-        <div class="hours-row"><span class="day">Monday &ndash; Saturday</span><span class="open">10:30 AM &ndash; 7:30 PM</span></div>
-        <div class="hours-row"><span class="day">Sunday</span><span class="closed">Closed</span></div>
-        <div class="hours-row"><span class="day">Public Holidays</span><span class="closed">Closed</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2023 AM Women's Boutique &middot; K Narayanapura, Bengaluru &ndash; 560077 &middot; Made with &#9825; in Bengaluru</p>
-  <p><a href="#top">Back to top &uarr;</a></p>
-</footer>
-
-
-<!-- PWA INSTALL BANNER -->
-<div class="install-banner" id="installBanner">
-  <div class="install-banner-left">
-    <img src="icon-192-any.png" alt="AM Boutique" class="install-banner-logo" />
-    <div class="install-banner-text">
-      <p id="installBannerTitle">Add AM Boutique to your home screen</p>
-      <span id="installBannerSub">Install the app for quick ordering & gallery access</span>
-    </div>
-  </div>
-  <div class="install-banner-btns">
-    <button class="btn-install" id="btnInstall"><i class="ti ti-download"></i> Install App</button>
-    <button class="btn-install-dismiss" id="btnDismiss" aria-label="Dismiss">&times;</button>
   </div>
 </div>
+<div id="mainApp" class="app hidden">
+<div class="topbar no-print"><div class="hero"><div class="brand"><div class="logo"><img src="/icon-192-any.png" alt="AM Women's Boutique logo"></div><div><p class="kicker">Supabase Connected</p><h1>AM Women's Boutique</h1><p>Customers, measurements, AMW orders, receipts, appointments and revenue dashboard</p></div></div><div class="hero-actions"><span id="syncStatus" class="sync-badge">Ready</span><span id="roleBadge" class="sync-badge">Not signed in</span><button id="installBtnHeader" class="pill gold install-btn" onclick="installApp()">📲 Install App</button><button class="pill" onclick="newCustomer()">+ Customer</button><button class="pill gold" onclick="newOrderShortcut()">+ AMW Order</button><button class="pill green" onclick="loadFromSupabase()">Refresh Cloud</button><button class="pill" onclick="logout()">Logout</button></div></div></div>
+<section id="dashboardView"><div class="grid stats"><div class="card stat"><div class="icon">👥</div><div class="n" id="statCustomers">0</div><div class="label">Customers</div></div><div class="card stat"><div class="icon">🧾</div><div class="n" id="statOrders">0</div><div class="label">Orders</div></div><div class="card stat"><div class="icon">💰</div><div class="n" id="statRevenue">₹0</div><div class="label">Revenue</div></div><div class="card stat"><div class="icon">💳</div><div class="n" id="statAdvance">₹0</div><div class="label">Advance</div></div><div class="card stat"><div class="icon">⚠️</div><div class="n" id="statBalance">₹0</div><div class="label">Balance</div></div><div class="card stat"><div class="icon">📅</div><div class="n" id="statTodayAppt">0</div><div class="label">Today Appts</div></div></div><div class="grid layout"><div class="card customer-panel"><div class="section-title"><h2>Customers</h2><span id="customerCountLabel" class="muted">0 records</span></div><div class="search"><span>🔎</span><input id="searchInput" placeholder="Search name, mobile, id, order" oninput="renderCustomers()" /></div><div id="customerList" class="customer-list"></div></div><div class="grid"><div class="card"><div class="section-title"><h2>Revenue Dashboard</h2><span class="muted">By garment type</span></div><div class="table-wrap"><table><thead><tr><th>Garment</th><th>Orders</th><th>Revenue</th><th>Advance</th><th>Balance</th></tr></thead><tbody id="garmentRevenueTable"></tbody></table></div></div><div class="card"><div class="section-title"><h2>Upcoming Deliveries</h2><span class="muted">Pending only</span></div><div class="table-wrap"><table><thead><tr><th>Delivery</th><th>Order No</th><th>Customer</th><th>Garment</th><th>Status</th><th>Receipt</th></tr></thead><tbody id="deliveryTable"></tbody></table></div></div></div></div></section>
+<section id="customerView" class="hidden"><div class="grid layout"><div class="card customer-panel"><div class="section-title"><h2>Customer Search</h2><span id="customerCountLabel2" class="muted">0 records</span></div><div class="search"><span>🔎</span><input id="searchInput2" placeholder="Search customer" oninput="renderCustomers()" /></div><div id="customerList2" class="customer-list"></div></div><div class="card"><div class="section-title"><h2 id="formTitle">New Customer</h2><span id="currentCustomerId" class="muted">Not saved</span></div><div id="customerSummary" class="summary-card hidden"></div><div class="subtabs no-print"><button class="subtab active" data-sub="profile" onclick="switchSub('profile')">Profile</button><button class="subtab" data-sub="measurements" onclick="switchSub('measurements')">Measurements</button><button class="subtab" data-sub="orders" onclick="switchSub('orders')">Orders</button><button class="subtab" data-sub="appointments" onclick="switchSub('appointments')">Appointments</button><button class="subtab" data-sub="history" onclick="switchSub('history')">History</button></div><div id="msg" class="statusbar hidden"></div><div id="subProfile"><div class="row"><div class="field"><label>Customer Name *</label><input id="cName" /></div><div class="field"><label>Mobile Number *</label><input id="cMobile" maxlength="10" oninput="digitsOnly(this)" /></div></div><div class="row"><div class="field"><label>WhatsApp Number</label><input id="cWhatsapp" maxlength="10" oninput="digitsOnly(this)" /></div><div class="field"><label>Preferred Contact</label><select id="cPreferred"><option>WhatsApp</option><option>Call</option><option>SMS</option></select></div></div><div class="row"><div class="field"><label>Birthday</label><input id="cBirthday" type="date" /></div><div class="field"><label>Anniversary</label><input id="cAnniversary" type="date" /></div></div><div class="field"><label>Address</label><textarea id="cAddress"></textarea></div><div class="field"><label>Customer Notes</label><textarea id="cNotes"></textarea></div><div class="field"><label>Customer Photo</label><input type="file" id="customerPhoto" accept="image/*" onchange="uploadCustomerPhoto()"><img id="photoPreview" style="max-width:120px;border-radius:12px;display:none;margin-top:10px"></div><div class="btns no-print"><button class="btn primary" onclick="saveCustomer()">Save Customer</button><button class="btn light" onclick="newCustomer()">Clear</button><button class="btn red" id="deleteCustomerBtn" onclick="deleteCustomer()" disabled>Delete Customer</button></div></div>
+<div id="subMeasurements" class="hidden"><div class="row"><div class="field"><label>Measurement Profile</label><select id="mType"><option>Blouse</option><option>Kurti</option><option>Gown</option><option>Lehenga</option><option>Dress</option><option>Alteration</option><option>Other</option></select></div><div class="field"><label>Measured Date</label><input id="mDate" type="date" /></div></div><div class="measurement-grid" id="measurementInputs"></div><div class="field" style="margin-top:10px"><label>Measurement Notes</label><textarea id="mNotes"></textarea></div><div class="btns no-print" style="margin-top:10px"><button class="btn primary" onclick="saveMeasurement()">Save Measurement</button><button class="btn light" onclick="clearMeasurementForm()">Clear</button><button class="btn gold" onclick="window.print()">Print Card</button></div><div class="table-wrap" style="margin-top:14px"><table><thead><tr><th>Type</th><th>Date</th><th>Summary</th><th>Action</th></tr></thead><tbody id="measurementTable"></tbody></table></div></div>
+<div id="subOrders" class="hidden"><div class="three"><div class="field"><label>Order No</label><input id="oId" readonly /></div><div class="field"><label>Garment</label><select id="oGarment"><option>Blouse</option><option>Kurti</option><option>Gown</option><option>Lehenga</option><option>Dress</option><option>Alteration</option><option>Other</option></select></div><div class="field"><label>Service</label><select id="oService"><option>New Stitching</option><option>Custom Stitching</option><option>Alteration</option><option>Measurement Only</option><option>Online Order</option><option>Physical Visit</option></select></div><div class="field"><label>Status</label><select id="oStatus"><option>New</option><option>In Stitching</option><option>Trial</option><option>Ready</option><option>Delivered</option><option>Cancelled</option></select></div><div class="field"><label>Order Date</label><input id="oDate" type="date" /></div><div class="field"><label>Trial Date</label><input id="oTrial" type="date" /></div><div class="field"><label>Delivery Date</label><input id="oDelivery" type="date" /></div><div class="field"><label>Total Amount</label><input id="oAmount" type="number" /></div><div class="field"><label>Advance Paid</label><input id="oAdvance" type="number" /></div><div class="field"><label>Balance</label><input id="oBalance" type="number" readonly /></div></div><div class="field" style="margin-top:10px"><label>Order Notes</label><textarea id="oNotes"></textarea></div><div class="btns no-print" style="margin-top:10px"><button class="btn primary" onclick="saveOrder()">Save AMW Order</button><button class="btn gold" onclick="openCurrentReceipt()">Receipt</button><button class="btn green" onclick="sendWhatsApp('confirm')">WhatsApp Confirmation</button><button class="btn orange" onclick="sendWhatsApp('delivery')">Delivery Reminder</button><button class="btn light" onclick="clearOrderForm()">Clear</button></div><div class="table-wrap" style="margin-top:14px"><table><thead><tr><th>Order No</th><th>Garment</th><th>Status</th><th>Delivery</th><th>Amount</th><th>Balance</th><th>Action</th></tr></thead><tbody id="orderTable"></tbody></table></div></div>
+<div id="subAppointments" class="hidden"><div class="three"><div class="field"><label>Appointment No</label><input id="aId" readonly /></div><div class="field"><label>Date</label><input id="aDate" type="date" /></div><div class="field"><label>Time</label><input id="aTime" type="time" /></div><div class="field"><label>Visit Type</label><select id="aType"><option>Measurement</option><option>Trial</option><option>Delivery</option><option>Consultation</option><option>Alteration</option></select></div><div class="field"><label>Status</label><select id="aStatus"><option>Booked</option><option>Completed</option><option>Missed</option><option>Cancelled</option></select></div><div class="field"><label>Notes</label><input id="aNotes" /></div></div><div class="btns no-print" style="margin-top:10px"><button class="btn primary" onclick="saveAppointment()">Save Appointment</button><button class="btn light" onclick="clearAppointmentForm()">Clear</button><button class="btn green" onclick="sendAppointmentWhatsApp()">WhatsApp Appointment</button></div><div id="customerAppointments" style="margin-top:14px"></div></div>
+<div id="subHistory" class="hidden"><div class="tag gold">Customer Full History</div><div id="historyBox" style="margin-top:12px"></div></div></div></div></section>
+<section id="ordersView" class="hidden"><div class="card"><div class="section-title"><h2>All AMW Orders</h2><span class="muted">Search by AMW-ORD number</span></div><div class="row no-print"><div class="search"><span>🔎</span><input id="orderSearch" oninput="renderAllOrders()" /></div><div class="field"><select id="statusFilter" onchange="renderAllOrders()"><option value="">All Status</option><option>New</option><option>In Stitching</option><option>Trial</option><option>Ready</option><option>Delivered</option><option>Cancelled</option></select></div></div><div class="table-wrap"><table><thead><tr><th>Order No</th><th>Customer</th><th>Mobile</th><th>Garment</th><th>Status</th><th>Delivery</th><th>Amount</th><th>Balance</th><th>Action</th></tr></thead><tbody id="allOrderTable"></tbody></table></div></div></section>
+<section id="appointmentsView" class="hidden"><div class="grid stats"><div class="card stat"><div class="icon">📅</div><div class="n" id="apptToday">0</div><div class="label">Today</div></div><div class="card stat"><div class="icon">⏭️</div><div class="n" id="apptUpcoming">0</div><div class="label">Upcoming</div></div><div class="card stat"><div class="icon">✅</div><div class="n" id="apptCompleted">0</div><div class="label">Completed</div></div><div class="card stat"><div class="icon">⚠️</div><div class="n" id="apptMissed">0</div><div class="label">Missed</div></div><div class="card stat"><div class="icon">📌</div><div class="n" id="apptBooked">0</div><div class="label">Booked</div></div><div class="card stat"><div class="icon">👗</div><div class="n" id="apptTrial">0</div><div class="label">Trial Visits</div></div></div><div class="card"><div class="section-title"><h2>Appointment Booking Tracker</h2><span class="muted">Measurement, trial and delivery</span></div><div class="row no-print"><div class="search"><span>🔎</span><input id="appointmentSearch" oninput="renderAppointmentsView()" /></div><div class="field"><select id="appointmentStatusFilter" onchange="renderAppointmentsView()"><option value="">All Appointment Status</option><option>Booked</option><option>Completed</option><option>Missed</option><option>Cancelled</option></select></div></div><div id="allAppointments"></div></div></section>
+<section id="reportsView" class="hidden"><div class="grid stats"><div class="card stat"><div class="icon">💰</div><div class="n" id="repRevenue">₹0</div><div class="label">Revenue</div></div><div class="card stat"><div class="icon">💳</div><div class="n" id="repAdvance">₹0</div><div class="label">Advance</div></div><div class="card stat"><div class="icon">⚠️</div><div class="n" id="repBalance">₹0</div><div class="label">Balance</div></div><div class="card stat"><div class="icon">🟢</div><div class="n" id="repDelivered">0</div><div class="label">Delivered</div></div><div class="card stat"><div class="icon">🟠</div><div class="n" id="repInProgress">0</div><div class="label">In Progress</div></div><div class="card stat"><div class="icon">☁️</div><div class="n" id="cloudRows">0</div><div class="label">Cloud Customers</div></div></div><div class="card"><div class="section-title"><h2>Reports and Backup</h2><span class="muted">Cloud connected</span></div><div class="btns"><button class="btn primary" onclick="exportCustomersCsv()">Export Customers CSV</button><button class="btn blue" onclick="exportOrdersCsv()">Export Orders CSV</button><button class="btn gold" onclick="exportAppointmentsCsv()">Export Appointments CSV</button><button class="btn green" onclick="loadFromSupabase()">Refresh Supabase</button></div></div></section>
+<section id="settingsView" class="hidden"><div class="card"><div class="section-title"><h2>Settings</h2><span class="muted">Supabase setup</span></div><div class="row"><div class="field"><label>Boutique Name</label><input id="setName" value="AM Women's Boutique" /></div><div class="field"><label>Logged-in Staff Email</label><input id="setPin" value="" readonly /></div></div><div class="row"><div class="field"><label>WhatsApp Country Code</label><input id="setCountry" value="91" /></div><div class="field"><label>Order Prefix</label><input id="setOrderPrefix" value="AMW-ORD" readonly /></div></div><div class="btns" style="margin-top:12px"><button class="btn primary" onclick="saveSettings()">Save Settings</button><button class="btn green" onclick="testSupabaseConnection()">Test Supabase</button><button class="btn red" onclick="clearLocalCache()">Clear Local Cache</button></div><div class="muted" style="margin-top:12px">If save fails, run the RLS policy SQL shared in chat.</div></div></section>
+<div class="tabs no-print"><div class="tabwrap"><button class="tab active" data-view="dashboardView" onclick="showView('dashboardView')"><b>🏠</b>Home</button><button class="tab" data-view="customerView" onclick="showView('customerView')"><b>👤</b>Customers</button><button class="tab" data-view="ordersView" onclick="showView('ordersView')"><b>🧾</b>Orders</button><button class="tab" data-view="appointmentsView" onclick="showView('appointmentsView')"><b>📅</b>Appts</button><button class="tab" data-view="reportsView" onclick="showView('reportsView')"><b>📊</b>Reports</button><button class="tab" data-view="settingsView" onclick="showView('settingsView')"><b>⚙️</b>Settings</button></div></div>
+</div><div id="receiptModal" class="modal hidden"><div class="modal-card"><div id="receiptContent" class="receipt"></div><div class="btns no-print" style="margin-top:12px"><button class="btn primary" onclick="window.print()">Print Receipt</button><button class="btn gold" onclick="downloadReceiptHtml()">Download Receipt HTML</button><button class="btn green" onclick="sendReceiptWhatsApp()">Share WhatsApp</button><button class="btn light" onclick="closeReceipt()">Close</button></div></div></div>
+<script>
+const SUPABASE_URL = "https://fskawmlskypeqxehrrhx.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZza2F3bWxza3lwZXF4ZWhycmh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUxOTIwODYsImV4cCI6MjEwMDc2ODA4Nn0.RRE5TUBzkyyPMFok6HqgIdzf2JyYIiasbpwRhTnCoFs";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const STORE_KEY = 'amBoutiqueFixedSupabaseCache';
+let db = { customers: [], settings: { pin:'1234', country:'91', name:"AM Women's Boutique", orderPrefix:'AMW-ORD' } };
+let selectedCustomerId = null, editingMeasurementId = null, editingOrderId = null, editingAppointmentId = null, receiptRef = null;
+let currentUserEmail = '';
+let uploadedPhotoUrl='';
+let currentRole = '';
+const fields = [['shoulder','Shoulder'],['chest','Chest'],['bust','Bust'],['waist','Waist'],['hip','Hip'],['sleeve','Sleeve Length'],['armhole','Armhole'],['blouse_length','Blouse Length'],['kurti_length','Kurti Length'],['gown_length','Gown Length'],['front_neck','Front Neck'],['back_neck','Back Neck']];
+function el(id){ return document.getElementById(id); }
+function today(){ return new Date().toISOString().slice(0,10); }
+function digitsOnly(input){ input.value = input.value.replace(/\D/g,'').slice(0,10); }
+function currency(n){ return '₹' + (Number(n)||0).toLocaleString('en-IN'); }
+function setSync(text, ok=true){ const x=el('syncStatus'); if(x){ x.textContent=text; x.style.background=ok?'#e9fbf2':'#fff0f0'; x.style.color=ok?'#087546':'#b91c1c'; } }
+function showMsg(text, err=false){ const x=el('msg'); if(!x) return; x.textContent=text; x.classList.remove('hidden','dangerbar'); if(err) x.classList.add('dangerbar'); setTimeout(function(){x.classList.add('hidden');},4000); }
+function current(){ return db.customers.find(function(c){return c.id===selectedCustomerId;}); }
+function allOrders(){ return db.customers.flatMap(function(c){ return (c.orders||[]).map(function(o){ return Object.assign({}, o, {customerId:c.id, customerName:c.name, mobile:c.mobile, whatsapp:c.whatsapp, address:c.address}); }); }); }
+function allAppointments(){ return db.customers.flatMap(function(c){ return (c.appointments||[]).map(function(a){ return Object.assign({}, a, {customerId:c.id, customerName:c.name, mobile:c.mobile, whatsapp:c.whatsapp}); }); }); }
+function nextId(prefix, items, field, base){ field=field||'id'; base=base||1001; const nums=items.map(function(x){ return Number(String(x[field]||'').split('-').pop()); }).filter(function(n){return !isNaN(n);}); return prefix + '-' + (nums.length ? Math.max.apply(null, nums)+1 : base); }
+function nextOrderId(){ return nextId('AMW-ORD', allOrders(), 'id', 1001); }
+function nextAptId(){ return nextId('APT', allAppointments(), 'id', 1001); }
+function statusClass(s){ if(s==='Delivered'||s==='Completed') return 'green'; if(s==='Ready') return 'blue'; if(s==='Cancelled'||s==='Missed') return 'red'; if(s==='Trial') return 'purple'; if(s==='Booked') return 'gold'; if(s==='In Stitching') return 'orange'; return 'pink'; }
+function mapCustomerRow(r){ return { id:r.id, name:r.customer_name||'', mobile:r.mobile||'', whatsapp:r.whatsapp||'', address:r.address||'', birthday:r.birthday||'', anniversary:r.anniversary||'', preferred:r.preferred_contact||'WhatsApp', notes:r.notes||'', photo_url:r.photo_url||'', measurements:[], orders:[], appointments:[] }; }
+function mapMeasurementRow(r){ const values={}; fields.forEach(function(f){ values[f[0]]=r[f[0]]||''; }); return { id:r.id, type:r.garment_type||'', date:r.measured_date||'', notes:r.notes||'', values:values }; }
+function mapOrderRow(r){ return { id:r.id, garment:r.garment||'', service:r.service||'', status:r.status||'New', orderDate:r.order_date||'', trialDate:r.trial_date||'', deliveryDate:r.delivery_date||'', amount:Number(r.amount)||0, advance:Number(r.advance)||0, balance:Number(r.balance)||0, notes:r.notes||'' }; }
+function mapAppointmentRow(r){ return { id:r.id, date:r.appointment_date||'', time:r.appointment_time||'', type:r.visit_type||'', status:r.status||'Booked', notes:r.notes||'' }; }
+async function testSupabaseConnection(){ try{ const res=await supabaseClient.from('customers').select('id').limit(1); if(res.error) throw res.error; setSync('Supabase connected',true); alert('Supabase connection successful'); return true; }catch(e){ setSync('Supabase error',false); alert('Supabase error: '+e.message); return false; } }
+async function loadFromSupabase(){ setSync('Loading cloud...'); try{ const cr=await supabaseClient.from('customers').select('*').order('created_at',{ascending:true}); const mr=await supabaseClient.from('measurements').select('*').order('created_at',{ascending:false}); const od=await supabaseClient.from('orders').select('*').order('created_at',{ascending:false}); const ar=await supabaseClient.from('appointments').select('*').order('created_at',{ascending:false}); [cr,mr,od,ar].forEach(function(r){ if(r.error) throw r.error; }); db.customers=(cr.data||[]).map(mapCustomerRow); const byId={}; db.customers.forEach(function(c){byId[c.id]=c;}); (mr.data||[]).forEach(function(r){ if(byId[r.customer_id]) byId[r.customer_id].measurements.push(mapMeasurementRow(r)); }); (od.data||[]).forEach(function(r){ if(byId[r.customer_id]) byId[r.customer_id].orders.push(mapOrderRow(r)); }); (ar.data||[]).forEach(function(r){ if(byId[r.customer_id]) byId[r.customer_id].appointments.push(mapAppointmentRow(r)); }); localStorage.setItem(STORE_KEY, JSON.stringify(db)); setSync('Cloud loaded',true); renderAll(); }catch(e){ setSync('Cloud error',false); alert('Could not load from Supabase: '+e.message); loadLocalFallback(); } }
+function loadLocalFallback(){ const saved=localStorage.getItem(STORE_KEY); if(saved){ try{db=JSON.parse(saved);}catch(e){} } renderAll(); }
+async function login(){
+  const email = (el('loginEmail') && el('loginEmail').value || '').trim();
+  const password = (el('loginPassword') && el('loginPassword').value || '').trim();
+  const msg = el('loginMsg');
+  if(msg){ msg.classList.add('hidden'); msg.classList.remove('dangerbar'); }
+  if(!email || !password){
+    if(msg){ msg.textContent='Please enter both email and password.'; msg.classList.remove('hidden'); msg.classList.add('dangerbar'); }
+    return;
+  }
+  setSync('Signing in...');
+  const res = await supabaseClient.auth.signInWithPassword({ email: email, password: password });
+  if(res.error){
+    setSync('Login failed', false);
+    if(msg){ msg.textContent=res.error.message; msg.classList.remove('hidden'); msg.classList.add('dangerbar'); }
+    else alert(res.error.message);
+    return;
+  }
+  await afterAuthSuccess(res.data.session);
+}
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/919740180887?text=Hi%20AM%20Women's%20Boutique!%20I'd%20like%20to%20book%20an%20appointment." class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <i class="ti ti-brand-whatsapp"></i>
-</a>
-<div class="float-wa-tooltip">Chat with us on WhatsApp!</div>
+async function afterAuthSuccess(session){
+  if(!session || !session.user){ return; }
+  currentUserEmail = session.user.email || '';
+  el('loginScreen').classList.add('hidden');
+  el('mainApp').classList.remove('hidden');
+  await loadStaffRole();
+  applyRoleUI();
+  await loadFromSupabase();
+}
 
-<!-- TOAST -->
-<div class="toast" id="toast">
-  <i class="ti ti-circle-check"></i>
-  <span id="toastMsg">Done!</span>
-</div>
+async function checkSession(){
+  const res = await supabaseClient.auth.getSession();
+  if(res && res.data && res.data.session){
+    await afterAuthSuccess(res.data.session);
+  } else {
+    el('loginScreen').classList.remove('hidden');
+    el('mainApp').classList.add('hidden');
+    setSync('Not signed in', false);
+  }
+}
 
-<!-- NILU — AI BOOKING ASSISTANT -->
-<button class="nilu-launcher" id="niluLauncher" aria-label="Chat with Nilu, our AI assistant" type="button">
-  <img src="nilu-avatar.jpg?v=2" alt="Nilu" class="nilu-launcher-avatar" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2750%27 fill=%27%23c97b84%27/%3E%3Ctext x=%2750%27 y=%2764%27 font-size=%2744%27 font-family=%27Georgia,serif%27 fill=%27white%27 text-anchor=%27middle%27%3EN%3C/text%3E%3C/svg%3E';" />
-  <span class="nilu-launcher-text">Chat with Nilu</span>
-  <span class="nilu-badge">AI</span>
-</button>
+async function logout(){
+  await supabaseClient.auth.signOut();
+  currentUserEmail='';
+  currentRole='';
+  db.customers=[];
+  selectedCustomerId=null;
+  el('mainApp').classList.add('hidden');
+  el('loginScreen').classList.remove('hidden');
+  if(el('loginPassword')) el('loginPassword').value='';
+  if(el('roleBadge')) el('roleBadge').textContent='Not signed in';
+  setSync('Signed out');
+}
 
-<div class="nilu-chat" id="niluChat" role="dialog" aria-label="Nilu AI Assistant chat">
-  <div class="nilu-header">
-    <div class="nilu-header-info">
-      <div class="nilu-avatar"><img src="nilu-avatar.jpg?v=2" alt="Nilu" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2750%27 fill=%27%23c97b84%27/%3E%3Ctext x=%2750%27 y=%2764%27 font-size=%2744%27 font-family=%27Georgia,serif%27 fill=%27white%27 text-anchor=%27middle%27%3EN%3C/text%3E%3C/svg%3E';" /></div>
-      <div>
-        <div class="nilu-name">Nilu <span class="nilu-online">&#9679; online</span></div>
-        <div class="nilu-role">AI Assistant &middot; AM Women's Boutique</div>
-      </div>
-    </div>
-    <button class="nilu-close" id="niluClose" aria-label="Close chat" type="button">&times;</button>
-  </div>
-  <div class="nilu-body" id="niluBody"></div>
-  <div class="nilu-quick" id="niluQuick"></div>
-  <div class="nilu-input-row">
-    <input type="text" id="niluInput" placeholder="Type here..." autocomplete="off" />
-    <button id="niluSend" aria-label="Send message" type="button"><i class="ti ti-send"></i></button>
-  </div>
-  <div class="nilu-footer-link">
-    <a href="https://wa.me/919740180887?text=Hi%2C%20I%27d%20like%20to%20speak%20to%20someone%20at%20AM%20Women%27s%20Boutique%20directly." target="_blank" rel="noopener">
-      <i class="ti ti-headset"></i> Prefer a person? Chat with our team directly
-    </a>
-  </div>
-</div>
+async function resetPassword(){
+  const email=(el('loginEmail') && el('loginEmail').value || '').trim();
+  const msg=el('loginMsg');
+  if(!email){
+    if(msg){ msg.textContent='Enter the staff email first, then click reset.'; msg.classList.remove('hidden'); msg.classList.add('dangerbar'); }
+    return;
+  }
+  const res=await supabaseClient.auth.resetPasswordForEmail(email);
+  if(res.error){
+    if(msg){ msg.textContent=res.error.message; msg.classList.remove('hidden'); msg.classList.add('dangerbar'); }
+    else alert(res.error.message);
+  } else {
+    if(msg){ msg.textContent='Password reset email sent if the email exists in Supabase Auth.'; msg.classList.remove('hidden'); msg.classList.remove('dangerbar'); }
+  }
+}
+
+async function loadStaffRole(){
+  currentRole='staff';
+  if(!currentUserEmail){ return; }
+  try{
+    const res=await supabaseClient.from('staff_roles').select('role').eq('email', currentUserEmail).single();
+    if(!res.error && res.data && res.data.role){ currentRole=res.data.role; }
+  }catch(e){ currentRole='staff'; }
+  if(el('roleBadge')) el('roleBadge').textContent=currentUserEmail+' • '+currentRole;
+  if(el('setPin')) el('setPin').value=currentUserEmail;
+}
+
+function applyRoleUI(){
+  document.querySelectorAll('[data-admin-only]').forEach(function(x){ x.style.display = currentRole === 'admin' ? '' : 'none'; });
+  const reportTab=document.querySelector('[data-view="reportsView"]');
+  const settingsTab=document.querySelector('[data-view="settingsView"]');
+  if(reportTab) reportTab.style.display = currentRole === 'tailor' ? 'none' : '';
+  if(settingsTab) settingsTab.style.display = (currentRole === 'tailor' || currentRole === 'reception') ? 'none' : '';
+}
+
+function showView(id){ ['dashboardView','customerView','ordersView','appointmentsView','reportsView','settingsView'].forEach(function(v){el(v).classList.add('hidden');}); el(id).classList.remove('hidden'); document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t.dataset.view===id);}); if(id==='ordersView') renderAllOrders(); if(id==='appointmentsView') renderAppointmentsView(); if(id==='reportsView') renderReports(); }
+function switchSub(name){ ['Profile','Measurements','Orders','Appointments','History'].forEach(function(x){el('sub'+x).classList.add('hidden');}); el('sub'+name.charAt(0).toUpperCase()+name.slice(1)).classList.remove('hidden'); document.querySelectorAll('.subtab').forEach(function(t){t.classList.toggle('active',t.dataset.sub===name);}); if(name==='history') renderHistory(); }
+function renderAll(){ renderDashboard(); renderCustomers(); renderSelected(); renderAllOrders(); renderAppointmentsView(); renderReports(); }
+function renderDashboard(){ const orders=allOrders(), appts=allAppointments(); const revenue=orders.reduce(function(s,o){return s+Number(o.amount||0);},0), advance=orders.reduce(function(s,o){return s+Number(o.advance||0);},0), balance=orders.reduce(function(s,o){return s+Number(o.balance||0);},0); el('statCustomers').textContent=db.customers.length; el('statOrders').textContent=orders.length; el('statRevenue').textContent=currency(revenue); el('statAdvance').textContent=currency(advance); el('statBalance').textContent=currency(balance); el('statTodayAppt').textContent=appts.filter(function(a){return a.date===today()&&a.status==='Booked';}).length; const by={}; orders.forEach(function(o){ by[o.garment]=by[o.garment]||{count:0,amount:0,advance:0,balance:0}; by[o.garment].count++; by[o.garment].amount+=Number(o.amount||0); by[o.garment].advance+=Number(o.advance||0); by[o.garment].balance+=Number(o.balance||0); }); el('garmentRevenueTable').innerHTML=Object.keys(by).map(function(g){return '<tr><td>'+g+'</td><td>'+by[g].count+'</td><td>'+currency(by[g].amount)+'</td><td>'+currency(by[g].advance)+'</td><td>'+currency(by[g].balance)+'</td></tr>';}).join('') || '<tr><td colspan="5">No revenue yet</td></tr>'; const upcoming=orders.filter(function(o){return o.deliveryDate&&o.status!=='Delivered'&&o.status!=='Cancelled';}).sort(function(a,b){return a.deliveryDate.localeCompare(b.deliveryDate);}).slice(0,12); el('deliveryTable').innerHTML=upcoming.map(function(o){return '<tr><td>'+o.deliveryDate+'</td><td>'+o.id+'</td><td>'+o.customerName+'</td><td>'+o.garment+'</td><td><span class="tag '+statusClass(o.status)+'">'+o.status+'</span></td><td><button class="subtab" onclick="openReceipt(\''+o.customerId+'\',\''+o.id+'\')">Receipt</button></td></tr>';}).join('') || '<tr><td colspan="6">No pending deliveries</td></tr>'; }
+function renderCustomers(){ const q=((el('searchInput')?.value||'')+' '+(el('searchInput2')?.value||'')).trim().toLowerCase(); const arr=db.customers.filter(function(c){ return !q || [c.id,c.name,c.mobile,c.whatsapp,c.address,(c.orders||[]).map(function(o){return o.id+' '+o.garment;}).join(' ')].join(' ').toLowerCase().includes(q); }); ['customerList','customerList2'].forEach(function(id){ const target=el(id); if(!target) return; target.innerHTML=arr.map(function(c){ return '<button class="cust '+(c.id===selectedCustomerId?'selected':'')+'" onclick="selectCustomer(\''+c.id+'\')"><div class="name">'+c.name+'</div><div class="muted">'+c.id+' • '+c.mobile+'</div><div class="tags"><span class="tag pink">'+(c.measurements||[]).length+' measurements</span><span class="tag gold">'+(c.orders||[]).length+' AMW orders</span><span class="tag blue">'+(c.appointments||[]).length+' appts</span></div></button>'; }).join('') || '<div class="muted">No customer found</div>'; }); el('customerCountLabel').textContent=db.customers.length+' records'; el('customerCountLabel2').textContent=db.customers.length+' records'; }
+function selectCustomer(id){ selectedCustomerId=id; editingMeasurementId=null; editingOrderId=null; editingAppointmentId=null; showView('customerView'); renderCustomers(); renderSelected(); }
+function newCustomer(){ selectedCustomerId=null; editingMeasurementId=null; editingOrderId=null; editingAppointmentId=null; ['cName','cMobile','cWhatsapp','cBirthday','cAnniversary','cAddress','cNotes'].forEach(function(id){el(id).value='';}); el('cPreferred').value='WhatsApp'; clearMeasurementForm(); clearOrderForm(); clearAppointmentForm(); renderSelected(); showView('customerView'); switchSub('profile'); }
+function renderSelected(){ const c=current(); el('formTitle').textContent=c?'Edit Customer':'New Customer'; el('currentCustomerId').textContent=c?c.id:'Not saved'; el('deleteCustomerBtn').disabled=!c; if(c){ el('cName').value=c.name||''; el('cMobile').value=c.mobile||''; el('cWhatsapp').value=c.whatsapp||''; el('cBirthday').value=c.birthday||''; el('cAnniversary').value=c.anniversary||''; el('cPreferred').value=c.preferred||'WhatsApp'; el('cAddress').value=c.address||''; el('cNotes').value=c.notes||''; } uploadedPhotoUrl=c?c.photo_url||'':''; const img=el('photoPreview'); if(img){if(uploadedPhotoUrl){img.src=uploadedPhotoUrl;img.style.display='block';}else{img.style.display='none';}} renderSummary(); renderMeasurements(); renderOrders(); renderCustomerAppointments(); renderHistory(); }
+function renderSummary(){ const box=el('customerSummary'), c=current(); if(!c){ box.classList.add('hidden'); box.innerHTML=''; return; } const latestM=(c.measurements||[])[0], latestO=(c.orders||[])[0], v=(latestM&&latestM.values)||{}; box.classList.remove('hidden'); box.innerHTML='<div class="section-title"><h2>'+c.name+'</h2><span class="tag gold">Measurement Summary</span></div><div class="muted">'+c.id+' • '+c.mobile+'</div><div class="summary-grid"><div class="summary-mini"><b>'+(latestM?latestM.type:'-')+'</b><span>Latest Profile</span></div><div class="summary-mini"><b>'+(v.shoulder||'-')+'</b><span>Shoulder</span></div><div class="summary-mini"><b>'+(v.bust||v.chest||'-')+'</b><span>Bust/Chest</span></div><div class="summary-mini"><b>'+(v.waist||'-')+'</b><span>Waist</span></div><div class="summary-mini"><b>'+(latestO?latestO.id:'-')+'</b><span>Last Order</span></div></div><div class="btns no-print" style="margin-top:12px"><button class="btn light" onclick="switchSub(\'measurements\')">Edit Measurements</button><button class="btn primary" onclick="newOrderShortcut()">Create New Order</button><button class="btn green" onclick="sendCustomerWhatsApp()">WhatsApp Customer</button><button class="btn gold" onclick="window.print()">Print Card</button></div>'; }
+async function uploadCustomerPhoto(){const f=document.getElementById("customerPhoto")?.files?.[0];if(!f)return;const fileName="customers/"+Date.now()+"_"+f.name;const r=await supabaseClient.storage.from("customer-photos").upload(fileName,f,{upsert:true});if(r.error){alert(r.error.message);return;}const u=supabaseClient.storage.from("customer-photos").getPublicUrl(fileName);uploadedPhotoUrl=u.data.publicUrl;const img=document.getElementById("photoPreview");img.src=uploadedPhotoUrl;img.style.display="block";}
+async function saveCustomer(){ const name=el('cName').value.trim(), mobile=el('cMobile').value.trim(); if(!name) return showMsg('Please enter customer name',true); if(mobile.length!==10) return showMsg('Please enter valid 10 digit mobile number',true); const isNew=!selectedCustomerId, id=selectedCustomerId||nextId('AM',db.customers,'id',1001); const payload={id:id,customer_name:name,mobile:mobile,whatsapp:el('cWhatsapp').value.trim()||mobile,address:el('cAddress').value,birthday:el('cBirthday').value||null,anniversary:el('cAnniversary').value||null,preferred_contact:el('cPreferred').value,notes:el('cNotes').value,photo_url:uploadedPhotoUrl}; try{ const res=isNew?await supabaseClient.from('customers').insert([payload]):await supabaseClient.from('customers').update(payload).eq('id',id); if(res.error) throw res.error; selectedCustomerId=id; showMsg('Customer saved to Supabase'); await loadFromSupabase(); selectCustomer(id); }catch(e){ showMsg('Save failed: '+e.message,true); } }
+async function deleteCustomer(){ if(!selectedCustomerId) return; if(!confirm('Delete this customer and related records?')) return; try{ await supabaseClient.from('appointments').delete().eq('customer_id',selectedCustomerId); await supabaseClient.from('orders').delete().eq('customer_id',selectedCustomerId); await supabaseClient.from('measurements').delete().eq('customer_id',selectedCustomerId); const res=await supabaseClient.from('customers').delete().eq('id',selectedCustomerId); if(res.error) throw res.error; selectedCustomerId=null; await loadFromSupabase(); newCustomer(); }catch(e){ showMsg('Delete failed: '+e.message,true); } }
+function buildMeasurementInputs(){ el('measurementInputs').innerHTML=fields.map(function(f){ return '<div class="field"><label>'+f[1]+'</label><input id="m_'+f[0]+'" placeholder="0.0" /></div>'; }).join(''); ['oAmount','oAdvance'].forEach(function(id){el(id).addEventListener('input',calcBalance);}); }
+function clearMeasurementForm(){ editingMeasurementId=null; el('mType').value='Blouse'; el('mDate').value=today(); el('mNotes').value=''; fields.forEach(function(f){ const x=el('m_'+f[0]); if(x) x.value=''; }); }
+async function saveMeasurement(){ const c=current(); if(!c) return showMsg('Save or select customer first',true); const vals={}; fields.forEach(function(f){ vals[f[0]]=el('m_'+f[0]).value; }); const id=editingMeasurementId||nextId('M',c.measurements||[],'id',1); const payload=Object.assign({id:id,customer_id:c.id,garment_type:el('mType').value,notes:el('mNotes').value,measured_date:el('mDate').value||today()}, vals); try{ const res=editingMeasurementId?await supabaseClient.from('measurements').update(payload).eq('id',id):await supabaseClient.from('measurements').insert([payload]); if(res.error) throw res.error; showMsg('Measurement saved to Supabase'); clearMeasurementForm(); await loadFromSupabase(); selectCustomer(c.id); switchSub('measurements'); }catch(e){ showMsg('Measurement save failed: '+e.message,true); } }
+function renderMeasurements(){ const c=current(), body=el('measurementTable'); if(!c){ body.innerHTML='<tr><td colspan="4">Select customer first</td></tr>'; return; } body.innerHTML=(c.measurements||[]).map(function(m){ return '<tr><td>'+m.type+'</td><td>'+(m.date||'')+'</td><td>Shoulder '+(m.values.shoulder||'-')+', Bust '+(m.values.bust||m.values.chest||'-')+', Waist '+(m.values.waist||'-')+'</td><td><button class="subtab" onclick="editMeasurement(\''+m.id+'\')">Edit</button> <button class="subtab" onclick="removeMeasurement(\''+m.id+'\')">Delete</button></td></tr>'; }).join('') || '<tr><td colspan="4">No measurements saved</td></tr>'; }
+function editMeasurement(id){ const c=current(), m=(c.measurements||[]).find(function(x){return x.id===id;}); if(!m) return; editingMeasurementId=id; el('mType').value=m.type; el('mDate').value=m.date||today(); el('mNotes').value=m.notes||''; fields.forEach(function(f){ el('m_'+f[0]).value=(m.values&&m.values[f[0]])||''; }); switchSub('measurements'); }
+async function removeMeasurement(id){ try{ const res=await supabaseClient.from('measurements').delete().eq('id',id); if(res.error) throw res.error; await loadFromSupabase(); selectCustomer(selectedCustomerId); }catch(e){ showMsg('Delete failed: '+e.message,true); } }
+function calcBalance(){ el('oBalance').value=(Number(el('oAmount').value)||0)-(Number(el('oAdvance').value)||0); }
+function clearOrderForm(){ editingOrderId=null; el('oId').value=nextOrderId(); el('oGarment').value='Blouse'; el('oService').value='New Stitching'; el('oStatus').value='New'; el('oDate').value=today(); el('oTrial').value=''; el('oDelivery').value=''; el('oAmount').value=''; el('oAdvance').value=''; el('oBalance').value=''; el('oNotes').value=''; }
+function newOrderShortcut(){ if(!current()) return showMsg('Select or save customer first',true); clearOrderForm(); showView('customerView'); switchSub('orders'); }
+async function saveOrder(){ const c=current(); if(!c) return showMsg('Save or select customer first',true); calcBalance(); const id=editingOrderId||el('oId').value||nextOrderId(); const payload={id:id,customer_id:c.id,garment:el('oGarment').value,service:el('oService').value,status:el('oStatus').value,order_date:el('oDate').value||today(),trial_date:el('oTrial').value||null,delivery_date:el('oDelivery').value||null,amount:Number(el('oAmount').value)||0,advance:Number(el('oAdvance').value)||0,balance:Number(el('oBalance').value)||0,notes:el('oNotes').value}; try{ const res=editingOrderId?await supabaseClient.from('orders').update(payload).eq('id',id):await supabaseClient.from('orders').insert([payload]); if(res.error) throw res.error; editingOrderId=id; showMsg('AMW order saved to Supabase'); await loadFromSupabase(); selectCustomer(c.id); switchSub('orders'); openReceipt(c.id,id); }catch(e){ showMsg('Order save failed: '+e.message,true); } }
+function renderOrders(){ const c=current(), body=el('orderTable'); if(!c){ body.innerHTML='<tr><td colspan="7">Select customer first</td></tr>'; return; } body.innerHTML=(c.orders||[]).map(function(o){ return '<tr><td>'+o.id+'</td><td>'+o.garment+'</td><td><span class="tag '+statusClass(o.status)+'">'+o.status+'</span></td><td>'+(o.deliveryDate||'')+'</td><td>'+currency(o.amount)+'</td><td>'+currency(o.balance)+'</td><td><button class="subtab" onclick="editOrder(\''+o.id+'\')">Edit</button> <button class="subtab" onclick="openReceipt(\''+c.id+'\',\''+o.id+'\')">Receipt</button> <button class="subtab" onclick="removeOrder(\''+o.id+'\')">Delete</button></td></tr>'; }).join('') || '<tr><td colspan="7">No orders saved</td></tr>'; }
+function editOrder(id){ const c=current(), o=(c.orders||[]).find(function(x){return x.id===id;}); if(!o) return; editingOrderId=id; el('oId').value=o.id; el('oGarment').value=o.garment; el('oService').value=o.service; el('oStatus').value=o.status; el('oDate').value=o.orderDate||today(); el('oTrial').value=o.trialDate||''; el('oDelivery').value=o.deliveryDate||''; el('oAmount').value=o.amount||''; el('oAdvance').value=o.advance||''; el('oBalance').value=o.balance||''; el('oNotes').value=o.notes||''; switchSub('orders'); }
+async function removeOrder(id){ try{ const res=await supabaseClient.from('orders').delete().eq('id',id); if(res.error) throw res.error; await loadFromSupabase(); selectCustomer(selectedCustomerId); clearOrderForm(); }catch(e){ showMsg('Delete failed: '+e.message,true); } }
+function renderAllOrders(){ const q=(el('orderSearch')?.value||'').toLowerCase(), f=el('statusFilter')?.value||''; const arr=allOrders().filter(function(o){ return (!f||o.status===f)&&(!q||[o.id,o.customerName,o.mobile,o.garment,o.status].join(' ').toLowerCase().includes(q)); }); el('allOrderTable').innerHTML=arr.map(function(o){ return '<tr><td>'+o.id+'</td><td>'+o.customerName+'</td><td>'+o.mobile+'</td><td>'+o.garment+'</td><td><span class="tag '+statusClass(o.status)+'">'+o.status+'</span></td><td>'+(o.deliveryDate||'')+'</td><td>'+currency(o.amount)+'</td><td>'+currency(o.balance)+'</td><td><button class="subtab" onclick="selectCustomer(\''+o.customerId+'\');editOrder(\''+o.id+'\')">Open</button> <button class="subtab" onclick="openReceipt(\''+o.customerId+'\',\''+o.id+'\')">Receipt</button></td></tr>'; }).join('') || '<tr><td colspan="9">No orders found</td></tr>'; }
+function clearAppointmentForm(){ editingAppointmentId=null; el('aId').value=nextAptId(); el('aDate').value=today(); el('aTime').value=''; el('aType').value='Measurement'; el('aStatus').value='Booked'; el('aNotes').value=''; }
+async function saveAppointment(){ const c=current(); if(!c) return showMsg('Save or select customer first',true); const id=editingAppointmentId||el('aId').value||nextAptId(); const payload={id:id,customer_id:c.id,appointment_date:el('aDate').value||today(),appointment_time:el('aTime').value||'',visit_type:el('aType').value,status:el('aStatus').value,notes:el('aNotes').value}; try{ const res=editingAppointmentId?await supabaseClient.from('appointments').update(payload).eq('id',id):await supabaseClient.from('appointments').insert([payload]); if(res.error) throw res.error; showMsg('Appointment saved to Supabase'); clearAppointmentForm(); await loadFromSupabase(); selectCustomer(c.id); switchSub('appointments'); }catch(e){ showMsg('Appointment save failed: '+e.message,true); } }
+function renderCustomerAppointments(){ const c=current(), target=el('customerAppointments'); if(!c){ target.innerHTML='<div class="muted">Select customer first</div>'; return; } target.innerHTML=(c.appointments||[]).map(function(a){ return '<div class="appointment-card"><div><div class="appt-name">'+a.id+' • '+a.type+'</div><div class="muted">'+a.date+' '+(a.time||'')+'</div></div><span class="tag '+statusClass(a.status)+'">'+a.status+'</span><div>'+(a.notes||'')+'</div><button class="subtab" onclick="editAppointment(\''+a.id+'\')">Edit</button><button class="subtab" onclick="removeAppointment(\''+a.id+'\')">Delete</button></div>'; }).join('') || '<div class="muted">No appointments saved</div>'; }
+function editAppointment(id){ const c=current(), a=(c.appointments||[]).find(function(x){return x.id===id;}); if(!a) return; editingAppointmentId=id; el('aId').value=a.id; el('aDate').value=a.date||today(); el('aTime').value=a.time||''; el('aType').value=a.type; el('aStatus').value=a.status; el('aNotes').value=a.notes||''; switchSub('appointments'); }
+async function removeAppointment(id){ try{ const res=await supabaseClient.from('appointments').delete().eq('id',id); if(res.error) throw res.error; await loadFromSupabase(); selectCustomer(selectedCustomerId); }catch(e){ showMsg('Delete failed: '+e.message,true); } }
+function renderAppointmentsView(){ const q=(el('appointmentSearch')?.value||'').toLowerCase(), f=el('appointmentStatusFilter')?.value||''; const arr=allAppointments().filter(function(a){ return (!f||a.status===f)&&(!q||[a.id,a.customerName,a.mobile,a.type,a.status,a.date].join(' ').toLowerCase().includes(q)); }).sort(function(a,b){ return (a.date+a.time).localeCompare(b.date+b.time); }); el('allAppointments').innerHTML=arr.map(function(a){ return '<div class="appointment-card"><div><div class="appt-name">'+a.customerName+'</div><div class="muted">'+a.id+' • '+a.mobile+'</div></div><div>'+a.date+'<br><span class="muted">'+(a.time||'')+'</span></div><div>'+a.type+'</div><span class="tag '+statusClass(a.status)+'">'+a.status+'</span><button class="subtab" onclick="selectCustomer(\''+a.customerId+'\');editAppointment(\''+a.id+'\')">Open</button></div>'; }).join('') || '<div class="muted">No appointments found</div>'; const ap=allAppointments(); el('apptToday').textContent=ap.filter(function(a){return a.date===today()&&a.status==='Booked';}).length; el('apptUpcoming').textContent=ap.filter(function(a){return a.date>=today()&&a.status==='Booked';}).length; el('apptCompleted').textContent=ap.filter(function(a){return a.status==='Completed';}).length; el('apptMissed').textContent=ap.filter(function(a){return a.status==='Missed';}).length; el('apptBooked').textContent=ap.filter(function(a){return a.status==='Booked';}).length; el('apptTrial').textContent=ap.filter(function(a){return a.type==='Trial';}).length; }
+function renderHistory(){ const c=current(); if(!c){ el('historyBox').innerHTML='<div class="muted">Select customer first</div>'; return; } el('historyBox').innerHTML='<div class="card"><b>'+c.name+'</b><div class="muted">'+c.id+' • '+c.mobile+' • '+(c.address||'')+'</div><p class="muted">'+(c.notes||'')+'</p></div><h3>Measurements</h3><div class="table-wrap"><table><tbody>'+((c.measurements||[]).map(function(m){return '<tr><td>'+m.type+'</td><td>'+m.date+'</td><td>'+(m.notes||'')+'</td></tr>';}).join('')||'<tr><td>No measurements</td></tr>')+'</tbody></table></div><h3>Orders</h3><div class="table-wrap"><table><tbody>'+((c.orders||[]).map(function(o){return '<tr><td>'+o.id+'</td><td>'+o.garment+'</td><td>'+o.status+'</td><td>'+currency(o.amount)+'</td></tr>';}).join('')||'<tr><td>No orders</td></tr>')+'</tbody></table></div><h3>Appointments</h3><div class="table-wrap"><table><tbody>'+((c.appointments||[]).map(function(a){return '<tr><td>'+a.id+'</td><td>'+a.date+'</td><td>'+a.type+'</td><td>'+a.status+'</td></tr>';}).join('')||'<tr><td>No appointments</td></tr>')+'</tbody></table></div>'; }
+function renderReports(){ const orders=allOrders(); el('repRevenue').textContent=currency(orders.reduce(function(s,o){return s+Number(o.amount||0);},0)); el('repAdvance').textContent=currency(orders.reduce(function(s,o){return s+Number(o.advance||0);},0)); el('repBalance').textContent=currency(orders.reduce(function(s,o){return s+Number(o.balance||0);},0)); el('repDelivered').textContent=orders.filter(function(o){return o.status==='Delivered';}).length; el('repInProgress').textContent=orders.filter(function(o){return !['Delivered','Cancelled'].includes(o.status);}).length; el('cloudRows').textContent=db.customers.length; }
+function openReceipt(customerId, orderId){ const c=db.customers.find(function(x){return x.id===customerId;}), o=c&&c.orders.find(function(x){return x.id===orderId;}); if(!c||!o) return; receiptRef={customerId:customerId,orderId:orderId}; el('receiptContent').innerHTML='<div class="receipt-head"><h2>AM Women\'s Boutique</h2><div class="muted">Custom Stitching & Alterations • Bengaluru</div><div class="tag gold" style="margin-top:8px">Order Receipt</div></div><div class="receipt-row"><span>Order No</span><b>'+o.id+'</b></div><div class="receipt-row"><span>Customer</span><b>'+c.name+'</b></div><div class="receipt-row"><span>Mobile</span><b>'+c.mobile+'</b></div><div class="receipt-row"><span>Service</span><b>'+o.service+'</b></div><div class="receipt-row"><span>Garment</span><b>'+o.garment+'</b></div><div class="receipt-row"><span>Order Date</span><b>'+(o.orderDate||'')+'</b></div><div class="receipt-row"><span>Trial Date</span><b>'+(o.trialDate||'')+'</b></div><div class="receipt-row"><span>Delivery Date</span><b>'+(o.deliveryDate||'')+'</b></div><div class="receipt-row"><span>Status</span><b>'+o.status+'</b></div><div class="receipt-total"><div class="receipt-row"><span>Total Amount</span><b>'+currency(o.amount)+'</b></div><div class="receipt-row"><span>Advance Paid</span><b>'+currency(o.advance)+'</b></div><div class="receipt-row"><span>Balance</span><b>'+currency(o.balance)+'</b></div></div><p class="muted"><b>Notes:</b> '+(o.notes||'Thank you for choosing AM Women\'s Boutique.')+'</p><p class="muted" style="text-align:center;margin-top:18px">Thank you. Please keep this receipt for reference.</p>'; el('receiptModal').classList.remove('hidden'); }
+function openCurrentReceipt(){ const c=current(); if(!c) return showMsg('Select customer first',true); const id=editingOrderId||el('oId').value, o=(c.orders||[]).find(function(x){return x.id===id;})||(c.orders||[])[0]; if(!o) return showMsg('Save order first to generate receipt',true); openReceipt(c.id,o.id); }
+function closeReceipt(){ el('receiptModal').classList.add('hidden'); }
+function downloadReceiptHtml(){
+  const receiptHtml = '<!DOCTYPE html>' +
+    '<html>' +
+    '<head>' +
+    '<meta charset="UTF-8">' +
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+    '<title>AMW Receipt</title>' +
+    '<style>' +
+    'body{font-family:Segoe UI,Arial,sans-serif;padding:20px;background:#fffaf5;color:#4a2f35;}' +
+    '.receipt{max-width:720px;margin:auto;border:1px solid #f2d7df;border-radius:22px;padding:22px;background:white;}' +
+    '.receipt-head{text-align:center;border-bottom:2px solid #d4af37;padding-bottom:12px;margin-bottom:14px;}' +
+    '.receipt-row{display:flex;justify-content:space-between;gap:20px;padding:8px 0;border-bottom:1px dashed #eed2dc;}' +
+    '.receipt-total{background:#fff8df;border-radius:16px;padding:12px;margin-top:12px;}' +
+    '.muted{color:#77616a;font-size:12px;}' +
+    '</style>' +
+    '</head>' +
+    '<body>' +
+    el('receiptContent').outerHTML +
+    '</body>' +
+    '</html>';
+  download('amw-order-receipt.html', receiptHtml, 'text/html');
+}
+function sendReceiptWhatsApp(){ if(!receiptRef) return; const c=db.customers.find(function(x){return x.id===receiptRef.customerId;}), o=c.orders.find(function(x){return x.id===receiptRef.orderId;}); const msg='AM Women\'s Boutique Receipt\nOrder No: '+o.id+'\nCustomer: '+c.name+'\nGarment: '+o.garment+'\nAmount: '+currency(o.amount)+'\nAdvance: '+currency(o.advance)+'\nBalance: '+currency(o.balance)+'\nDelivery: '+(o.deliveryDate||''); window.open('https://wa.me/'+((db.settings.country||'91')+(c.whatsapp||c.mobile))+'?text='+encodeURIComponent(msg),'_blank'); }
+function sendWhatsApp(type){ const c=current(); if(!c) return showMsg('Select customer first',true); const latest=(c.orders||[])[0]; const msg=type==='delivery'?'Hello '+c.name+', your '+(latest?.garment||'boutique order')+' ('+(latest?.id||'')+') is scheduled for delivery on '+(latest?.deliveryDate||'the planned date')+'. Thank you, AM Women\'s Boutique.':'Hello '+c.name+', your AM Women\'s Boutique order has been recorded. Order No: '+(latest?.id||'')+'. Garment: '+(latest?.garment||'')+'. Delivery: '+(latest?.deliveryDate||'')+'. Thank you.'; window.open('https://wa.me/'+((db.settings.country||'91')+(c.whatsapp||c.mobile))+'?text='+encodeURIComponent(msg),'_blank'); }
+function sendCustomerWhatsApp(){ const c=current(); if(!c) return; window.open('https://wa.me/'+((db.settings.country||'91')+(c.whatsapp||c.mobile))+'?text='+encodeURIComponent('Hello '+c.name+', greetings from AM Women\'s Boutique.'),'_blank'); }
+function sendAppointmentWhatsApp(){ const c=current(); if(!c) return showMsg('Select customer first',true); const msg='Hello '+c.name+', your appointment at AM Women\'s Boutique is booked for '+el('aDate').value+' '+el('aTime').value+'. Visit type: '+el('aType').value+'. Thank you.'; window.open('https://wa.me/'+((db.settings.country||'91')+(c.whatsapp||c.mobile))+'?text='+encodeURIComponent(msg),'_blank'); }
+function exportCsv(name,rows){ const csv=rows.map(function(r){return r.map(function(v){return '"'+String(v??'').replaceAll('"','""')+'"';}).join(',');}).join('\n'); download(name,csv,'text/csv'); }
+function exportCustomersCsv(){ exportCsv('am-boutique-customers.csv',[['ID','Name','Mobile','WhatsApp','Address','Birthday','Anniversary','Preferred','Notes']].concat(db.customers.map(function(c){return [c.id,c.name,c.mobile,c.whatsapp,c.address,c.birthday,c.anniversary,c.preferred,c.notes];}))); }
+function exportOrdersCsv(){ exportCsv('amw-orders.csv',[['Order No','Customer ID','Customer','Mobile','Garment','Service','Status','Order Date','Trial Date','Delivery Date','Amount','Advance','Balance','Notes']].concat(allOrders().map(function(o){return [o.id,o.customerId,o.customerName,o.mobile,o.garment,o.service,o.status,o.orderDate,o.trialDate,o.deliveryDate,o.amount,o.advance,o.balance,o.notes];}))); }
+function exportAppointmentsCsv(){ exportCsv('amw-appointments.csv',[['Appointment No','Customer ID','Customer','Mobile','Date','Time','Type','Status','Notes']].concat(allAppointments().map(function(a){return [a.id,a.customerId,a.customerName,a.mobile,a.date,a.time,a.type,a.status,a.notes];}))); }
+function download(filename,content,type){ const blob=new Blob([content],{type:type}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=filename; a.click(); URL.revokeObjectURL(url); }
+function saveSettings(){ db.settings.name=el('setName').value; db.settings.pin='supabase-auth'; db.settings.country=el('setCountry').value||'91'; localStorage.setItem(STORE_KEY,JSON.stringify(db)); alert('Settings saved locally'); }
+function clearLocalCache(){ localStorage.removeItem(STORE_KEY); alert('Local cache cleared. Cloud data remains safe.'); }
+supabaseClient.auth.onAuthStateChange(function(event, session){ if(event==='SIGNED_OUT'){ currentUserEmail=''; currentRole=''; if(el('roleBadge')) el('roleBadge').textContent='Not signed in'; } });
+buildMeasurementInputs(); clearOrderForm(); clearAppointmentForm(); loadLocalFallback(); checkSession();
+
+// ---- PWA install handling ----
+// NOTE: Chrome/Edge only fire "beforeinstallprompt" after their own internal
+// engagement heuristics are satisfied (varies by visit count/time on site),
+// and Safari/iOS never fires it at all. So the button is shown by default
+// on every browser; if the native prompt is available we use it, otherwise
+// we fall back to clear manual instructions. This guarantees the button is
+// always visible instead of silently waiting for an event that may not fire.
+let deferredInstallPrompt = null;
+function isStandaloneApp(){ return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true; }
+function isIosDevice(){ return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream; }
+function showInstallButtons(){ document.querySelectorAll('.install-btn, .install-banner').forEach(function(x){ x.classList.remove('hidden'); }); }
+function hideInstallButtons(){ document.querySelectorAll('.install-btn, .install-banner').forEach(function(x){ x.classList.add('hidden'); }); }
+window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); deferredInstallPrompt = e; showInstallButtons(); });
+window.addEventListener('appinstalled', function(){ deferredInstallPrompt = null; hideInstallButtons(); });
+async function installApp(){
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    try{ await deferredInstallPrompt.userChoice; }catch(e){}
+    deferredInstallPrompt = null;
+    hideInstallButtons();
+    return;
+  }
+  if(isIosDevice()){
+    alert('To install AM Boutique on your iPhone/iPad:\n\n1. Tap the Share icon in Safari (square with an arrow)\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add"');
+  } else {
+    alert('To install this app:\n\nAndroid Chrome: tap the ⋮ menu → "Install app" or "Add to Home screen".\nDesktop Chrome/Edge: click the install icon at the right of the address bar, or the ⋮ menu → "Install AM Boutique".');
+  }
+}
+document.addEventListener('DOMContentLoaded', function(){
+  if(isStandaloneApp()){ hideInstallButtons(); return; }
+  showInstallButtons();
+});
+</script>
 
 <script>
-  // ───────────────────────────────────────────────────────
-  // ORDER FORM — Simple, direct, no complexity
-  // ───────────────────────────────────────────────────────
-
-  // Tab switching
-  function otab(i, clickedBtn) {
-    document.querySelectorAll('.order-panel').forEach(function(p) {
-      p.classList.remove('show');
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').catch(function (error) {
+      console.log('Service worker registration failed:', error);
     });
-    document.getElementById('op' + i).classList.add('show');
-    document.querySelectorAll('.order-tab').forEach(function(b) {
-      b.classList.remove('active');
-    });
-    clickedBtn.classList.add('active');
-  }
-
-  // Go to next step with simple validation
-  function goStep(stepNum) {
-    if (stepNum === 1) {
-      var name  = document.getElementById('o_name').value.trim();
-      var phone = document.getElementById('o_phone').value.trim();
-      if (!name || !phone) {
-        document.getElementById('err0').style.display = 'block';
-        document.getElementById('err0').textContent   = 'Please enter your Name and WhatsApp number.';
-        return;
-      }
-      document.getElementById('err0').style.display = 'none';
-    }
-    if (stepNum === 2) {
-      var svc = document.getElementById('o_service').value;
-      if (!svc) {
-        document.getElementById('err1').style.display = 'block';
-        document.getElementById('err1').textContent   = 'Please select a service.';
-        return;
-      }
-      document.getElementById('err1').style.display = 'none';
-    }
-    if (stepNum === 3) {
-      buildSummary();
-    }
-    document.querySelectorAll('.order-tab')[stepNum].click();
-    window.scrollTo({ top: document.getElementById('order').offsetTop - 80, behavior: 'smooth' });
-  }
-
-  function toggleAddress() {
-    var v = document.getElementById('o_pickup').value;
-    document.getElementById('o_addr_row').style.display = (v === 'delivery') ? 'block' : 'none';
-  }
-
-  function toggleAlteration() {
-    var v = document.getElementById('o_service').value;
-    document.getElementById('alteration_fields').style.display = (v === 'Alteration') ? 'block' : 'none';
-    document.getElementById('design_fields').style.display     = (v === 'Alteration') ? 'none'  : 'block';
-  }
-
-  // Set min delivery date
-  (function() {
-    var d = new Date();
-    d.setDate(d.getDate() + 3);
-    var el = document.getElementById('o_delivery');
-    if (el) el.min = d.toISOString().split('T')[0];
-  })();
-
-  function buildSummary() {
-    function g(id) { var e = document.getElementById(id); return e ? e.value : ''; }
-    var rows = [
-      ['Name',          g('o_name')],
-      ['WhatsApp',      g('o_phone')],
-      ['Service',       g('o_service')],
-      ['Delivery date', formatDateDMY(g('o_delivery'))],
-      ['Neck style',    g('o_neck')],
-      ['Sleeve',        g('o_sleeve')],
-      ['Fabric',        g('o_fabric')],
-      ['Bust',         g('m_bust')       ? g('m_bust') + '"'       : ''],
-      ['Waist',        g('m_waist')      ? g('m_waist') + '"'      : ''],
-      ['Hip',          g('m_hip')        ? g('m_hip') + '"'        : ''],
-      ['Kurti length', g('m_kurti_len')  ? g('m_kurti_len') + '"'  : ''],
-      ['Pant length',  g('m_pant_len')   ? g('m_pant_len') + '"'   : ''],
-      ['Pant waist',   g('m_pant_waist') ? g('m_pant_waist') + '"' : ''],
-      ['Notes',        g('o_notes')]
-    ];
-    var html = '';
-    for (var i = 0; i < rows.length; i++) {
-      if (rows[i][1]) {
-        html += '<span style="color:#6b4f4f">' + rows[i][0] + ':</span> <strong>' + rows[i][1] + '</strong><br>';
-      }
-    }
-    var el = document.getElementById('summaryContent');
-    if (el) el.innerHTML = html || 'Please go back and fill in your details.';
-  }
-
-  // THE MAIN SUBMIT — called by green button on Step 4
-  function doSubmitOrder() {
-    function g(id) {
-      var e = document.getElementById(id);
-      return e ? e.value.trim() : '';
-    }
-
-    var name    = g('o_name');
-    var phone   = g('o_phone');
-    var service = g('o_service');
-
-    // Safety check
-    if (!name || !phone || !service) {
-      alert('Please fill in:\n- Your Name (Step 1)\n- WhatsApp Number (Step 1)\n- Service type (Step 2)\n\nThen come back to Step 4 and try again.');
-      return;
-    }
-
-    var pickup   = g('o_pickup');
-    var delivery = g('o_delivery');
-    var address  = g('o_address');
-    var neck     = g('o_neck');
-    var sleeve   = g('o_sleeve');
-    var fabric   = g('o_fabric');
-    var work     = g('o_work');
-    var photo    = g('o_photo_url');
-    var alttype  = g('o_alt_type');
-    var altnotes = g('o_alt_notes');
-    var notes    = g('o_notes');
-    var bust       = g('m_bust');
-    var waist      = g('m_waist');
-    var hip        = g('m_hip');
-    var shoulder   = g('m_shoulder');
-    var height     = g('m_height');
-    var arm        = g('m_arm');
-    var armhole    = g('m_armhole');
-    var thigh      = g('m_thigh');
-    var blouseL    = g('m_blouse_len');
-    var sleeveL    = g('m_sleeve_len');
-    var kurtiLen   = g('m_kurti_len');
-    var pantLen    = g('m_pant_len');
-    var pantWaist  = g('m_pant_waist');
-    var pantBottom = g('m_pant_bottom');
-    var mnotes     = g('m_notes');
-    var ref      = generateOrderRef();
-
-    // Build boutique message
-    var bMsg = '';
-    bMsg += 'NEW ORDER - AM Boutique\n';
-    bMsg += 'Ref: ' + ref + '\n\n';
-    bMsg += 'CUSTOMER\n';
-    bMsg += 'Name: ' + name + '\n';
-    bMsg += 'Phone: ' + phone + '\n';
-    if (pickup)   bMsg += 'Collection: ' + pickup + '\n';
-    if (address)  bMsg += 'Address: ' + address + '\n';
-    if (delivery) bMsg += 'Delivery by: ' + formatDateDMY(delivery) + '\n';
-    bMsg += '\nORDER\n';
-    bMsg += 'Service: ' + service + '\n';
-    if (service === 'Alteration') {
-      if (alttype)  bMsg += 'Type: ' + alttype + '\n';
-      if (altnotes) bMsg += 'Details: ' + altnotes + '\n';
-    } else {
-      if (neck)   bMsg += 'Neck: ' + neck + '\n';
-      if (sleeve) bMsg += 'Sleeve: ' + sleeve + '\n';
-      if (fabric) bMsg += 'Fabric: ' + fabric + '\n';
-      if (work)   bMsg += 'Work: ' + work + '\n';
-      if (photo)  bMsg += 'Photo: ' + photo + '\n';
-    }
-    if (notes) bMsg += 'Notes: ' + notes + '\n';
-    if (bust || waist || hip || blouseL || pantLen) {
-      bMsg += '\nBODY MEASUREMENTS (inches)\n';
-      if (bust)     bMsg += 'Bust: ' + bust + '\n';
-      if (waist)    bMsg += 'Waist: ' + waist + '\n';
-      if (hip)      bMsg += 'Hip: ' + hip + '\n';
-      if (shoulder) bMsg += 'Shoulder: ' + shoulder + '\n';
-      if (height)   bMsg += 'Height: ' + height + '\n';
-      if (arm)      bMsg += 'Bicep: ' + arm + '\n';
-      if (armhole)  bMsg += 'Arm hole: ' + armhole + '\n';
-      if (thigh)    bMsg += 'Thigh: ' + thigh + '\n';
-      if (blouseL || sleeveL || kurtiLen) {
-        bMsg += 'BLOUSE & KURTI\n';
-        if (blouseL)  bMsg += 'Blouse length: ' + blouseL + '\n';
-        if (sleeveL)  bMsg += 'Sleeve length: ' + sleeveL + '\n';
-        if (kurtiLen) bMsg += 'Kurti length: ' + kurtiLen + '\n';
-      }
-      if (pantLen || pantWaist || pantBottom) {
-        bMsg += 'PANT / BOTTOM\n';
-        if (pantLen)    bMsg += 'Pant length: ' + pantLen + '\n';
-        if (pantWaist)  bMsg += 'Pant waist round: ' + pantWaist + '\n';
-        if (pantBottom) bMsg += 'Pant bottom round: ' + pantBottom + '\n';
-      }
-      if (mnotes) bMsg += 'Notes: ' + mnotes + '\n';
-    }
-    bMsg += '\nPAYMENT: UPI at boutique\n';
-    bMsg += 'Reply to customer: ' + phone;
-
-    // Build customer confirmation message
-    var cMsg = '';
-    cMsg += 'Hi AM Boutique! I placed an online order.\n';
-    cMsg += 'Ref: ' + ref + '\n';
-    cMsg += 'Name: ' + name + '\n';
-    cMsg += 'Service: ' + service + '\n';
-    if (delivery) cMsg += 'Needed by: ' + formatDateDMY(delivery) + '\n';
-    cMsg += 'Please confirm. Thank you!';
-
-    // Store in simple global strings
-    window.WA_BOUTIQUE = bMsg;
-    window.WA_CUSTOMER = cMsg;
-    window.ORDER_REF   = ref;
-    window.ORDER_NAME  = name;
-    window.ORDER_SVC   = service;
-
-    // NOW show the success buttons — hide submit area, show success area
-    document.getElementById('submitArea').style.display  = 'none';
-    document.getElementById('successArea').style.display = 'block';
-
-    // Update success text
-    document.getElementById('successName').textContent = 'Done ' + name + '! Notify us below';
-    document.getElementById('successRef').textContent  = ref + ' — ' + service;
-
-    // Reset button states
-    var b1 = document.getElementById('btnStep1');
-    var b2 = document.getElementById('btnStep2');
-    b1.disabled         = false;
-    b1.style.background = '#25d366';
-    b1.innerHTML        = '<i class="ti ti-brand-whatsapp"></i> Step 1 — Send Order to Boutique';
-    b2.disabled         = false;
-    b2.style.background = '#c97b84';
-    b2.innerHTML        = '<i class="ti ti-message-circle"></i> Step 2 — Send My Confirmation';
-
-    // Scroll to success buttons
-    window.scrollTo({ top: document.getElementById('successArea').offsetTop - 100, behavior: 'smooth' });
-  }
-
-  function sendToBoutique() {
-    if (!window.WA_BOUTIQUE) { alert('Please click Send Order on WhatsApp first.'); return; }
-    var url = 'https://wa.me/919740180887?text=' + encodeURIComponent(window.WA_BOUTIQUE);
-    window.open(url, '_blank');
-    var b = document.getElementById('btnStep1');
-    b.style.background = '#1da851';
-    b.innerHTML        = '<i class="ti ti-check"></i> Step 1 Sent to Boutique ✓';
-    b.disabled         = true;
-  }
-
-  function sendCustomerConfirm() {
-    if (!window.WA_CUSTOMER) { alert('Please complete Step 1 first.'); return; }
-    var url = 'https://wa.me/919740180887?text=' + encodeURIComponent(window.WA_CUSTOMER);
-    window.open(url, '_blank');
-    var b = document.getElementById('btnStep2');
-    b.style.background = '#8a4a52';
-    b.innerHTML        = '<i class="ti ti-check"></i> Step 2 Confirmation Sent ✓';
-    b.disabled         = true;
-  }
-
-  function resetOrder() {
-    window.WA_BOUTIQUE = '';
-    window.WA_CUSTOMER = '';
-    document.getElementById('submitArea').style.display  = 'block';
-    document.getElementById('successArea').style.display = 'none';
-    var ids = ['o_name','o_phone','o_email','o_delivery','o_address','o_fabric',
-               'o_photo_url','o_notes','o_alt_notes','m_notes',
-               'm_bust','m_waist','m_hip','m_shoulder','m_height',
-               'm_arm','m_armhole','m_thigh','m_blouse_len','m_sleeve_len',
-               'm_kurti_len','m_pant_len','m_pant_waist','m_pant_bottom'];
-    ids.forEach(function(id) {
-      var e = document.getElementById(id);
-      if (e) e.value = '';
-    });
-    ['o_pickup','o_service','o_neck','o_sleeve','o_work','o_alt_type'].forEach(function(id) {
-      var e = document.getElementById(id);
-      if (e) e.selectedIndex = 0;
-    });
-    document.querySelectorAll('.order-tab')[0].click();
-    window.scrollTo({ top: document.getElementById('order').offsetTop - 80, behavior: 'smooth' });
-  }
-
-    // ── Hamburger menu ──────────────────────────────────
-  var hamburger = document.getElementById('hamburger');
-  var navLinks  = document.getElementById('navLinks');
-
-  hamburger.addEventListener('click', function() {
-    navLinks.classList.toggle('open');
   });
-
-  var navAnchors = navLinks.querySelectorAll('a');
-  for (var ni = 0; ni < navAnchors.length; ni++) {
-    navAnchors[ni].addEventListener('click', function() {
-      navLinks.classList.remove('open');
-    });
-  }
-
-  // ── Toast notification ───────────────────────────────
-  function showToast(msg, duration) {
-    if (!duration) duration = 4000;
-    var t   = document.getElementById('toast');
-    var tm  = document.getElementById('toastMsg');
-    if (!t || !tm) return;
-    tm.textContent = msg;
-    t.classList.add('show');
-    setTimeout(function() { t.classList.remove('show'); }, duration);
-  }
-
-  // ── Shared helpers: date formatting + reference numbers ──
-  // Converts a native <input type="date"> value (yyyy-mm-dd) to dd-mm-yyyy for display.
-  // The underlying <input> keeps yyyy-mm-dd internally (required by the browser),
-  // this only affects what customers and the boutique see in summaries/WhatsApp.
-  function formatDateDMY(isoStr) {
-    if (!isoStr) return '';
-    var parts = isoStr.split('-');
-    if (parts.length !== 3) return isoStr;
-    return parts[2] + '-' + parts[1] + '-' + parts[0];
-  }
-
-  // Sequential, branded reference numbers: AMW-ORD-1001, AMW-APT-1001, etc.
-  // Persisted in localStorage so numbers keep incrementing on repeat visits from
-  // the same browser/device. Note: without a backend this counter is per-browser,
-  // not a single shared counter across every visitor — two customers ordering from
-  // two different phones could get the same number. For a guaranteed-unique,
-  // business-wide sequence you'd need a small server or spreadsheet-backed counter.
-  function nextSequenceNumber(key, startAt) {
-    var current;
-    try {
-      current = parseInt(localStorage.getItem(key), 10);
-    } catch (e) {
-      current = NaN;
-    }
-    if (isNaN(current)) current = startAt - 1;
-    var next = current + 1;
-    try { localStorage.setItem(key, String(next)); } catch (e) { /* privacy mode etc. */ }
-    return next;
-  }
-  function generateOrderRef() {
-    return 'AMW-ORD-' + nextSequenceNumber('amw_order_seq', 1001);
-  }
-  function generateApptRef() {
-    return 'AMW-APT-' + nextSequenceNumber('amw_appt_seq', 1001);
-  }
-
-  // ── Gallery filter ───────────────────────────────────
-  function filterGallery(cat, btn) {
-    // Update active tab
-    var tabs = document.querySelectorAll('.gallery-tab');
-    for (var ti = 0; ti < tabs.length; ti++) {
-      tabs[ti].classList.remove('active');
-    }
-    btn.classList.add('active');
-
-    // Show/hide items
-    var items = document.querySelectorAll('.gallery-item');
-    for (var gi = 0; gi < items.length; gi++) {
-      var item = items[gi];
-      if (cat === 'all' || item.getAttribute('data-cat') === cat) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
-      }
-    }
-  }
-
-  // ── Lightbox ─────────────────────────────────────────
-  function openLightbox(el) {
-    var img = el.querySelector('img');
-    if (!img) return;
-    document.getElementById('lightboxImg').src = img.src;
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  // ── Scroll reveal ─────────────────────────────────────
-  if ('IntersectionObserver' in window) {
-    var revealObserver = new IntersectionObserver(function(entries) {
-      for (var ri = 0; ri < entries.length; ri++) {
-        if (entries[ri].isIntersecting) {
-          entries[ri].target.style.opacity  = '1';
-          entries[ri].target.style.transform = 'translateY(0)';
-        }
-      }
-    }, { threshold: 0.1 });
-
-    var revealEls = document.querySelectorAll('.service-card, .testimonial-card, .process-step, .gallery-item');
-    for (var si = 0; si < revealEls.length; si++) {
-      revealEls[si].style.opacity   = '0';
-      revealEls[si].style.transform = 'translateY(20px)';
-      revealEls[si].style.transition = 'opacity .5s ease, transform .5s ease';
-      revealObserver.observe(revealEls[si]);
-    }
-  }
-
-  // ── Appointment booking form submit ──────────────────
-  function submitForm(e) {
-    e.preventDefault();
-    var name    = document.getElementById('fname').value.trim();
-    var phone   = document.getElementById('phone').value.trim();
-    var service = document.getElementById('service').value;
-    var date    = document.getElementById('apptdate').value;
-    var time    = document.getElementById('time').value;
-    var notes   = document.getElementById('notes').value.trim();
-    if (!name || !phone || !service || !date || !time) {
-      showToast('Please fill in all required fields.');
-      return;
-    }
-    var ref = generateApptRef();
-    var msg = "Hi AM Women's Boutique! I'd like to book an appointment.\n\n" +
-      "Ref: " + ref + "\n" +
-      "Name: " + name + "\nPhone: " + phone + "\nService: " + service +
-      "\nDate: " + formatDateDMY(date) + "\nTime: " + time +
-      (notes ? "\nNotes: " + notes : "");
-    window.open("https://wa.me/919740180887?text=" + encodeURIComponent(msg), "_blank");
-    showToast("Appointment request sent! We'll confirm on WhatsApp shortly.");
-    document.getElementById('bookingForm').reset();
-  }
-
-  // Set min date on appointment form
-  (function() {
-    var di = document.getElementById('apptdate');
-    if (di) di.setAttribute('min', new Date().toISOString().split('T')[0]);
-  })();
-
-  // ── PWA: Register service worker ──────────────────
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
-        .then(function(reg) { reg.update(); })
-        .catch(function(err) { console.log('SW error:', err); });
-    });
-  }
-
-  // ── PWA: Install prompt banner ──────────────────
-  var deferredPrompt   = null;
-  var installBanner    = document.getElementById('installBanner');
-  var btnInstall       = document.getElementById('btnInstall');
-  var btnDismissBnr    = document.getElementById('btnDismiss');
-  var navInstallBtn    = document.getElementById('navInstallBtn');
-  var installTitleEl   = document.getElementById('installBannerTitle');
-  var installSubEl     = document.getElementById('installBannerSub');
-
-  function isIosDevice() {
-    return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
-  }
-  function isStandaloneMode() {
-    return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
-      window.navigator.standalone === true;
-  }
-
-  // Already installed / running as an app — nothing to prompt.
-  if (!isStandaloneMode()) {
-
-    // A permanent, always-available way to install — doesn't depend on the
-    // browser firing beforeinstallprompt at the "right" moment.
-    if (navInstallBtn) navInstallBtn.classList.add('show');
-
-    function showIosInstallInstructions() {
-      showToast('Tap the Share icon, then "Add to Home Screen" to install the app.', 6000);
-    }
-    function showGenericInstallInstructions() {
-      showToast('Open your browser menu and choose "Install app" or "Add to Home Screen".', 6000);
-    }
-
-    function triggerInstall() {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(function (result) {
-          if (result.outcome === 'accepted') showToast('App installed! Find AM Boutique on your home screen.');
-          deferredPrompt = null;
-        });
-        return;
-      }
-      if (isIosDevice()) { showIosInstallInstructions(); return; }
-      showGenericInstallInstructions();
-    }
-
-    if (navInstallBtn) {
-      navInstallBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        triggerInstall();
-      });
-    }
-
-    if (isIosDevice()) {
-      // Safari on iOS never fires beforeinstallprompt — show manual steps instead.
-      if (installTitleEl) installTitleEl.textContent = 'Install AM Boutique on your iPhone';
-      if (installSubEl) installSubEl.textContent = 'Tap the Share icon below, then "Add to Home Screen"';
-      if (btnInstall) btnInstall.innerHTML = '<i class="ti ti-share"></i> How to Install';
-      setTimeout(function () {
-        if (installBanner) installBanner.classList.add('show');
-      }, 3000);
-    } else {
-      // Chrome/Edge/Android etc. — capture the native prompt if the browser offers one.
-      window.addEventListener('beforeinstallprompt', function (e) {
-        e.preventDefault();
-        deferredPrompt = e;
-        if (installBanner) installBanner.classList.add('show');
-      });
-
-      // Fallback: some browsers (Firefox, or Chrome before its engagement
-      // heuristics are satisfied) never fire beforeinstallprompt at all.
-      // Still show the banner after a delay so there's always a way in.
-      setTimeout(function () {
-        if (installBanner && !installBanner.classList.contains('show')) {
-          installBanner.classList.add('show');
-        }
-      }, 4000);
-    }
-
-    if (btnInstall) {
-      btnInstall.addEventListener('click', function () {
-        if (installBanner) installBanner.classList.remove('show');
-        triggerInstall();
-      });
-    }
-  }
-
-  if (btnDismissBnr) {
-    btnDismissBnr.addEventListener('click', function() {
-      if (installBanner) installBanner.classList.remove('show');
-    });
-  }
-
-  window.addEventListener('appinstalled', function() {
-    if (installBanner) installBanner.classList.remove('show');
-    if (navInstallBtn) navInstallBtn.classList.remove('show');
-    showToast('AM Boutique app installed!');
-  });
-
-  // ═══════════════════════════════════════════════════════
-  // NILU — AI BOOKING ASSISTANT
-  // ═══════════════════════════════════════════════════════
-  (function () {
-    var BOUTIQUE_PHONE = '919740180887';
-    var DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    var MORNING_SLOTS = ['11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM'];
-    var EVENING_SLOTS = ['5:00 PM','5:30 PM','6:00 PM','6:30 PM'];
-    var SERVICES = [
-      { label: 'Blouse Stitching (from \u20B9550)', value: 'Blouse Stitching' },
-      { label: 'Chudi Set (from \u20B9850)', value: 'Chudi Set' },
-      { label: 'Lehenga & Blouse (from \u20B91,500)', value: 'Lehenga' },
-      { label: 'Gown (from \u20B91,500)', value: 'Gown' },
-      { label: 'Alteration (from \u20B950)', value: 'Alteration' },
-      { label: 'Something else', value: 'Other' }
-    ];
-
-    // Master measurement field definitions (mirrors the Order Online form's fields).
-    var MEASURE_FIELDS = {
-      bust:       { label: 'Bust',          cls: 'nf-bust',       min: 20, max: 60, step: 0.5, ph: 'e.g. 36' },
-      waist:      { label: 'Waist',         cls: 'nf-waist',      min: 20, max: 60, step: 0.5, ph: 'e.g. 30' },
-      hip:        { label: 'Hip',           cls: 'nf-hip',        min: 20, max: 70, step: 0.5, ph: 'e.g. 38' },
-      shoulder:   { label: 'Shoulder',      cls: 'nf-shoulder',   min: 8,  max: 30, step: 0.5, ph: 'e.g. 14' },
-      height:     { label: 'Full height',   cls: 'nf-height',     min: 40, max: 80, step: 0.5, ph: 'e.g. 62' },
-      armhole:    { label: 'Arm hole',      cls: 'nf-armhole',    min: 8,  max: 30, step: 0.5, ph: 'e.g. 16' },
-      blouse_len: { label: 'Blouse length', cls: 'nf-blouse',     min: 8,  max: 30, step: 0.5, ph: 'e.g. 15' },
-      sleeve_len: { label: 'Sleeve length', cls: 'nf-sleeve',     min: 0,  max: 30, step: 0.5, ph: 'e.g. 8'  },
-      kurti_len:  { label: 'Kurti length',  cls: 'nf-kurti',      min: 20, max: 72, step: 0.5, ph: 'e.g. 42' },
-      pant_len:   { label: 'Pant length',   cls: 'nf-pantlen',    min: 20, max: 60, step: 0.5, ph: 'e.g. 38' },
-      pant_waist: { label: 'Pant waist',    cls: 'nf-pantwaist',  min: 20, max: 60, step: 0.5, ph: 'e.g. 32' }
-    };
-
-    // Which fields to show per service — e.g. Chudi Set asks for Kurti/Pant
-    // measurements instead of Blouse length, since a chudi set has no blouse.
-    var SERVICE_MEASURE_FIELDS = {
-      'Blouse Stitching': ['bust', 'waist', 'shoulder', 'armhole', 'blouse_len', 'sleeve_len'],
-      'Chudi Set':         ['bust', 'waist', 'hip', 'shoulder', 'kurti_len', 'sleeve_len', 'pant_len', 'pant_waist'],
-      'Lehenga':           ['bust', 'waist', 'hip', 'blouse_len', 'sleeve_len'],
-      'Gown':              ['bust', 'waist', 'hip', 'height', 'sleeve_len'],
-      'Other':             ['bust', 'waist', 'hip', 'shoulder', 'blouse_len', 'sleeve_len']
-    };
-
-    var niluEl = {
-      launcher: document.getElementById('niluLauncher'),
-      chat:     document.getElementById('niluChat'),
-      close:    document.getElementById('niluClose'),
-      body:     document.getElementById('niluBody'),
-      quick:    document.getElementById('niluQuick'),
-      input:    document.getElementById('niluInput'),
-      send:     document.getElementById('niluSend')
-    };
-
-    // Bail out safely if the widget markup isn't present on this page.
-    if (!niluEl.launcher || !niluEl.chat || !niluEl.body || !niluEl.quick || !niluEl.input || !niluEl.send || !niluEl.close) return;
-
-    function blankState() {
-      return {
-        started: false,
-        step: 'greet_name',
-        name: '',
-        phone: '',
-        apptDay: '', apptSlot: '', apptService: '', apptNotes: '', apptRef: '',
-        ordService: '', ordAlt: false, ordAltType: '', ordAltNotes: '',
-        ordNeck: '', ordSleeve: '', ordFabric: '', ordMeasurements: '',
-        ordCollection: '', ordAddress: '', ordDeliveryDate: '', ordRef: ''
-      };
-    }
-    var nilu = blankState();
-
-    function escapeHtml(s) {
-      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }
-
-    function niluOpen() {
-      niluEl.chat.classList.add('open');
-      niluEl.launcher.classList.add('hide');
-      if (!nilu.started) {
-        nilu.started = true;
-        niluTyping(function () {
-          niluBotSay("Hi there! I'm <strong>Nilu</strong>, the AI assistant at AM Women's Boutique. \uD83D\uDC4B<br>I can help you book an appointment or place an online order.<br><br>First, what's your name?");
-          niluSetInputEnabled(true, 'Your name');
-        }, 500);
-      } else {
-        niluFocusInput();
-      }
-    }
-
-    function niluCloseChat() {
-      niluEl.chat.classList.remove('open');
-      niluEl.launcher.classList.remove('hide');
-    }
-
-    function niluFocusInput() {
-      setTimeout(function () { if (niluEl.input && !niluEl.input.disabled) niluEl.input.focus(); }, 60);
-    }
-
-    function niluScrollDown() {
-      niluEl.body.scrollTop = niluEl.body.scrollHeight;
-    }
-
-    function niluBotSay(html) {
-      var div = document.createElement('div');
-      div.className = 'nilu-msg bot';
-      div.innerHTML = html;
-      niluEl.body.appendChild(div);
-      niluScrollDown();
-    }
-
-    function niluUserSay(text) {
-      var div = document.createElement('div');
-      div.className = 'nilu-msg user';
-      div.textContent = text;
-      niluEl.body.appendChild(div);
-      niluScrollDown();
-    }
-
-    function niluTyping(callback, delay) {
-      var t = document.createElement('div');
-      t.className = 'nilu-typing';
-      t.id = 'niluTypingNow';
-      t.innerHTML = '<span></span><span></span><span></span>';
-      niluEl.body.appendChild(t);
-      niluScrollDown();
-      setTimeout(function () {
-        var existing = document.getElementById('niluTypingNow');
-        if (existing) existing.remove();
-        callback();
-      }, delay || 550);
-    }
-
-    function niluSetQuick(chips) {
-      niluEl.quick.innerHTML = '';
-      chips.forEach(function (c) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'nilu-chip' + (c.cls ? ' ' + c.cls : '');
-        btn.textContent = c.label;
-        btn.onclick = function () { niluChoose(c.value, c.label); };
-        niluEl.quick.appendChild(btn);
-      });
-    }
-
-    function niluClearQuick() {
-      niluEl.quick.innerHTML = '';
-    }
-
-    function niluSetInputEnabled(enabled, placeholder) {
-      niluEl.input.disabled = !enabled;
-      niluEl.send.disabled = !enabled;
-      if (placeholder) niluEl.input.placeholder = placeholder;
-      if (enabled) niluFocusInput();
-    }
-
-    function niluHumanChip() {
-      return { label: '\uD83D\uDC64 Talk to a person', value: '__human__', cls: 'human' };
-    }
-
-    function niluOpenWhatsApp(msg) {
-      window.open('https://wa.me/' + BOUTIQUE_PHONE + '?text=' + encodeURIComponent(msg), '_blank');
-    }
-
-    function niluHandOffToHuman(label) {
-      niluUserSay(label);
-      niluClearQuick();
-      niluSetInputEnabled(false);
-      niluTyping(function () {
-        niluBotSay("Of course \u2014 connecting you to our team on WhatsApp now. They reply within a few hours, Mon\u2013Sat, 10:30 AM\u20137:30 PM.");
-        niluOpenWhatsApp("Hi AM Women's Boutique! I was chatting with Nilu and would like to speak to a person directly." + (nilu.name ? ' My name is ' + nilu.name + '.' : ''));
-      });
-    }
-
-    function niluValidatePhone(raw) {
-      var digits = raw.replace(/\D/g, '');
-      if (digits.length === 12 && digits.indexOf('91') === 0) digits = digits.slice(2);
-      if (digits.length === 11 && digits.indexOf('0') === 0) digits = digits.slice(1);
-      if (digits.length === 10) return digits;
-      return null;
-    }
-
-    function niluShowMenu() {
-      niluSetInputEnabled(false);
-      niluSetQuick([
-        { label: '\uD83D\uDCC5 Book an Appointment', value: 'appointment' },
-        { label: '\uD83D\uDECD\uFE0F Place an Order', value: 'order' },
-        niluHumanChip()
-      ]);
-      nilu.step = 'menu';
-    }
-
-    function niluAskCollection() {
-      niluSetInputEnabled(false);
-      niluTyping(function () {
-        niluBotSay('Would you like to pick this up from our boutique, or have it delivered (extra charges apply)?');
-        niluSetQuick([
-          { label: '\uD83C\uDFEA Pick up from boutique', value: 'pickup' },
-          { label: '\uD83D\uDE9A Home delivery', value: 'delivery' }
-        ]);
-      });
-      nilu.step = 'ord_collection';
-    }
-
-    function niluAskMeasurementsForm() {
-      niluSetInputEnabled(false);
-      niluClearQuick();
-      niluTyping(function () {
-        var fieldKeys = SERVICE_MEASURE_FIELDS[nilu.ordService] || SERVICE_MEASURE_FIELDS['Other'];
-        var gridHtml = fieldKeys.map(function (key) {
-          var f = MEASURE_FIELDS[key];
-          return '<label>' + f.label + '<input type="number" step="' + f.step + '" min="' + f.min + '" max="' + f.max + '" class="' + f.cls + '" placeholder="' + f.ph + '"></label>';
-        }).join('');
-
-        var div = document.createElement('div');
-        div.className = 'nilu-msg bot nilu-form-msg';
-        div.innerHTML =
-          '<div>Great! Enter your measurements below (in inches) \u2014 just like our Order Online form \u2014 or tap the skip option if you\'d rather get measured at the boutique.</div>' +
-          '<div class="nilu-mform-grid">' + gridHtml + '</div>' +
-          '<button type="button" class="nilu-form-btn nf-save">Save Measurements</button>';
-        niluEl.body.appendChild(div);
-        niluScrollDown();
-
-        var saveBtn = div.querySelector('.nf-save');
-        saveBtn.addEventListener('click', function () {
-          var parts = [];
-          fieldKeys.forEach(function (key) {
-            var f = MEASURE_FIELDS[key];
-            var el = div.querySelector('.' + f.cls);
-            var val = (el && el.value) ? el.value.trim() : '';
-            if (val) parts.push(f.label + ' ' + val + '"');
-          });
-          div.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
-          saveBtn.disabled = true;
-          saveBtn.textContent = 'Saved \u2713';
-          nilu.ordMeasurements = parts.length ? parts.join(', ') : '';
-          niluUserSay(parts.length ? parts.join(', ') : "I'll get measured at the boutique");
-          niluAskCollection();
-        });
-
-        niluSetQuick([{ label: "I'll get measured at the boutique", value: 'skip_measure', cls: 'alt' }]);
-      });
-      nilu.step = 'ord_measurements';
-    }
-
-    function niluAskDeliveryDateForm() {
-      niluSetInputEnabled(false);
-      niluClearQuick();
-      niluTyping(function () {
-        var div = document.createElement('div');
-        div.className = 'nilu-msg bot nilu-form-msg';
-        var minDate = new Date();
-        minDate.setDate(minDate.getDate() + 3);
-        var minStr = minDate.toISOString().split('T')[0];
-        div.innerHTML =
-          '<div style="margin-bottom:10px;">When would you like it ready by? Pick a date below, just like our Order Online form.</div>' +
-          '<input type="date" class="nf-date" min="' + minStr + '">' +
-          '<button type="button" class="nilu-form-btn nf-date-save">Confirm Date</button>';
-        niluEl.body.appendChild(div);
-        niluScrollDown();
-
-        var saveBtn = div.querySelector('.nf-date-save');
-        saveBtn.addEventListener('click', function () {
-          var dateInput = div.querySelector('.nf-date');
-          var val = dateInput.value;
-          if (!val) { dateInput.style.borderColor = '#c0392b'; return; }
-          div.querySelectorAll('input').forEach(function (i) { i.disabled = true; });
-          saveBtn.disabled = true;
-          saveBtn.textContent = 'Confirmed \u2713';
-          nilu.ordDeliveryDate = val;
-          niluUserSay(formatDateDMY(val));
-          niluFinishOrder();
-        });
-
-        niluSetQuick([{ label: 'No preference', value: 'skip_date', cls: 'alt' }]);
-      });
-      nilu.step = 'ord_delivery_date';
-    }
-
-    function niluFinishAppointment() {
-      nilu.apptRef = generateApptRef();
-      var summary = 'Day: <strong>' + escapeHtml(nilu.apptDay) + '</strong><br>' +
-        'Time: <strong>' + escapeHtml(nilu.apptSlot) + '</strong><br>' +
-        'Service: <strong>' + escapeHtml(nilu.apptService) + '</strong>' +
-        (nilu.apptNotes ? '<br>Notes: ' + escapeHtml(nilu.apptNotes) : '');
-
-      niluSetInputEnabled(false);
-      niluTyping(function () {
-        niluBotSay('Perfect, ' + escapeHtml(nilu.name) + '! Here\'s your appointment summary:<br><br>' + summary +
-          '<br><br>Reference: <span class="nilu-ref">' + nilu.apptRef + '</span>');
-        niluTyping(function () {
-          niluBotSay('Tap below to send this to us on WhatsApp \u2014 we\'ll confirm your slot within the hour. A member of our team always double-checks availability before it\'s final.');
-          niluSetQuick([
-            { label: '\uD83D\uDCF2 Confirm on WhatsApp', value: 'send_appt' },
-            { label: 'Start Over', value: 'restart', cls: 'alt' }
-          ]);
-        }, 500);
-      });
-      nilu.step = 'appt_confirm';
-    }
-
-    function niluFinishOrder() {
-      nilu.ordRef = generateOrderRef();
-      var lines = [];
-      lines.push('Service: <strong>' + escapeHtml(nilu.ordService) + '</strong>');
-      if (nilu.ordAlt) {
-        if (nilu.ordAltType) lines.push('Alteration type: ' + escapeHtml(nilu.ordAltType));
-        if (nilu.ordAltNotes) lines.push('Details: ' + escapeHtml(nilu.ordAltNotes));
-      } else {
-        if (nilu.ordNeck) lines.push('Neck: ' + escapeHtml(nilu.ordNeck));
-        if (nilu.ordSleeve) lines.push('Sleeve: ' + escapeHtml(nilu.ordSleeve));
-        if (nilu.ordFabric) lines.push('Fabric: ' + escapeHtml(nilu.ordFabric));
-        if (nilu.ordMeasurements) lines.push('Measurements: ' + escapeHtml(nilu.ordMeasurements));
-      }
-      lines.push('Collection: ' + (nilu.ordCollection === 'delivery' ? 'Home delivery' : 'Pick up from boutique'));
-      if (nilu.ordAddress) lines.push('Address: ' + escapeHtml(nilu.ordAddress));
-      if (nilu.ordDeliveryDate) lines.push('Needed by: ' + escapeHtml(formatDateDMY(nilu.ordDeliveryDate)));
-
-      niluSetInputEnabled(false);
-      niluTyping(function () {
-        niluBotSay('All set, ' + escapeHtml(nilu.name) + '! Here\'s your order summary:<br><br>' + lines.join('<br>') +
-          '<br><br>Reference: <span class="nilu-ref">' + nilu.ordRef + '</span>' +
-          '<br><br><i class="ti ti-credit-card"></i> We accept UPI (GPay / PhonePe), collected on pickup.');
-        niluTyping(function () {
-          niluBotSay('Tap below to send this order to us on WhatsApp \u2014 our team will review it and confirm pricing &amp; timeline with you personally.');
-          niluSetQuick([
-            { label: '\uD83D\uDCF2 Send Order on WhatsApp', value: 'send_order' },
-            { label: 'Start Over', value: 'restart', cls: 'alt' }
-          ]);
-        }, 500);
-      });
-      nilu.step = 'ord_confirm';
-    }
-
-    function niluRestart() {
-      var keepName = nilu.name, keepPhone = nilu.phone;
-      nilu = blankState();
-      nilu.started = true;
-      nilu.name = keepName;
-      nilu.phone = keepPhone;
-      niluClearQuick();
-      niluSetInputEnabled(false);
-      niluTyping(function () {
-        niluBotSay('What would you like to do next, ' + escapeHtml(keepName) + '?');
-        niluShowMenu();
-      });
-    }
-
-    // ── Free-text input handler ─────────────────────────
-    function niluSubmitText() {
-      var val = niluEl.input.value.trim();
-      if (!val || niluEl.input.disabled) return;
-      niluUserSay(val);
-      niluEl.input.value = '';
-      niluProcessText(val);
-    }
-
-    function niluProcessText(val) {
-      switch (nilu.step) {
-
-        case 'greet_name':
-          nilu.name = val;
-          niluSetInputEnabled(false);
-          niluTyping(function () {
-            niluBotSay('Lovely to meet you, <strong>' + escapeHtml(nilu.name) + '</strong>! Could you share your 10-digit WhatsApp number so we can confirm your booking?');
-            niluSetInputEnabled(true, 'e.g. 98765 43210');
-          });
-          nilu.step = 'greet_phone';
-          break;
-
-        case 'greet_phone':
-          var valid = niluValidatePhone(val);
-          if (!valid) {
-            niluSetInputEnabled(false);
-            niluTyping(function () {
-              niluBotSay('<span class="nilu-err">That doesn\'t look like a valid 10-digit number.</span> Please enter your number as 10 digits, e.g. 9876543210.');
-              niluSetInputEnabled(true, '10-digit number');
-            });
-            break;
-          }
-          nilu.phone = valid;
-          niluSetInputEnabled(false);
-          niluTyping(function () {
-            niluBotSay('Thanks! Got it \u2014 <strong>' + nilu.phone + '</strong>. What would you like to do today?');
-            niluShowMenu();
-          });
-          break;
-
-        case 'appt_notes':
-          nilu.apptNotes = val;
-          niluFinishAppointment();
-          break;
-
-        case 'ord_fabric':
-          nilu.ordFabric = val;
-          niluAskMeasurementsForm();
-          break;
-
-        case 'ord_alt_notes':
-          nilu.ordAltNotes = val;
-          niluAskCollection();
-          break;
-
-        case 'ord_address':
-          nilu.ordAddress = val;
-          niluAskDeliveryDateForm();
-          break;
-
-        default:
-          // Ignore free text sent while a button-only step is active.
-          niluBotSay('Please use one of the options above to continue \u2014 or tap "Talk to a person" any time.');
-          break;
-      }
-    }
-
-    // ── Button / quick-reply handler ────────────────────
-    function niluChoose(value, label) {
-      if (value === '__human__') {
-        niluHandOffToHuman(label);
-        return;
-      }
-      if (value === 'restart') {
-        niluUserSay(label);
-        niluClearQuick();
-        niluRestart();
-        return;
-      }
-
-      niluUserSay(label);
-      niluClearQuick();
-
-      switch (nilu.step) {
-
-        case 'menu':
-          if (value === 'appointment') {
-            niluTyping(function () {
-              niluBotSay("Great! We take appointments <strong>Monday\u2013Saturday</strong>, 11:00 AM\u20132:00 PM and 5:00 PM\u20137:00 PM.<br>Which day works for you?");
-              niluSetQuick(DAYS.map(function (d) { return { label: d, value: d }; }).concat([niluHumanChip()]));
-            });
-            nilu.step = 'appt_day';
-          } else {
-            niluTyping(function () {
-              niluBotSay('Sure! What would you like to order?');
-              niluSetQuick(SERVICES.map(function (s) { return { label: s.label, value: s.value }; }));
-            });
-            nilu.step = 'ord_service';
-          }
-          break;
-
-        case 'appt_day':
-          nilu.apptDay = value;
-          niluTyping(function () {
-            niluBotSay('Morning (11 AM\u20132 PM) or evening (5 PM\u20137 PM)?');
-            niluSetQuick([
-              { label: '\u2600\uFE0F Morning', value: 'morning' },
-              { label: '\uD83C\uDF07 Evening', value: 'evening' }
-            ]);
-          });
-          nilu.step = 'appt_period';
-          break;
-
-        case 'appt_period':
-          var slots = value === 'morning' ? MORNING_SLOTS : EVENING_SLOTS;
-          niluTyping(function () {
-            niluBotSay('Pick an exact time:');
-            niluSetQuick(slots.map(function (s) { return { label: s, value: s }; }));
-          });
-          nilu.step = 'appt_time';
-          break;
-
-        case 'appt_time':
-          nilu.apptSlot = value;
-          niluTyping(function () {
-            niluBotSay('And what service is this appointment for?');
-            niluSetQuick(SERVICES.map(function (s) { return { label: s.label, value: s.value }; }));
-          });
-          nilu.step = 'appt_service';
-          break;
-
-        case 'appt_service':
-          nilu.apptService = value;
-          niluTyping(function () {
-            niluBotSay('Any special requests or notes for us? Type them below, or tap "None".');
-            niluSetInputEnabled(true, 'Optional notes...');
-            niluSetQuick([{ label: 'None', value: 'skip_notes', cls: 'alt' }]);
-          });
-          nilu.step = 'appt_notes';
-          break;
-
-        case 'appt_notes':
-          // reached only via the "None" chip (value === 'skip_notes')
-          nilu.apptNotes = '';
-          niluFinishAppointment();
-          break;
-
-        case 'ord_service':
-          nilu.ordService = value;
-          nilu.ordAlt = (value === 'Alteration');
-          if (nilu.ordAlt) {
-            niluTyping(function () {
-              niluBotSay('What kind of alteration do you need?');
-              niluSetQuick([
-                { label: 'Size reduction', value: 'Size reduction' },
-                { label: 'Size increase', value: 'Size increase' },
-                { label: 'Hem / length', value: 'Hem / length adjustment' },
-                { label: 'Repair / mending', value: 'Repair / mending' }
-              ]);
-            });
-            nilu.step = 'ord_alt_type';
-          } else {
-            niluTyping(function () {
-              niluBotSay('What neckline would you like?');
-              niluSetQuick([
-                { label: 'Round neck', value: 'Round neck' },
-                { label: 'V-neck', value: 'V-neck' },
-                { label: 'Boat neck', value: 'Boat neck' },
-                { label: 'As per photo I\'ll share', value: 'As per photo' }
-              ]);
-            });
-            nilu.step = 'ord_neck';
-          }
-          break;
-
-        case 'ord_alt_type':
-          nilu.ordAltType = value;
-          niluSetInputEnabled(true, 'Describe the alteration...');
-          niluTyping(function () {
-            niluBotSay('Please describe what needs to be altered (e.g. "Reduce waist by 2 inches").');
-          });
-          nilu.step = 'ord_alt_notes';
-          break;
-
-        case 'ord_neck':
-          nilu.ordNeck = value;
-          niluTyping(function () {
-            niluBotSay('And the sleeve style?');
-            niluSetQuick([
-              { label: 'Short sleeve', value: 'Short sleeve' },
-              { label: '3/4th sleeve', value: '3/4th sleeve' },
-              { label: 'Sleeveless', value: 'Sleeveless' },
-              { label: 'As per photo', value: 'As per photo' }
-            ]);
-          });
-          nilu.step = 'ord_sleeve';
-          break;
-
-        case 'ord_sleeve':
-          nilu.ordSleeve = value;
-          niluSetInputEnabled(true, 'e.g. Silk, dark green with gold border');
-          niluTyping(function () {
-            niluBotSay('What fabric or colour will you be using? (Type below)');
-          });
-          nilu.step = 'ord_fabric';
-          break;
-
-        case 'ord_measurements':
-          // reached only via "I'll get measured at the boutique" (value === 'skip_measure')
-          nilu.ordMeasurements = "Will get measured at the boutique";
-          niluAskCollection();
-          break;
-
-        case 'ord_collection':
-          nilu.ordCollection = value;
-          if (value === 'delivery') {
-            niluSetInputEnabled(true, 'Full address with landmark...');
-            niluTyping(function () {
-              niluBotSay("What's the delivery address?");
-            });
-            nilu.step = 'ord_address';
-          } else {
-            niluAskDeliveryDateForm();
-          }
-          break;
-
-        case 'ord_delivery_date':
-          // reached only via "No preference" (value === 'skip_date')
-          nilu.ordDeliveryDate = '';
-          niluFinishOrder();
-          break;
-
-        case 'appt_confirm':
-          if (value === 'send_appt') {
-            var apptMsg = "Hi AM Women's Boutique! I'd like to book an appointment via Nilu.\n\n" +
-              'Reference: ' + nilu.apptRef + '\n' +
-              'Name: ' + nilu.name + '\n' +
-              'Phone: ' + nilu.phone + '\n' +
-              'Day: ' + nilu.apptDay + '\n' +
-              'Time: ' + nilu.apptSlot + '\n' +
-              'Service: ' + nilu.apptService +
-              (nilu.apptNotes ? '\nNotes: ' + nilu.apptNotes : '') +
-              '\n\nPlease confirm my slot. Thank you!';
-            niluOpenWhatsApp(apptMsg);
-            niluTyping(function () {
-              niluBotSay('Sent! We\'ll confirm your appointment (<span class="nilu-ref">' + nilu.apptRef + '</span>) on WhatsApp shortly. Anything else?');
-              niluSetQuick([{ label: 'Start Over', value: 'restart', cls: 'alt' }, niluHumanChip()]);
-            });
-          }
-          break;
-
-        case 'ord_confirm':
-          if (value === 'send_order') {
-            var orderMsg = "Hi AM Women's Boutique! I'd like to place an order via Nilu.\n\n" +
-              'Reference: ' + nilu.ordRef + '\n' +
-              'Name: ' + nilu.name + '\n' +
-              'Phone: ' + nilu.phone + '\n' +
-              'Service: ' + nilu.ordService + '\n';
-            if (nilu.ordAlt) {
-              if (nilu.ordAltType) orderMsg += 'Alteration type: ' + nilu.ordAltType + '\n';
-              if (nilu.ordAltNotes) orderMsg += 'Details: ' + nilu.ordAltNotes + '\n';
-            } else {
-              if (nilu.ordNeck) orderMsg += 'Neck: ' + nilu.ordNeck + '\n';
-              if (nilu.ordSleeve) orderMsg += 'Sleeve: ' + nilu.ordSleeve + '\n';
-              if (nilu.ordFabric) orderMsg += 'Fabric: ' + nilu.ordFabric + '\n';
-              if (nilu.ordMeasurements) orderMsg += 'Measurements: ' + nilu.ordMeasurements + '\n';
-            }
-            orderMsg += 'Collection: ' + (nilu.ordCollection === 'delivery' ? 'Home delivery' : 'Pick up from boutique') + '\n';
-            if (nilu.ordAddress) orderMsg += 'Address: ' + nilu.ordAddress + '\n';
-            if (nilu.ordDeliveryDate) orderMsg += 'Needed by: ' + formatDateDMY(nilu.ordDeliveryDate) + '\n';
-            orderMsg += '\nPayment: UPI at boutique\nPlease confirm. Thank you!';
-            niluOpenWhatsApp(orderMsg);
-            niluTyping(function () {
-              niluBotSay('Sent! Our team will confirm your order (<span class="nilu-ref">' + nilu.ordRef + '</span>) on WhatsApp shortly. Anything else?');
-              niluSetQuick([{ label: 'Start Over', value: 'restart', cls: 'alt' }, niluHumanChip()]);
-            });
-          }
-          break;
-
-        default:
-          break;
-      }
-    }
-
-    // ── Wire up static controls ─────────────────────────
-    niluEl.launcher.addEventListener('click', niluOpen);
-    niluEl.close.addEventListener('click', niluCloseChat);
-    niluEl.send.addEventListener('click', niluSubmitText);
-    niluEl.input.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); niluSubmitText(); }
-    });
-    niluSetInputEnabled(false);
-
-    // ── Auto-open on page load ───────────────────────────
-    // Greets the visitor and asks for name & mobile number automatically.
-    // Only once per browser tab session, so it doesn't reopen on every
-    // internal link click or page refresh during the same visit.
-    var niluAlreadyAutoOpened = false;
-    try { niluAlreadyAutoOpened = sessionStorage.getItem('niluAutoOpened') === '1'; } catch (e) { /* privacy mode etc. */ }
-    if (!niluAlreadyAutoOpened) {
-      setTimeout(function () {
-        if (!niluEl.chat.classList.contains('open')) niluOpen();
-        try { sessionStorage.setItem('niluAutoOpened', '1'); } catch (e) { /* ignore */ }
-      }, 2500);
-    }
-  })();
-
+}
 </script>
+
 </body>
 </html>
