@@ -271,7 +271,7 @@
     .g-review-text { font-size:13px;color:var(--mid);line-height:1.65;font-style:italic; }
     .g-powered { display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);margin-top:6px; }
     /* PWA install banner */
-    .install-banner{position:fixed;bottom:0;left:0;right:0;z-index:9990;background:var(--dark);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;transform:translateY(100%);transition:transform .4s ease;border-top:2px solid var(--rose);}
+    .install-banner{position:fixed;top:68px;left:0;right:0;z-index:9990;background:var(--dark);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;transform:translateY(-130%);transition:transform .4s ease;border-bottom:2px solid var(--rose);box-shadow:0 8px 20px rgba(0,0,0,.15);}
     .install-banner.show{transform:translateY(0);}
     .install-banner-left{display:flex;align-items:center;gap:12px;}
     .install-banner-logo{width:40px;height:40px;border-radius:10px;object-fit:cover;}
@@ -344,7 +344,10 @@
     @media(max-width:600px){
       .nilu-launcher-text{display:none;}
       .nilu-launcher{padding:14px;bottom:92px;right:16px;}
-      .nilu-chat{bottom:0;right:0;left:0;width:100%;max-width:100%;height:88vh;border-radius:16px 16px 0 0;}
+      .nilu-chat{bottom:12px;right:12px;left:12px;width:auto;max-width:calc(100% - 24px);height:64vh;max-height:520px;border-radius:16px;}
+    }
+    @media(max-width:600px) and (max-height:640px){
+      .nilu-chat{height:58vh;}
     }
   </style>
   <!-- Google Places API — for live reviews -->
@@ -441,7 +444,7 @@
 <!-- NAVIGATION -->
 <nav id="top">
   <a href="#top" class="nav-logo">
-    <img src="icon-192-any.png" alt="AM Women's Boutique Logo" />
+    <img src="icon-192-any.png?v=2" alt="AM Women's Boutique Logo" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2750%27 fill=%27%23c97b84%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2734%27 font-family=%27Georgia,serif%27 fill=%27white%27 text-anchor=%27middle%27%3EAM%3C/text%3E%3C/svg%3E';" />
     AM <span>Women's</span> Boutique
   </a>
   <ul class="nav-links" id="navLinks">
@@ -1117,7 +1120,7 @@
   <div class="contact-inner">
     <div class="contact-brand">
       <a href="#top" class="nav-logo" style="color:#f5e8ea;">
-        <img src="icon-192-any.png" alt="AM Women's Boutique Logo" style="border-color:rgba(181,147,90,0.5);" />
+        <img src="icon-192-any.png?v=2" alt="AM Women's Boutique Logo" style="border-color:rgba(181,147,90,0.5);" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2750%27 fill=%27%23c97b84%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2734%27 font-family=%27Georgia,serif%27 fill=%27white%27 text-anchor=%27middle%27%3EAM%3C/text%3E%3C/svg%3E';" />
         AM <span>Women's</span> Boutique
       </a>
       <p class="contact-tagline">Bringing your dream outfits to life &mdash; one stitch at a time. Trusted by women across Bengaluru since 2023.</p>
@@ -1157,7 +1160,7 @@
 <!-- PWA INSTALL BANNER -->
 <div class="install-banner" id="installBanner">
   <div class="install-banner-left">
-    <img src="icon-192-any.png" alt="AM Boutique" class="install-banner-logo" />
+    <img src="icon-192-any.png?v=2" alt="AM Boutique" class="install-banner-logo" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2750%27 fill=%27%23c97b84%27/%3E%3Ctext x=%2750%27 y=%2760%27 font-size=%2734%27 font-family=%27Georgia,serif%27 fill=%27white%27 text-anchor=%27middle%27%3EAM%3C/text%3E%3C/svg%3E';" />
     <div class="install-banner-text">
       <p id="installBannerTitle">Add AM Boutique to your home screen</p>
       <span id="installBannerSub">Install the app for quick ordering & gallery access</span>
@@ -1478,6 +1481,27 @@
     document.querySelectorAll('.order-tab')[0].click();
     window.scrollTo({ top: document.getElementById('order').offsetTop - 80, behavior: 'smooth' });
   }
+
+  // ── Graceful fallback for gallery/hero photos ─────────
+  // If a gallery or hero photo can't load (e.g. not yet uploaded to hosting),
+  // show a clean placeholder instead of a broken-image icon. Uses the error
+  // event's capture phase since 'error' doesn't bubble on <img> elements.
+  document.addEventListener('error', function (e) {
+    var el = e.target;
+    if (!el || el.tagName !== 'IMG' || el.dataset.fallbackApplied) return;
+    var wrap = el.closest('.gallery-item, .hero-img-main, .hero-img-small');
+    if (!wrap) return;
+    el.dataset.fallbackApplied = '1';
+    el.style.display = 'none';
+    wrap.style.background = 'linear-gradient(135deg, var(--rose-light), var(--gold-light))';
+    wrap.style.display = 'flex';
+    wrap.style.alignItems = 'center';
+    wrap.style.justifyContent = 'center';
+    var ph = document.createElement('div');
+    ph.style.cssText = 'color:var(--rose-dark);font-size:11px;text-align:center;padding:10px;font-family:"Jost",sans-serif;font-weight:500;';
+    ph.innerHTML = '<i class="ti ti-photo" style="font-size:26px;display:block;margin-bottom:4px;"></i>Photo unavailable';
+    wrap.appendChild(ph);
+  }, true);
 
     // ── Hamburger menu ──────────────────────────────────
   var hamburger = document.getElementById('hamburger');
