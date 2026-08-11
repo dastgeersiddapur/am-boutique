@@ -1,9 +1,9 @@
-// AM Women's Boutique — Service Worker v6
+// AM Women's Boutique — Service Worker v10
 // Android 14 / Samsung S24 FE compatible
 // NOTE: bump CACHE_NAME any time index.html or any precached asset changes,
 // otherwise returning visitors can keep seeing a stale cached page/asset
 // indefinitely, even after you upload new files to hosting.
-const CACHE_NAME = 'am-boutique-v6';
+const CACHE_NAME = 'am-boutique-v10';
 
 const FILES_TO_CACHE = [
   '/',
